@@ -1,5 +1,6 @@
 body{
   background: #000000;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .menucentro{
@@ -26,4 +27,6 @@ body{
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+    color: #0F1937;
+    font-weight: bolder;
 }
