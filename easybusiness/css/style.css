@@ -21,6 +21,7 @@ body{
 .informacion {
     text-align: left;
     position: relative;
+    left: 5%;
     top: 50%;
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
