@@ -20,7 +20,7 @@ body{
 }
 
 .informacion {
-    text-align: left;
+
     position: relative;
     left: 5%;
     top: 50%;
@@ -28,5 +28,12 @@ body{
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     color: #0F1937;
-    font-weight: bolder;
+
+}
+#estiloText{
+  text-align: left;
+  font-weight: bolder;
+}
+.alineacion{
+  text-align: right;
 }
