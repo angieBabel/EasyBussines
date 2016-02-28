@@ -1,6 +1,7 @@
 body{
-  background: #000000;
+  background: #F7F7EF;
   font-family: 'Montserrat', sans-serif;
+  color: #0F1937;
 }
 
 .menucentro{
@@ -26,7 +27,7 @@ body{
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    color: #0F1937;
+
 
 }
 #estiloText{
@@ -41,4 +42,46 @@ body{
   height: 400px;
   text-align: center;
 
+}
+
+.seccion3{
+  height: 500px;
+  background: #00A969;
+}
+.titulo{
+  color: #ffffff;
+  font-size: 35px;
+  margin-top: 5%;
+}
+.quienson{
+  color: #ffffff;
+  font-size: 25px;
+  margin-left: 10%;
+  text-align: justify;
+
+}
+
+.seccion4{
+  height: 500px;
+}
+.titulo4{
+  margin-top: 5%;
+  font-size: 35px;
+  text-align: center;
+  font-weight: bolder;
+}
+.texto4{
+  text-align: justify;
+  font-size: 20px;
+  margin-left: 10%;
+}
+.imagen{
+  margin-left: 20%;
+  height: 500px;
+  width: 300px;
+}
+
+.seccion5{
+  height: 100px;
+  background:#0F1937;
 }
