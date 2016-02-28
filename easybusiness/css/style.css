@@ -16,11 +16,10 @@ body{
   height: 500px;
   background-position: top center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+
 }
 
 .informacion {
-
     position: relative;
     left: 5%;
     top: 50%;
@@ -36,4 +35,9 @@ body{
 }
 .alineacion{
   text-align: right;
+}
+
+.seccion2{
+  height: 400px;
+
 }
