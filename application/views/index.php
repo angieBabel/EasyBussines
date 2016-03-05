@@ -17,12 +17,11 @@
   <script src="js/bootstrap.min.js"></script>
 </head>
 <body >
-  <header>
+<header>
     <nav class="navbar navbar-default">
     <div class="container-fluid">
 
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <!-- <div class="navbar-header"> -->
+      <!-- Brand and toggle get grouped for better mobile display-->
         <div class="col-lg-3">
           <h1 class="logo left"><i class="fa fa-university"></i> Easy Business</h1>
         </div>
@@ -35,17 +34,18 @@
           </ul>
           <!-- inicio de sesión-->
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" >Iniciar Sesión</a></li>
+            <li><a href="index.php/welcome/login" >Iniciar Sesión</a></li>
             <li><a href="#" >Registrarse</a></li>
           </ul>
         </div>
-      <!-- </div> -->
 
-    </div><!-- /.container-fluid -->
+
+    </div><!-- /.container-fluid-->
   </nav>
 
-  </header>
 
+
+  </header>
 
   <div class="container-fluid">
     <div class="row">
