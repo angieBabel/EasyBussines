@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
 	<title>Easy Bussines</title>
-  <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../../css/bootstrap.css">
-  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 
-  <script src="../../js/interactions.js"></script>
-  <script src="../../js/jquery.js"></script>
-  <script src="../../js/bootstrap.js"></script>
-  <script src="../../js/bootstrap.min.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </head>
 <body >
   <header>
@@ -62,21 +62,21 @@
         <div class="col-lg-10">
           <div class="col-lg-4">
             <br><br><br>
-            <p><img src="../../image/dinero.png" alt=""></p>
+            <p><img src="image/dinero.png" alt=""></p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis nihil rerum culpa sapiente et ipsam eius magnam laborum animi quam cupiditate, accusantium iste doloremque placeat aut modi distinctio omnis quisquam.
             </p>
           </div>
           <div class="col-lg-4">
             <br><br><br>
-            <p><img src="../../image/Clipboard.png" alt=""></p>
+            <p><img src="image/Clipboard.png" alt=""></p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis nihil rerum culpa sapiente et ipsam eius magnam laborum animi quam cupiditate, accusantium iste doloremque placeat aut modi distinctio omnis quisquam.
             </p>
           </div>
           <div class="col-lg-4">
             <br><br><br>
-            <p><img src="../../image/grafica.png" alt=""></p>
+            <p><img src="image/grafica.png" alt=""></p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis nihil rerum culpa sapiente et ipsam eius magnam laborum animi quam cupiditate, accusantium iste doloremque placeat aut modi distinctio omnis quisquam.
             </p>
@@ -100,7 +100,7 @@
 
       <div class="col-lg-12 seccion4">
         <div class="col-lg-4">
-          <img src="../../image/ScreenLock.png" alt="" class="imagen">
+          <img src="image/ScreenLock.png" alt="" class="imagen">
         </div>
         <div class="col-lg-8">
           <p class="titulo4">Aplicacion</p>
