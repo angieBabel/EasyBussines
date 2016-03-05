@@ -29,9 +29,9 @@
         <div class="col-lg-9">
           <div class="col-lg-1"></div>
           <ul class="nav navbar-nav ">
-            <li><a href="#" class="menucentro navegacion">Servicios</a></li>
-            <li><a href="#" class="menucentro navegacion">¿Quienes Somos?</a></li>
-            <li><a href="#" class="menucentro navegacion">Aplicación</a></li>
+            <li><a href="#seccion2" class="menucentro navegacion">Servicios</a></li>
+            <li><a href="#seccion3" class="menucentro navegacion">¿Quienes Somos?</a></li>
+            <li><a href="#seccion4" class="menucentro navegacion">Aplicación</a></li>
           </ul>
           <!-- inicio de sesión-->
           <ul class="nav navbar-nav navbar-right">
@@ -53,10 +53,10 @@
       <div class="col-lg-12 inicio">
         <div class="col-lg-5 informacion">
           <h2 class="estiloTexto">Facilitando las actividades de tu negocio desde cualquier lugar</h2>
-          <a class="btn btn-lg btn-success alineacion" href="#"> Obten la aplicación <i class="fa fa-download"></i></a>
+          <a class="btn btn-lg btn-success alineacion" href="#seccion4"> Obten la aplicación <i class="fa fa-download"></i></a>
         </div>
       </div>
-      <div class="col-lg-12 seccion2">
+      <div class="col-lg-12 seccion2"><a name="seccion2"></a>
         <div class="col-lg-1"></div>
 
         <div class="col-lg-10">
@@ -85,7 +85,7 @@
         <div class="col-lg-1"></div>
 
       </div>
-      <div class="col-lg-12 seccion3 ">
+      <div class="col-lg-12 seccion3 "><a name="seccion3"></a>
         <div class="col-lg-9">
           <p class="titulo">¿Quienes somos?</p>
 
@@ -103,7 +103,7 @@
           <img src="image/ScreenLock.png" alt="" class="imagen">
         </div>
         <div class="col-lg-8">
-          <p class="titulo4">Aplicacion</p>
+          <p class="titulo4">Aplicacion</p><a name="seccion4"></a>
           <p class="texto4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus obcaecati assumenda consequatur nemo ipsum animi maiores repudiandae necessitatibus, fugit esse autem quaerat laboriosam amet ipsa eum quidem iste totam voluptas.</p>
           <p class="texto4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error mollitia ab accusantium perspiciatis nemo optio quidem! Magnam inventore architecto, quia veniam cum aperiam iste, et optio, fugit tenetur nesciunt accusantium.</p>
 
