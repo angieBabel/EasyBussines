@@ -109,21 +109,21 @@
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-pie-chart fa-3x"></i>
+                <i class="fa fa-dollar fa-3x"></i>
                 <br>
                 Gastos
               </a>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-laptop fa-3x"></i>
+                <i class="fa fa-line-chart fa-3x"></i>
                 <br>
                 Razones Finacieras
               </a>
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-edit fa-3x"></i>
+                <i class="fa fa-pie-chart fa-3x"></i>
                 <br>
                 Graficos
               </a>
@@ -138,13 +138,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Dashboard
-            <small>Control panel</small>
+            Panel Principal
+            <small>Principal</small>
           </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-          </ol>
         </section>
 
         <!-- Main content -->
