@@ -27,7 +27,7 @@
         log in with Google
       </a>
     </div>
-    <form class="email-login">
+    <form class="email-login" action="index.php/welcome/panel">
       <div class="u-form-group">
         <input type="email" placeholder="Email"/>
       </div>
@@ -35,7 +35,7 @@
         <input type="password" placeholder="Password"/>
       </div>
       <div class="u-form-group">
-        <button>Log in</button>
+        <button type="submit">Log in</button>
       </div>
       <div class="u-form-group">
         <a href="#" class="forgot-password">Forgot password?</a>
