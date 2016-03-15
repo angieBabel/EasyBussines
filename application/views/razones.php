@@ -1,12 +1,11 @@
 <?php include_once("sidemenu.php") ?>
-
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Panel Principal
-            <small>Principal</small>
+            Razones Financieras
+            <small>Datos del mes</small>
           </h1>
         </section>
 
@@ -30,5 +29,4 @@
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-
 <?php include_once("/sections/footer.php") ?>
