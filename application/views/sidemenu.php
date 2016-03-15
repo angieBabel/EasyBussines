@@ -44,7 +44,7 @@
               </a>
             </li>
             <li class="treeview">
-              <a href="inde.php/welcome/graficas">
+              <a href="index.php/welcome/graficas">
                 <i class="fa fa-pie-chart fa-3x"></i>
                 <br>
                 Graficos
