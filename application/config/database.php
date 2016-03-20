@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';  /*'www.webcolima.com';*/
-$db['default']['username'] = ''; /*'webcolim_angie'*/ /*'webcolim_jordi';*/
-$db['default']['password'] = '';  /*'ang1e'*/ /*'Jord1';*/
-$db['default']['database'] = '';  /*'webcolim_easybusiness';*/
+$db['default']['hostname'] = 'localhost';  'www.webcolima.com';
+$db['default']['username'] = /*'';*/ 'webcolim_angie'; /*'webcolim_jordi';*/
+$db['default']['password'] = /*'';*/  'ang1e'; /*'Jord1';*/
+$db['default']['database'] = /*'';*/  'webcolim_easybusiness';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

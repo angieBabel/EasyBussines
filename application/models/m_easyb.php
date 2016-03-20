@@ -18,4 +18,54 @@ class m_easyb extends CI_Model{
     return $query->result_array();
    }*/
 
+   /*public function getUTalla()
+   {
+    $this->db->order_by('clave','desc');
+    $this->db->limit(1);
+    $query=$this->db->get('tallas');
+    return $query->result_array();
+   }
+
+  public function get_tallas(){
+    return $this->db->from('tallas')
+                ->where('estatus',1)
+                ->get()
+                ->result_array();
+  }*/
+//Obtencion de datos
+ public function getproductos(){
+  return $this->db->from('productos')
+              ->get()
+              ->result_array();
+ }
+
+ public function getventas(){
+  return $this->db->from('ventas')
+              ->get()
+              ->result_array();
+ }
+ public function getadeudos(){
+  return $this->db->from('adeudos')
+              ->get()
+              ->result_array();
+ }
+
+public function getgastos(){
+  return $this->db->from('gastos')
+              ->get()
+              ->result_array();
+ }
+
+/*public function getrazones(){
+  return $thi->db->from('razones')
+                ->get()->result_array();
+   };
+public function getgraficas(){
+  return $thi->db->from('graficas')
+                ->get()->result_array();
+   };*/
+//Altas
+
+//Bajas
+
 }
