@@ -28,7 +28,7 @@
                                 <tr><!--Renglones-->
                                     <th>Id Producto</th><!--Colunas-->
                                     <th>Nombre</th>
-                                    <th>Precio</th>
+                                    <th>Precio $</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -40,7 +40,7 @@
                                    <td><?php echo $rowproductos['nombre']; ?></td>
                                    <td><?php echo $rowproductos['precio']; ?></td>
                                    <td><i class="fa fa-pencil-square-o"></i></td>
-                                   <td><a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"><i class="fa fa-trash-o"></i></a></td>
+                                   <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
                                </tr>
                                <?php } ?>
                             </tbody>
