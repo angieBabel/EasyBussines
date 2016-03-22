@@ -4732,6 +4732,8 @@ table.text-center th {
   }
 }
 
-i{
+.skin-blue .wrapper,
+.skin-blue .main-sidebar,
+.skin-blue .left-side>i{
   color: #8d8d8d;
 }

@@ -63,10 +63,10 @@
 }
 .skin-blue .user-panel > .info,
 .skin-blue .user-panel > .info > a {
-  color: #fff;
+  color: #133040;
 }
 .skin-blue .sidebar-menu > li.header {
-  color: #4b646f;
+  color: #133040;
   background: #1a2226;
 }
 .skin-blue .sidebar-menu > li > a {
@@ -83,7 +83,7 @@
   background: #2c3b41;
 }
 .skin-blue .sidebar a {
-  color: #b8c7ce;
+  color: #133040;
 }
 .skin-blue .sidebar a:hover {
   text-decoration: none;
