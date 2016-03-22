@@ -34,6 +34,7 @@
                                     <th>Modo pago</th>
                                     <th>Fecha</th>
                                     <th>Total</th>
+                                    <th>% del periodo</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -41,15 +42,14 @@
                             <tbody>
                               <?php foreach($ventas as $rowventas){ ?>
                                <tr>
-                                   <td><?php echo $rowventas['id_venta']; ?></td>
-                                   <td><?php echo $rowventas['id_producto']; ?></td>
+                                   <td><?php echo $rowventas['idventa']; ?></td>
+                                   <td><?php echo $rowventas['nombreproducto']; ?></td>
+                                   <td><?php echo $rowventas['precioproducto']; ?></td>
+                                   <td><?php echo $rowventas['cantidad']; ?></td>
+                                   <td><?php echo $rowventas['modopago']; ?></td>
+                                   <td><?php echo $rowventas['fechaventa']; ?></td>
+                                   <td><?php echo $rowventas['totalventa']; ?></td>
                                    <td><!-- <?php echo $rowventas['total']; ?> --></td>
-                                   <td><?php echo $rowventas['unidades_vendidas']; ?></td>
-                                   <td><?php echo $rowventas['modo_pago']; ?></td>
-                                   <td><?php echo $rowventas['fecha']; ?></td>
-                                   <td><?php echo $rowventas['total']; ?></td>
-
-                                   <td><?php echo $rowventas['total']; ?></td>
                                    <td><i class="fa fa-pencil-square-o"></i></td>
                                    <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
                                </tr>
@@ -81,12 +81,17 @@
                                    <td><?php echo $rowadeudos['abono']; ?></td>
                                    <td><?php echo $rowadeudos['abono_periodo']; ?></td>
                                    <td><i class="fa fa-pencil-square-o"></i></td>
-                                   <td><a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"><i class="fa fa-trash-o"></i></a></td>
+                                   <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
                                </tr>
                                <?php } ?>
                             </tbody>
                         </table>
                       </div>
+                  </div>
+                  <div class="col-lg-10 collapse navbar-collapse navbar-ex1-collapse">
+                      <ul class="nav navbar-nav navbar-right ">
+                          <li id="lista3"><a href=""><i class="fa fa-plus-square fa-lg"></i>  Nueva Venta</a></li>
+                      </ul>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

@@ -57,10 +57,26 @@ class Welcome extends CI_Controller {
 	public function gastos()
 	{
 		$data = array(
-			'gastos'=>$this->m_easyb->getgastos()
+			'gastosgeneral'=>$this->m_easyb->getgastos()
 			);
-		$this->load->view('gastos',$data);
+		$this->load->view('gastosgeneral',$data);
 	}
+
+	public function desactivaProducto($id)
+  {
+    $id = $_GET['id'];
+    $this->m_lyons->desactivaproducto($id);
+    redirect('welcome/matProductos');
+  }
+	public function getdetallegastos()
+	{
+		$id_rubro = $_GET['id_rubro'];
+		$data = array(
+			'detallegastos'=>$this->m_easyb->getdetallegastos($id_rubro)
+			);
+		$this->load->view('detallegastos',$data);
+	}
+
 	public function razones(){
 		$this->load->view('razones');
 	}

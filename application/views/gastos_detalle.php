@@ -26,19 +26,25 @@
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr><!--Renglones-->
-                                    <th>Rubro</th><!--Colunas-->
+                                    <th>Gasto</th><!--Colunas-->
+                                    <th>Concepto</th>
+                                    <th>Cantidad</th>
+                                    <th>Fecha</th>
                                     <th>Total</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                              <?php foreach($gastosgeneral as $rowgastosgeneral){ ?>
+                              <?php foreach($detallegastos as $rowgastos){ ?>
                                <tr>
-                                   <td><?php echo $rowgastosgeneral['id_rubro']; ?></td>
-                                   <td><?php echo $rowgastosgeneral['totalrubro']; ?></td>
-                                   <td><a href=""><i class="fa fa-plus-square fa-lg"></i>Ver Detalle</a></td>
+                                   <td><?php echo $rowgastos['id_gasto']; ?></td>
+                                   <td><?php echo $rowgastos['id_concepto']; ?></td>
+                                   <td><?php echo $rowgastos['cantidad']; ?></td>
+                                   <td><?php echo $rowgastos['fecha']; ?></td>
+                                   <td><?php echo $rowgastos['total']; ?></td>
                                    <td><i class="fa fa-pencil-square-o"></i></td>
-                                   <td><a href="<!-- index.php/welcome/getdetallegastos?id=<?php echo $rowgastosgeneral['id_rubro'];?> -->"><i class="fa fa-trash-o"></i></a></td>
+                                   <td><a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"><i class="fa fa-trash-o"></i></a></td>
                                </tr>
                                <?php } ?>
                             </tbody>

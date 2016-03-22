@@ -21,31 +21,35 @@
               <div class="nav-tabs-custom">
                 <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; width:500px;">
                   <div class="row">
-                    <div class="col-lg-1"></div>
-                      <div class="table-responsive col-lg-10">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr><!--Renglones-->
-                                    <th>Id Producto</th><!--Colunas-->
-                                    <th>Nombre</th>
-                                    <th>Precio $</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                              <?php foreach($productos as $rowproductos){ ?>
-                               <tr>
-                                   <td><?php echo $rowproductos['id_producto']; ?></td>
-                                   <td><?php echo $rowproductos['nombre']; ?></td>
-                                   <td><?php echo $rowproductos['precio']; ?></td>
-                                   <td><i class="fa fa-pencil-square-o"></i></td>
-                                   <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
-                               </tr>
-                               <?php } ?>
-                            </tbody>
-                        </table>
-                      </div>
+                    <div class="table-responsive col-lg-10">
+                      <table class="table table-hover table-striped">
+                          <thead>
+                              <tr><!--Renglones-->
+                                  <th>Id Producto</th><!--Colunas-->
+                                  <th>Nombre</th>
+                                  <th>Precio $</th>
+                                  <th></th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <?php foreach($productos as $rowproductos){ ?>
+                             <tr>
+                                 <td><?php echo $rowproductos['id_producto']; ?></td>
+                                 <td><?php echo $rowproductos['nombre']; ?></td>
+                                 <td><?php echo $rowproductos['precio']; ?></td>
+                                 <td><i class="fa fa-pencil-square-o"></i></td>
+                                 <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
+                             </tr>
+                             <?php } ?>
+                          </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="col-lg-10 collapse navbar-collapse navbar-ex1-collapse">
+                      <ul class="nav navbar-nav navbar-right ">
+                          <li id="lista3"><a href=""><i class="fa fa-plus-square fa-lg"></i>  Agregar Producto</a></li>
+                      </ul>
                   </div>
               </div><!-- /.nav-tabs-custom -->
 
