@@ -1,6 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
+	function __construct(){
+		parent::__construct();
+
+		$this->load->model('m_easyb');
+
+	}
 
 	/**
 	 * Index Page for this controller.
@@ -21,6 +27,64 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('index');
 	}
+
+	public function login()
+	{
+		$this->load->view('login');
+	}
+
+	public function panel()
+	{
+		$this->load->view('panel');
+	}
+
+	public function productos()
+	{
+		$data = array(
+			'productos'=>$this->m_easyb->getproductos()
+			);
+		$this->load->view('productos',$data);
+	}
+
+	public function ventas()
+	{
+		$data = array(
+			'ventas'=>$this->m_easyb->getventas(),
+			'adeudos'=>$this->m_easyb->getadeudos()
+			);
+		$this->load->view('ventas',$data);
+	}
+	public function gastos()
+	{
+		$data = array(
+			'gastosgeneral'=>$this->m_easyb->getgastos()
+			);
+		$this->load->view('gastosgeneral',$data);
+	}
+
+	public function desactivaProducto($id)
+  {
+    $id = $_GET['id'];
+    $this->m_lyons->desactivaproducto($id);
+    redirect('welcome/matProductos');
+  }
+	public function getdetallegastos()
+	{
+		$id_rubro = $_GET['id_rubro'];
+		$data = array(
+			'detallegastos'=>$this->m_easyb->getdetallegastos($id_rubro)
+			);
+		$this->load->view('detallegastos',$data);
+	}
+
+	public function razones(){
+		$this->load->view('razones');
+	}
+
+	public function graficas(){
+		$this->load->view('graficas');
+	}
+
 }
 
 /* End of file welcome.php */
