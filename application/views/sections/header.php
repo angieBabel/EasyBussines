@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/AdminLTE.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="css/skins/_all-skins.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
     <!-- Morris chart -->
