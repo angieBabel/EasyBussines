@@ -17,7 +17,7 @@
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
+            <section class="col-lg-12 connectedSortable">
 
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
