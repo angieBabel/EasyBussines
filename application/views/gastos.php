@@ -15,7 +15,7 @@
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
+            <section class="col-lg-12 connectedSortable">
 
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
@@ -34,11 +34,9 @@
                             <tbody>
                               <?php foreach($gastosgeneral as $rowgastosgeneral){ ?>
                                <tr>
-                                   <td><?php echo $rowgastosgeneral['id_rubro']; ?></td>
-                                   <td><?php echo $rowgastosgeneral['totalrubro']; ?></td>
-                                   <td><a href=""><i class="fa fa-plus-square fa-lg"></i>Ver Detalle</a></td>
-                                   <td><i class="fa fa-pencil-square-o"></i></td>
-                                   <td><a href="<!-- index.php/welcome/getdetallegastos?id=<?php echo $rowgastosgeneral['id_rubro'];?> -->"><i class="fa fa-trash-o"></i></a></td>
+                                   <td><?php echo $rowgastosgeneral['nombrerubro']; ?></td>
+                                   <td><?php echo $rowgastosgeneral['totalgasto']; ?></td>
+                                   <td><a href="index.php/welcome/getdetallegastos?id_rubro=<?php echo $rowgastosgeneral['rubro'];?>"><i class="fa fa-plus-square fa-sm"></i> Ver Detalle</a></td>
                                </tr>
                                <?php } ?>
                             </tbody>

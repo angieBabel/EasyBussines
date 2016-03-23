@@ -57,14 +57,21 @@ class m_easyb extends CI_Model{
  }
 
 public function getgastos(){
-  return $this->db->from('gastos')
+  return $this->db->select('rubros.nombre as nombrerubro, rubros.id_rubro as rubro,gastos.total as totalgasto')
+              ->select_sum('total')
+              ->from('gastos')
+              ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+              ->join('rubros','catalogo_gastos.id_rubro=rubros.id_rubro','left')
+              ->group_by('rubros.id_rubro')
               ->get()
-              ->group_by('id_rubro')
               ->result_array();
  }
+
  public function getdetallegastos($id_rubro){
-  return $this->db->from('gastos')
-              ->where('id_rubro',$id_rubro)
+  return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto')
+              ->from('gastos')
+              ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+              ->where('catalogo_gastos.id_rubro',$id_rubro)
               ->get()
               ->result_array();
  }

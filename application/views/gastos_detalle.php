@@ -5,7 +5,7 @@
         <section class="content-header">
           <h1>
             Gastos
-            <small>Listado de gastos</small>
+            <small>Detalle de gastos</small>
           </h1>
         </section>
 
@@ -15,7 +15,7 @@
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
+            <section class="col-lg-12 connectedSortable">
 
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
@@ -38,13 +38,13 @@
                             <tbody>
                               <?php foreach($detallegastos as $rowgastos){ ?>
                                <tr>
-                                   <td><?php echo $rowgastos['id_gasto']; ?></td>
-                                   <td><?php echo $rowgastos['id_concepto']; ?></td>
+                                   <td><?php echo $rowgastos['idgasto']; ?></td>
+                                   <td><?php echo $rowgastos['nombreconcepto']; ?></td>
                                    <td><?php echo $rowgastos['cantidad']; ?></td>
                                    <td><?php echo $rowgastos['fecha']; ?></td>
-                                   <td><?php echo $rowgastos['total']; ?></td>
+                                   <td><?php echo $rowgastos['totalgasto']; ?></td>
                                    <td><i class="fa fa-pencil-square-o"></i></td>
-                                   <td><a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"><i class="fa fa-trash-o"></i></a></td>
+                                   <td><a href=""><i class="fa fa-trash-o"></i></a></td>
                                </tr>
                                <?php } ?>
                             </tbody>
