@@ -8,6 +8,29 @@ class Welcome extends CI_Controller {
 
 	}
 
+
+	/*public function index(){ //Pagina principal
+		if ($this->validaSesion()) {
+			redirect('welcome/amiental');
+		}else{
+			$this->load->view('login');
+		}
+	}
+
+	function validaSesion(){
+		if ($this->session->userdata('email') != '') {
+            return true;
+        }
+        else {
+            return false;
+        }
+	}
+
+	function cierraSesion(){
+		$this->session->sess_destroy();
+		redirect('welcome/ambiental');
+	}
+*/
 	/**
 	 * Index Page for this controller.
 	 *
