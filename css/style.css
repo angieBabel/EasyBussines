@@ -55,10 +55,14 @@ body{
 }
 .quienson{
   color: #ffffff;
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 10%;
   text-align: justify;
 
+}
+.imageSc3{
+  margin-top: 10%;
+  text-align: center;
 }
 
 .seccion4{
@@ -85,6 +89,7 @@ body{
   height: 100px;
   background:#0F1937;
 }
+
 
 
 

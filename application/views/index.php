@@ -64,21 +64,21 @@
             <br><br><br>
             <p><img src="image/dinero.png" alt=""></p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis nihil rerum culpa sapiente et ipsam eius magnam laborum animi quam cupiditate, accusantium iste doloremque placeat aut modi distinctio omnis quisquam.
+              Una forma de llevar el control de las finanzas de tu micro o pequeño negocio de una manera más simple, accesible e innovadora
             </p>
           </div>
           <div class="col-lg-4">
             <br><br><br>
             <p><img src="image/Clipboard.png" alt=""></p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis nihil rerum culpa sapiente et ipsam eius magnam laborum animi quam cupiditate, accusantium iste doloremque placeat aut modi distinctio omnis quisquam.
+              La información puede ser registrada en la página o en la app, los dos interactúan entre sí, y te proporciona los mismos datos.
             </p>
           </div>
           <div class="col-lg-4">
             <br><br><br>
             <p><img src="image/grafica.png" alt=""></p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis nihil rerum culpa sapiente et ipsam eius magnam laborum animi quam cupiditate, accusantium iste doloremque placeat aut modi distinctio omnis quisquam.
+              Calcula automáticamente gráficas de tus ventas y gastos. Además puede mostrar las ganancias por producto o periodo.
             </p>
           </div>
         </div>
@@ -86,14 +86,14 @@
 
       </div>
       <div class="col-lg-12 seccion3 "><a name="seccion3"></a>
-        <div class="col-lg-9">
+        <div class="col-lg-7">
           <p class="titulo">¿Quienes somos?</p>
 
-          <p class="quienson">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur fuga qui reiciendis perferendis sed nisi. Sit quae, nemo inventore tenetur ipsum pariatur quidem necessitatibus ab, recusandae vero explicabo, provident dolor!</p>
-          <p class="quienson">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum quam, dolor rerum unde dolore tenetur dicta voluptate impedit at doloribus quos quas hic alias asperiores quaerat.</p>
+          <p class="quienson">El empresario MIPYME es el principal empleador del país. La Secretaría de Economía determina que la mayoría de empresas en México son MIPYMES y éstas aportan un 72% del empleo en México.</p>
+          <p class="quienson">Como punto de partida, el empresario MIPYME, independientemente de la actividad o giro que realice (producción, comercialización o prestación de servicios),  en todos los casos realiza transacciones, y a partir de ello, requiere conocer cómo llevarlas a cabo utilizando los productos y servicios financieros existentes. Como la aplicación Easy Bussines</p>
         </div>
-        <div class="col-lg-3">
-
+        <div class="col-lg-5 imageSc3">
+          <img src="image/Pymes.jpg" alt="">
         </div>
 
       </div>
@@ -104,8 +104,8 @@
         </div>
         <div class="col-lg-8">
           <p class="titulo4">Aplicacion</p><a name="seccion4"></a>
-          <p class="texto4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus obcaecati assumenda consequatur nemo ipsum animi maiores repudiandae necessitatibus, fugit esse autem quaerat laboriosam amet ipsa eum quidem iste totam voluptas.</p>
-          <p class="texto4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error mollitia ab accusantium perspiciatis nemo optio quidem! Magnam inventore architecto, quia veniam cum aperiam iste, et optio, fugit tenetur nesciunt accusantium.</p>
+          <p class="texto4">La app Easy Bussines es diseñada para los empresarios de micro o pequeños negocios que quieren tener el control de su dinero. Con la app podrás revisar ventas,  gastos, gráficas, razones financieras entre otros datos que te ayudarán con el desarrollo de las finanzas de tu empresa.</p>
+          <p class="texto4">Para comodidad del usuario, Easy Bussines se controla desde una computadora,Tablet o desde un Smartphone.App Easy Bussines es muy fácil de usar y se adapta a todo tipo de empresarios.</p>
 
         </div>
 

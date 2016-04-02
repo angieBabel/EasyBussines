@@ -21,7 +21,7 @@
               <div class="nav-tabs-custom">
                 <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; ">
                   <div class="row">
-                  <div class="col-lg-1"></div>
+                    <div class="col-lg-1"></div>
                     <div class="table-responsive col-lg-10">
                       <table class="table table-hover table-striped">
                           <thead>
@@ -48,9 +48,9 @@
                     </div>
                   </div>
                   <div class="col-lg-10 collapse navbar-collapse navbar-ex1-collapse">
-                      <ul class="nav navbar-nav navbar-right ">
-                          <li id="lista3"><a href=""><i class="fa fa-plus-square fa-lg"></i>  Agregar Producto</a></li>
-                      </ul>
+                    <ul class="nav navbar-nav navbar-right ">
+                      <li id="lista3"><a href=""><i class="fa fa-plus-square fa-lg"></i>  Agregar Producto</a></li>
+                    </ul>
                   </div>
               </div><!-- /.nav-tabs-custom -->
 
