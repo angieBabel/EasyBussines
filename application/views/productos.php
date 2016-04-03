@@ -48,9 +48,7 @@
                     </div>
                   </div>
                   <div class="col-lg-10 collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-right ">
-                      <li id="lista3"><a href=""><i class="fa fa-plus-square fa-lg"></i>  Agregar Producto</a></li>
-                    </ul>
+                    <a href="index.php/welcome/altaproductos"><i class="fa fa-plus-square fa-lg"></i>  Agregar Producto</a>
                   </div>
               </div><!-- /.nav-tabs-custom -->
 

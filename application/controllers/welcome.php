@@ -61,6 +61,10 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('panel');
 	}
+	public function altaproductos()
+	{
+		$this->load->view('altaproductos');
+	}
 
 	public function productos()
 	{
