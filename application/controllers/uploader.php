@@ -26,6 +26,28 @@ class uploader extends CI_Controller {
   {
     $this->load->view('index');
   }
+
+  public function altaproducto()
+  {
+    $this->load->view('index');
+  }
+
+  public function altaventa()
+  {
+    $this->load->view('index');
+  }
+
+  public function altarubro()
+  {
+    $this->load->view('index');
+  }
+
+  public function altaconcepto()
+  {
+    $this->load->view('index');
+  }
+
+
 }
 
 /* End of file welcome.php */
