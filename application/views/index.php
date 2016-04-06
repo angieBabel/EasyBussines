@@ -93,7 +93,7 @@
           <p class="quienson">Como punto de partida, el empresario MIPYME, independientemente de la actividad o giro que realice (producción, comercialización o prestación de servicios),  en todos los casos realiza transacciones, y a partir de ello, requiere conocer cómo llevarlas a cabo utilizando los productos y servicios financieros existentes. Como la aplicación Easy Bussines</p>
         </div>
         <div class="col-lg-5 imageSc3">
-          <img src="image/Pymes.jpg" alt="">
+          <img src="image/pymes.jpg" alt="">
         </div>
 
       </div>

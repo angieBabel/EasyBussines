@@ -1,5 +1,3 @@
-
-<?php include_once("/sections/header.php") ?>
 <?php include_once("sidemenu.php") ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -57,4 +55,4 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
-<?php include_once("/sections/footer.php") ?>
+<?php include_once("sections/footer.php") ?>
