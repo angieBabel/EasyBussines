@@ -16,6 +16,22 @@
           <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
+              <!-- //Pop up para agregar -->
+              <div id="abc">
+                <!-- Popup Div Starts Here -->
+                <div id="popupContact">
+                <!-- Contact Us Form -->
+                  <form action="#" id="form" method="post" name="form">
+                    <a id="close" href="javascript:%20div_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                    <h2 id="tituloForm">Gasto nuevo</h2>
+                    <hr>
+                    <input id="name" name="name" placeholder="Concepto" type="text">
+                    <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
+                    <a href="javascript:%20check_empty()" id="submit">Send</a>
+                  </form>
+                </div>
+                <!-- Popup Div Ends Here -->
+              </div>
 
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
@@ -53,7 +69,6 @@
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->
-
 
             </section><!-- /.Left col -->
 

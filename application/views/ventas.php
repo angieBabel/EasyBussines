@@ -16,52 +16,70 @@
           <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
+              <!-- //Pop up para agregar -->
+              <div id="abc">
+                <!-- Popup Div Starts Here -->
+                <div id="popupContact">
+                <!-- Contact Us Form -->
+                  <form action="#" id="form" method="post" name="form">
+                    <a id="close" href="javascript:%20div_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                    <h2 id="tituloForm">Nueva venta</h2>
+                    <hr>
+                    <input id="name" name="name" placeholder="Nombre del producto" type="text">
+                    <input id="precio" name="precio" placeholder="Precio" type="text">
+                    <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
+                    <input id="modopago" name="modopago" placeholder="Modo pago" type="text">
+                    <a href="javascript:%20check_empty()" id="submit">Send</a>
+                  </form>
+                </div>
+                <!-- Popup Div Ends Here -->
+              </div>
 
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
                 <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; ">
                   <div class="row">
                     <div class="col-lg-1"></div>
-                      <div class="table-responsive col-lg-10">
+                    <div class="table-responsive col-lg-10">
                       <h3>Contado</h3>
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr><!--Renglones-->
-                                    <th>Venta</th><!--Columnas-->
-                                    <th>Producto</th>
-                                    <th>Precio</th>
-                                    <th>Cantidad</th>
-                                    <th>Modo pago</th>
-                                    <th>Fecha</th>
-                                    <th>Total</th>
-                                    <th>% del periodo</th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                              <?php foreach($ventas as $rowventas){ ?>
-                               <tr>
-                                   <td><?php echo $rowventas['idventa']; ?></td>
-                                   <td><?php echo $rowventas['nombreproducto']; ?></td>
-                                   <td><?php echo $rowventas['precioproducto']; ?></td>
-                                   <td><?php echo $rowventas['cantidad']; ?></td>
-                                   <td><?php echo $rowventas['modopago']; ?></td>
-                                   <td><?php echo $rowventas['fechaventa']; ?></td>
-                                   <td><?php echo $rowventas['totalventa']; ?></td>
-                                   <td><!-- <?php echo $rowventas['total']; ?> --></td>
-                                   <td><i class="fa fa-pencil-square-o"></i></td>
-                                   <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
-                               </tr>
-                               <?php } ?>
-                            </tbody>
-                        </table>
-                      </div>
+                      <table class="table table-hover table-striped">
+                          <thead>
+                              <tr><!--Renglones-->
+                                  <th>Venta</th><!--Columnas-->
+                                  <th>Producto</th>
+                                  <th>Precio</th>
+                                  <th>Cantidad</th>
+                                  <th>Modo pago</th>
+                                  <th>Fecha</th>
+                                  <th>Total</th>
+                                  <th>% del periodo</th>
+                                  <th></th>
+                                  <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <?php foreach($ventas as $rowventas){ ?>
+                             <tr>
+                                 <td><?php echo $rowventas['idventa']; ?></td>
+                                 <td><?php echo $rowventas['nombreproducto']; ?></td>
+                                 <td><?php echo $rowventas['precioproducto']; ?></td>
+                                 <td><?php echo $rowventas['cantidad']; ?></td>
+                                 <td><?php echo $rowventas['modopago']; ?></td>
+                                 <td><?php echo $rowventas['fechaventa']; ?></td>
+                                 <td><?php echo $rowventas['totalventa']; ?></td>
+                                 <td><!-- <?php echo $rowventas['total']; ?> --></td>
+                                 <td><i class="fa fa-pencil-square-o"></i></td>
+                                 <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
+                             </tr>
+                             <?php } ?>
+                          </tbody>
+                      </table>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-1"></div>
                       <div class="table-responsive col-lg-10">
-                      <h3>Crédito</h3>
+                        <h3>Crédito</h3>
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr><!--Renglones-->
@@ -89,16 +107,13 @@
                       </div>
                   </div>
                   <div class="col-lg-10 collapse navbar-collapse navbar-ex1-collapse">
-                      <ul class="nav navbar-nav navbar-right ">
-                          <li id="lista3"><a href=""><i class="fa fa-plus-square fa-lg"></i>  Nueva Venta</a></li>
-                      </ul>
+                      <a href="javascript:%20div_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>Nueva venta</a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->
 
 
             </section><!-- /.Left col -->
-
           </div><!-- /.row (main row) -->
 
         </section><!-- /.content -->
