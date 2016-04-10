@@ -16,10 +16,27 @@
           <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
+              <!-- //Pop up para agregar -->
+              <div id="abc">
+                <!-- Popup Div Starts Here -->
+                <div id="popupContact">
+                <!-- Contact Us Form -->
+                  <form action="#" id="form" method="post" name="form">
+                    <a id="close" href="javascript:%20div_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                    <h2 id="tituloForm">Nuevo Rubro</h2>
+                    <hr>
+                    <input id="name" name="name" placeholder="Nombre del producto" type="text">
+                    <input id="precio" name="precio" placeholder="Precio" type="text">
+
+                    <a href="javascript:%20check_empty()" id="submit">Send</a>
+                  </form>
+                </div>
+                <!-- Popup Div Ends Here -->
+              </div>
 
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
-                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; width: 500px;">
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px;">
                   <div class="row">
                     <div class="col-lg-1"></div>
                       <div class="table-responsive col-lg-10">
@@ -42,6 +59,9 @@
                             </tbody>
                         </table>
                       </div>
+                  </div>
+                  <div class="col-lg-4 collapse navbar-collapse navbar-ex1-collapse">
+                    <a href="javascript:%20div_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>Nuevo Rubro</a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

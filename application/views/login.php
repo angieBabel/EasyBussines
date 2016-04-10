@@ -27,12 +27,12 @@
         log in with Google
       </a>
     </div>
-    <form class="email-login" action="index.php/welcome/panel">
+    <form class="email-login" action="index.php/welcome/panel" method="post">
       <div class="u-form-group">
-        <input type="email" placeholder="Email"/>
+        <input type="email" for="email" name="email" placeholder="Email"/>
       </div>
       <div class="u-form-group">
-        <input type="password" placeholder="Password"/>
+        <input type="password" for="password" name="password" placeholder="Password"/>
       </div>
       <div class="u-form-group">
         <button type="submit">Log in</button>

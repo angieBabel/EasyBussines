@@ -23,7 +23,7 @@
                 <!-- Contact Us Form -->
                   <form action="#" id="form" method="post" name="form">
                     <a id="close" href="javascript:%20div_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
-                    <h2 id="tituloForm">Gasto nuevo</h2>
+                    <h2 id="tituloForm">Agregar gasto</h2>
                     <hr>
                     <input id="name" name="name" placeholder="Concepto" type="text">
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
@@ -66,6 +66,9 @@
                             </tbody>
                         </table>
                       </div>
+                  </div>
+                  <div class="col-lg-4 collapse navbar-collapse navbar-ex1-collapse">
+                    <a href="javascript:%20div_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>Agregar Gasto</a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

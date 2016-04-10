@@ -1,37 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
-	function __construct(){
-		parent::__construct();
-
-		$this->load->model('m_easyb');
-		$this->load->library('session');
-
-	}
-
-
-	/*public function index(){ //Pagina principal
-		if ($this->validaSesion()) {
-			redirect('welcome/amiental');
-		}else{
-			$this->load->view('login');
-		}
-	}
-
-	function validaSesion(){
-		if ($this->session->userdata('email') != '') {
-            return true;
-        }
-        else {
-            return false;
-        }
-	}
-
-	function cierraSesion(){
-		$this->session->sess_destroy();
-		redirect('welcome/ambiental');
-	}
-*/
 	/**
 	 * Index Page for this controller.
 	 *
@@ -47,6 +15,15 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	class Welcome extends CI_Controller {
+	function __construct(){
+		parent::__construct();
+
+		$this->load->model('m_easyb');
+		$this->load->library('session');
+
+	}
+
 	public function index()
 	{
 		$this->load->view('index');
@@ -57,9 +34,24 @@ class Welcome extends CI_Controller {
 		$this->load->view('login');
 	}
 
-	public function panel()
-	{
-		$this->load->view('panel');
+	public function panel(){
+		$cuenta=$this->input->post('email');
+		$clave=$this->input->post('password');
+
+		$res=$this->m_easyb->validarusuario($cuenta,$clave);
+		//print_r($res);
+		if (!empty($res)){
+			$datos=array('id_usuario'=>$res[0]['id_usuario'],
+										'correo'=>$res[0]['correo'],
+										'nombre'=>$res[0]['nombre'],
+										'apellido'=>$res[0]['apellido'],
+										'clave_registro'=>$res[0]['clave_registro']);
+			$this->session->set_userdata($datos);
+			$this->load->view('panel');
+		}
+		else{
+			$this->load->view('login');
+		}
 	}
 	public function altaproductos()
 	{
