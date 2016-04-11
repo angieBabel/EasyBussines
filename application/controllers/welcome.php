@@ -53,10 +53,6 @@
 			$this->load->view('login');
 		}
 	}
-	public function altaproductos()
-	{
-		$this->load->view('altaproductos');
-	}
 
 	public function productos()
 	{

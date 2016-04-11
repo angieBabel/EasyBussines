@@ -21,14 +21,13 @@
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
                 <!-- Contact Us Form -->
-                  <form action="#" id="form" method="post" name="form">
+                  <form action="index.php/uploader/altaproducto" id="form" method="post" name="form">
                     <a id="close" href="javascript:%20div_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Agrega producto</h2>
                     <hr>
                     <input id="name" name="name" placeholder="Nombre del producto" type="text">
                     <input id="precio" name="precio" placeholder="Precio" type="text">
-
-                    <a href="javascript:%20check_empty()" id="submit">Send</a>
+                    <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
                 <!-- Popup Div Ends Here -->
@@ -42,7 +41,6 @@
                       <table class="table table-hover table-striped">
                           <thead>
                               <tr><!--Renglones-->
-                                  <th>Id Producto</th><!--Colunas-->
                                   <th>Nombre</th>
                                   <th>Precio $</th>
                                   <th></th>
@@ -52,11 +50,10 @@
                           <tbody>
                             <?php foreach($productos as $rowproductos){ ?>
                              <tr>
-                                 <td><?php echo $rowproductos['id_producto']; ?></td>
                                  <td><?php echo $rowproductos['nombre']; ?></td>
                                  <td><?php echo $rowproductos['precio']; ?></td>
                                  <td><i class="fa fa-pencil-square-o"></i></td>
-                                 <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
+                                 <td><a href="index.php/uploader/eliminaproducto?id=<?php echo $rowproductos['id_producto']; ?>"><i class="fa fa-trash-o"></i></a></td>
                              </tr>
                              <?php } ?>
                           </tbody>

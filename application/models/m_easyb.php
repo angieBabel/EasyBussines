@@ -36,7 +36,6 @@ function validarusuario($cuenta,$clave){
 
  }
 
-
  public function getventas(){
   return $this->db->select('ventas.id_venta as idventa, productos.nombre as nombreproducto, productos.precio as precioproducto, ventas.unidades_vendidas as cantidad, ventas.modo_pago as modopago, ventas.fecha as fechaventa, ventas.total as totalventa')
               ->from('ventas')
@@ -52,18 +51,18 @@ function validarusuario($cuenta,$clave){
               ->result_array();
  }
 
-public function getgastos(){
-  return $this->db->select('rubros.nombre as nombrerubro, rubros.id_rubro as rubro')
-              ->select_sum('gastos.total','totalgasto')
-              ->from('gastos')
-              ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
-              ->join('rubros','catalogo_gastos.id_rubro=rubros.id_rubro','left')
-              ->group_by('rubros.id_rubro')
-              ->where('rubros.id_usuario',$this->session->userdata('id_usuario'))
-              ->or_where('rubros.id_usuario',0)
-              ->get()
-              ->result_array();
- }
+  public function getgastos(){
+    return $this->db->select('rubros.nombre as nombrerubro, rubros.id_rubro as rubro')
+                ->select_sum('gastos.total','totalgasto')
+                ->from('gastos')
+                ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+                ->join('rubros','catalogo_gastos.id_rubro=rubros.id_rubro','left')
+                ->group_by('rubros.id_rubro')
+                ->where('rubros.id_usuario',$this->session->userdata('id_usuario'))
+                ->or_where('rubros.id_usuario',0)
+                ->get()
+                ->result_array();
+   }
 
  public function getdetallegastos($id_rubro){
   return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto')
@@ -73,17 +72,26 @@ public function getgastos(){
               ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
               ->get()
               ->result_array();
- }
-/*public function getrazones(){
-  return $thi->db->from('razones')
-                ->get()->result_array();
-   };
-public function getgraficas(){
-  return $thi->db->from('graficas')
-                ->get()->result_array();
-   };*/
+  }
+  /*public function getrazones(){
+    return $thi->db->from('razones')
+                  ->get()->result_array();
+     };
+  public function getgraficas(){
+    return $thi->db->from('graficas')
+                  ->get()->result_array();
+     };*/
 //Altas
-
+  public function altaproducto($id_usuario,$name,$precio){
+      $this->db->set('id_usuario',$id_usuario)
+            ->set('nombre',$name)
+            ->set('precio',$precio)
+            ->insert('productos');
+  }
 //Bajas
+  public function eliminaproducto($id){
+    $this->db->where('id_producto',$id)
+             ->delete('productos');
+  }
 
 }
