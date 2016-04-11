@@ -21,14 +21,12 @@
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
                 <!-- Contact Us Form -->
-                  <form action="#" id="form" method="post" name="form">
+                  <form action="index.php/uploader/altarubro" id="form" method="post" name="form">
                     <a id="close" href="javascript:%20div_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Nuevo Rubro</h2>
                     <hr>
                     <input id="name" name="name" placeholder="Nombre del producto" type="text">
-                    <input id="precio" name="precio" placeholder="Precio" type="text">
-
-                    <a href="javascript:%20check_empty()" id="submit">Send</a>
+                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
                 <!-- Popup Div Ends Here -->
@@ -61,7 +59,7 @@
                       </div>
                   </div>
                   <div class="col-lg-4 collapse navbar-collapse navbar-ex1-collapse">
-                    <a href="javascript:%20div_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>Nuevo Rubro</a>
+                    <a href="javascript:%20div_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i> Nuevo Rubro</a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

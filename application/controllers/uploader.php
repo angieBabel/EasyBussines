@@ -78,8 +78,24 @@ class uploader extends CI_Controller {
 
   public function altarubro()
   {
-    $this->load->view('index');
-  }
+
+    $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
+    $this->form_validation->set_message('required','El campo %s es requerido');
+    /*$this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');*/
+      if ($this->form_validation->run() == FALSE)
+      {
+         //Acción a tomar si existe un error el en la validación
+        //redirect('welcome/matAltaProductos');
+      }
+      else
+      {
+         //Acción a tomas si no existe ningun error
+            $id_usuario=$this->session->userdata('id_usuario');
+            $nombre=$this->input->POST('name');
+            $this->m_easyb->altarubro($id_usuario,$nombre);
+            redirect('welcome/gastos');
+      }
+    }
 
   public function altaconcepto()
   {

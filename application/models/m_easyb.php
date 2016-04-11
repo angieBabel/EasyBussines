@@ -88,6 +88,11 @@ function validarusuario($cuenta,$clave){
             ->set('precio',$precio)
             ->insert('productos');
   }
+  public function altarubro($id_usuario,$name){
+      $this->db->set('id_usuario',$id_usuario)
+            ->set('nombre',$name)
+            ->insert('rubros');
+  }
 //Bajas
   public function eliminaproducto($id){
     $this->db->where('id_producto',$id)
