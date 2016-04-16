@@ -23,7 +23,8 @@
 
       <!-- Brand and toggle get grouped for better mobile display-->
         <div class="col-lg-3">
-          <h1 class="logo left"><i class="fa fa-university"></i> Easy Business</h1>
+          <img src="image/logotipo.png" alt="">
+
         </div>
         <div class="col-lg-9">
           <div class="col-lg-1"></div>
