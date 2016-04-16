@@ -45,8 +45,11 @@ function validarusuario($cuenta,$clave){
               ->result_array();
  }
  public function getadeudos(){
-  return $this->db->from('adeudos')
-              ->where('id_usuario',$this->session->userdata('id_usuario'))
+  return $this->db->select('productos.nombre as nombreproducto, adeudos.deuda as deuda, adeudos.abono as abono, adeudos.abono_periodo,ventas.fecha as fechaventa')
+              ->from('adeudos')
+              ->join('ventas','adeudos.id_venta=ventas.id_venta')
+              ->join('productos','ventas.id_producto=productos.id_producto','left')
+              ->where('adeudos.id_usuario',$this->session->userdata('id_usuario'))
               ->get()
               ->result_array();
  }

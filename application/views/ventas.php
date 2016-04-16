@@ -21,12 +21,19 @@
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
                 <!-- Contact Us Form -->
-                  <form action="#" id="form" method="post" name="form">
+                  <form action="#" id="form" method="post" name="form"enctype="multipart/form-data">
+                  <?php form_open_multipart('uploader/altaventa'); ?>
                     <a id="close" href="javascript:%20div_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Nueva venta</h2>
                     <hr>
-                    <input id="name" name="name" placeholder="Nombre del producto" type="text">
-                    <input id="precio" name="precio" placeholder="Precio" type="text">
+                    <select name="name" id="name" class="form-control">
+                        <?php foreach ($productos as $rowProductos ) { ?>
+                          <option value="<?php echo $rowProductos['id_producto']?>">
+                            <?php echo $rowProductos['nombre']?>
+                          </option>
+                       <?php } ?>
+                      </select>
+                    <input id="precio" name="precio" placeholder="Precio" type="text"value="<?php "SELECT precio FROM productos WHERE id_producto=2" ?>">
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
                     <input id="modopago" name="modopago" placeholder="Modo pago" type="text">
                     <a href="javascript:%20check_empty()" id="submit">Send</a>
@@ -45,7 +52,6 @@
                       <table class="table table-hover table-striped">
                           <thead>
                               <tr><!--Renglones-->
-                                  <th>Venta</th><!--Columnas-->
                                   <th>Producto</th>
                                   <th>Precio</th>
                                   <th>Cantidad</th>
@@ -60,7 +66,6 @@
                           <tbody>
                             <?php foreach($ventas as $rowventas){ ?>
                              <tr>
-                                 <td><?php echo $rowventas['idventa']; ?></td>
                                  <td><?php echo $rowventas['nombreproducto']; ?></td>
                                  <td><?php echo $rowventas['precioproducto']; ?></td>
                                  <td><?php echo $rowventas['cantidad']; ?></td>
@@ -85,6 +90,7 @@
                                 <tr><!--Renglones-->
                                     <th>Venta</th><!--Colunas-->
                                     <th>Deuda</th>
+                                    <th>Fecha</th>
                                     <th>Abono</th>
                                     <th>Abono periodo</th>
                                     <th></th>
@@ -94,8 +100,9 @@
                             <tbody>
                               <?php foreach($adeudos as $rowadeudos){ ?>
                                <tr>
-                                   <td><?php echo $rowadeudos['id_venta']; ?></td>
+                                   <td><?php echo $rowadeudos['nombreproducto']; ?></td>
                                    <td><?php echo $rowadeudos['deuda']; ?></td>
+                                   <td><?php echo $rowventas['fechaventa']; ?></td>
                                    <td><?php echo $rowadeudos['abono']; ?></td>
                                    <td><?php echo $rowadeudos['abono_periodo']; ?></td>
                                    <td><i class="fa fa-pencil-square-o"></i></td>

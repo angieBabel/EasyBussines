@@ -54,24 +54,22 @@
 		}
 	}
 
-	public function productos()
-	{
+	public function productos(){
 		$data = array(
 			'productos'=>$this->m_easyb->getproductos()
 			);
 		$this->load->view('productos',$data);
 	}
 
-	public function ventas()
-	{
+	public function ventas(){
 		$data = array(
 			'ventas'=>$this->m_easyb->getventas(),
-			'adeudos'=>$this->m_easyb->getadeudos()
+			'adeudos'=>$this->m_easyb->getadeudos(),
+			'productos'=>$this->m_easyb->getproductos()
 			);
 		$this->load->view('ventas',$data);
 	}
-	public function gastos()
-	{
+	public function gastos(){
 		$data = array(
 			'gastosgeneral'=>$this->m_easyb->getgastos()
 			);
@@ -84,8 +82,7 @@
     $this->m_lyons->desactivaproducto($id);
     redirect('welcome/matProductos');
   }*/
-	public function getdetallegastos()
-	{
+	public function getdetallegastos(){
 		$id_rubro = $_GET['id_rubro'];
 		$data = array(
 			'detallegastos'=>$this->m_easyb->getdetallegastos($id_rubro)
