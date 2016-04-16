@@ -22,8 +22,8 @@
     <div class="container-fluid">
 
       <!-- Brand and toggle get grouped for better mobile display-->
-        <div class="col-lg-3">
-          <img src="image/logotipo.png" alt="">
+        <div class="col-lg-3" id="logotipo">
+          <h2 class="logo left"><img src="image/logotipo2.png"width="50" height="50">   Easy Business</h2>
 
         </div>
         <div class="col-lg-9">
