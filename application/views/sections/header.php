@@ -47,7 +47,7 @@
       <header class="main-header">
         <!-- Logo -->
         <a href="index.php/welcome/panel" class="logo">
-          <span class="logo-lg"><i class="fa fa-university fa-lg"></i><b> Easy Business</b></span>
+          <span class="logo-lg"><img src="image/logotipo2.png"width="45" height="45"><b> Easy Business</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
