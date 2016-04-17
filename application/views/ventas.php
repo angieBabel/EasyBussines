@@ -1,4 +1,4 @@
-<?php include_once("sidemenu.php") ?>
+<!-- <?php// include_once("sidemenu.php") ?> -->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -33,7 +33,13 @@
                           </option>
                        <?php } ?>
                       </select>
-                    <input id="precio" name="precio" placeholder="Precio" type="text"value="<?php "SELECT precio FROM productos WHERE id_producto=2" ?>">
+                      <?php
+                        $idProducto=$rowProductos['id_producto'];
+                        $ssql = "SELECT precio FROM productos WHERE id_producto=$idProducto";
+                        $resultado = mysql_query($ssql);
+                        $fila=mysql_fetch_object($resultado);
+                       ?>
+                    <input id="precio" name="precio" placeholder="Precio" type="text"value="<?php echo "$fila->precio"; ?>">
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
                     <input id="modopago" name="modopago" placeholder="Modo pago" type="text">
                     <a href="javascript:%20check_empty()" id="submit">Send</a>
