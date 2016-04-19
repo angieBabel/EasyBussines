@@ -1,4 +1,4 @@
-<!-- <?php// include_once("sidemenu.php") ?> -->
+<?php include_once("sidemenu.php") ?>
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
