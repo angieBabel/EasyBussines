@@ -17,17 +17,17 @@
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
               <!-- //Pop up para agregar -->
-              <div id="abc">
+              <div id="new">
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
                 <!-- Contact Us Form -->
-                  <form action="#" id="form" method="post" name="form">
-                    <a id="close" href="javascript:%20div_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                  <form action="index.php/uploader/altagasto?id_rubro=<?php echo $rowgastos['rubro']; ?>" id="form" method="post" name="form">
+                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Agregar gasto</h2>
                     <hr>
                     <input id="name" name="name" placeholder="Concepto" type="text">
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
-                    <a href="javascript:%20check_empty()" id="submit">Send</a>
+                    <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
                 <!-- Popup Div Ends Here -->
@@ -42,8 +42,7 @@
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr><!--Renglones-->
-                                    <th>Gasto</th><!--Colunas-->
-                                    <th>Concepto</th>
+                                    <th>Concepto</th><!--Colunas-->
                                     <th>Cantidad</th>
                                     <th>Fecha</th>
                                     <th>Total</th>
@@ -54,13 +53,11 @@
                             <tbody>
                               <?php foreach($detallegastos as $rowgastos){ ?>
                                <tr>
-                                   <td><?php echo $rowgastos['idgasto']; ?></td>
                                    <td><?php echo $rowgastos['nombreconcepto']; ?></td>
                                    <td><?php echo $rowgastos['cantidad']; ?></td>
                                    <td><?php echo $rowgastos['fecha']; ?></td>
                                    <td><?php echo $rowgastos['totalgasto']; ?></td>
-                                   <td><i class="fa fa-pencil-square-o"></i></td>
-                                   <td><a href=""><i class="fa fa-trash-o"></i></a></td>
+                                   <td><a href="index.php/uploader/eliminagasto?id=<?php echo $rowgastos['idgasto']; ?>?id_rubro=<?php echo $rowgastos['rubro']; ?>"><i class="fa fa-trash-o"></i></a></td>
                                </tr>
                                <?php } ?>
                             </tbody>
@@ -68,7 +65,7 @@
                       </div>
                   </div>
                   <div class="col-lg-4 collapse navbar-collapse navbar-ex1-collapse">
-                    <a href="javascript:%20div_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>Agregar Gasto</a>
+                    <a href="javascript:%20newdiv_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>Agregar Gasto</a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

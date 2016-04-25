@@ -76,9 +76,27 @@ class uploader extends CI_Controller {
       }
   }
 
-  public function altarubro()
-  {
+  public function altarubro(){
 
+    $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
+    $this->form_validation->set_message('required','El campo %s es requerido');
+    /*$this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');*/
+      if ($this->form_validation->run() == FALSE)
+      {
+         //Acción a tomar si existe un error el en la validación
+        //redirect('welcome/matAltaProductos');
+      }
+      else
+      {
+         //Acción a tomas si no existe ningun error
+            $id_usuario=$this->session->userdata('id_usuario');
+            $nombre=$this->input->POST('name');
+            $this->m_easyb->altarubro($id_usuario,$nombre);
+            redirect('welcome/gastos');
+      }
+  }
+
+  public function altaconcepto(){
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
     /*$this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');*/
@@ -97,16 +115,72 @@ class uploader extends CI_Controller {
       }
     }
 
-  public function altaconcepto()
-  {
-    $this->load->view('index');
-  }
+  public function altagasto(){
+    $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
+    $this->form_validation->set_message('required','El campo %s es requerido');
+    $this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');
+    $this->form_validation->set_rules('cantidad','Cantidad','required');
+      if ($this->form_validation->run() == FALSE)
+      {
+         //Acción a tomar si existe un error el en la validación
+        //redirect('welcome/matAltaProductos');
+      }
+      else
+      {
+         //Acción a tomas si no existe ningun error
+            $id_rubro=$_GET['id_rubro'];
+            $id_usuario=$this->session->userdata('id_usuario');
+            $nombre=$this->input->POST('name');
+            $cantidad=$this->input->POST('cantidad');
+
+            $this->m_easyb->altagasto($id_usuario,$nombre,$precio);
+            redirect('welcome/detallegastos');
+      }
+    }
+
 //Bajas
   public function eliminaproducto(){
     $id = $_GET['id'];
     $this->m_easyb->eliminaproducto($id);
     redirect('welcome/productos');
   }
+
+  public function eliminaventa(){
+    $id = $_GET['id'];
+    $this->m_easyb->eliminaventa($id);
+    redirect('welcome/ventas');
+  }
+
+  public function eliminagasto(){
+    $id = $_GET['id'];
+    $id_rubro=$_GET['id_rubro'];
+    $this->m_easyb->eliminagasto($id);
+    redirect('welcome/getdetallegastos',$id_rubro);
+  }
+
+//Modificaciones
+  public function editaproducto(){
+    $idProducto=$this->input->POST('idP');
+    $nombre=$this->input->POST('nameP');
+    $precio=$this->input->POST('precioP');
+
+    $this->m_easyb->editaproducto($idProducto,$nombre,$precio);
+    redirect('welcome/productos');
+  }
+
+
+public function actualizaUmedida(){
+    $clave=$this->input->POST('id');
+    $descripcion=$this->input->POST('descripcion');
+    $factor=$this->input->POST('factor');
+    $fecha = date('Y-m-d');
+
+    $this->m_lyons->actualizaumedida($clave,$descripcion,$factor,$fecha);
+    redirect('welcome/matUnidadesdeMedida');
+  }
+
+
+
 }
 
 /* End of file welcome.php */

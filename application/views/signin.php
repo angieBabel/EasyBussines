@@ -12,19 +12,19 @@
 
   <div class="login-box">
       <div class="lb-header">
-        <h1 id="login-box-link">Log in</h1>
+        <h1 id="login-box-link">Sign In</h1>
       </div>
       <div class="social-login">
         <a href="#">
           <i class="fa fa-facebook fa-lg"></i>
-          Login in with facebook
+          Sign in with facebook
         </a>
         <a href="#">
           <i class="fa fa-google-plus fa-lg"></i>
-          log in with Google
+          Sign in with Google
         </a>
       </div>
-      <form class="email-login" action="index.php/welcome/panel" method="post">
+      <form class="email-login" action="index.php/welcome/signin" method="post">
         <div class="u-form-group">
           <input type="email" for="email" name="email" placeholder="Email"/>
         </div>
@@ -32,7 +32,7 @@
           <input type="password" for="password" name="password" placeholder="Password"/>
         </div>
         <div class="u-form-group">
-          <button type="submit">Log in</button>
+          <button type="submit">Sign in</button>
         </div>
         <div class="u-form-group">
           <a href="#" class="forgot-password">Forgot password?</a>

@@ -71,11 +71,22 @@
               </li>
               <!-- Tasks: style can be found in dropdown.less -->
               <li class="dropdown tasks-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-user fa-lg"></i>
-                </a>
+                <?php   if ($this->session->userdata('correo') != null):?>
+                   <a href="index.php/welcome/cierraSesion">
+                    <?php echo $this->session->userdata('nombre'); ?>
+                      <span class="fa fa-sign-out fa-lg"aria-hidden='true'></span>
+                    </a>
+                <?php
+                endif ?>
               </li>
             </ul>
           </div>
         </nav>
       </header>
+<!-- <?php//   if ($this->session->userdata('cuenta') != null):?>
+                   <a href="index.php/prueba/cierraSesion">
+                    <?php //echo $this->session->userdata('nombre'); ?>
+                      <span class='glyphicon glyphicon-log-out' aria-hidden='true'></span>
+                    </a>
+            <?php
+            //endif ?> -->

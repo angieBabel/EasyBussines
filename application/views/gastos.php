@@ -17,7 +17,7 @@
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
               <!-- //Pop up para agregar -->
-              <div id="abc">
+              <div id="new">
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
                 <!-- Contact Us Form -->

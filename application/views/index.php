@@ -36,7 +36,7 @@
           <!-- inicio de sesión-->
           <ul class="nav navbar-nav navbar-right">
             <li><a href="index.php/welcome/login" >Iniciar Sesión</a></li>
-            <li><a href="index.php/welcome/login" >Registrarse</a></li>
+            <li><a href="index.php/welcome/signin" >Registrarse</a></li>
           </ul>
         </div>
 
