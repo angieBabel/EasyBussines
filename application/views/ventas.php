@@ -71,8 +71,10 @@
                     <a id="close" href="javascript:%20editdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Venta de crédito</h2>
                     <hr>
-                    <input id="name" name="name" placeholder="Nombre de la venta" type="text">
-                    <input id="precio" name="abonoperiodo" placeholder="Abono periodo" type="text">
+                    <input type="hidden" name="idAdeudo" id="idAdeudo">
+                    <input type="hidden" name="abonoT" id="abonoP">
+                    <input id="venta" name="venta" placeholder="Nombre de la venta" type="text">
+                    <input id="abonoperiodo" name="abonoperiodo" placeholder="Abono periodo" type="text">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
@@ -141,7 +143,7 @@
                                    <td><?php echo $rowventas['fechaventa']; ?></td>
                                    <td><?php echo $rowadeudos['abono']; ?></td>
                                    <td><?php echo $rowadeudos['abono_periodo']; ?></td>
-                                   <td><a href="javascript:%20editdiv_show()"><i class="fa fa-pencil-square-o"></i></a></td>
+                                   <td><a href="javascript:%20editdiv_showA(<?php echo $rowadeudos['idAdeudo']; ?>,'<?php echo $rowadeudos['nombreproducto']; ?>',<?php echo $rowadeudos['abono']; ?>,<?php echo $rowadeudos['abono_periodo']; ?>)"><i class="fa fa-pencil-square-o"></i></a></td></i></a></td>
                                </tr>
                                <?php } ?>
                             </tbody>

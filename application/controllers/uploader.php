@@ -160,14 +160,22 @@ class uploader extends CI_Controller {
 
 //Modificaciones
   public function editaproducto(){
-    $idProducto=$this->input->POST('idP');
+    $id_producto=$this->input->POST('idP');
     $nombre=$this->input->POST('nameP');
     $precio=$this->input->POST('precioP');
-
-    $this->m_easyb->editaproducto($idProducto,$nombre,$precio);
+    $this->m_easyb->editaproductos($id_producto,$nombre,$precio);
     redirect('welcome/productos');
   }
 
+  public function editaadeudo(){
+    $idAdeudo=$this->input->POST('idAdeudo');
+    $abonoT=$this->input->POST('abonoT');
+    $abonoPeriodo=$this->input->POST('abonoperiodo');
+    $this->m_easyb->editaadeudo($idAdeudo,$abonoT,$abonoPeriodo);
+    redirect('welcome/ventas');
+
+
+  }
 
 public function actualizaUmedida(){
     $clave=$this->input->POST('id');

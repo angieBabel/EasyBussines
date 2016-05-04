@@ -37,13 +37,13 @@
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
                 <!-- Contact Us Form -->
-                  <form action="index.php/uploader/editaproducto" id="form" method="POST" name="form">
+                  <form action="index.php/uploader/editaproducto" id="form" method="post" name="form">
                     <a id="close" href="javascript:%20editdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Edita producto</h2>
                     <hr>
-                    <input type="hidden" id="idP">
-                    <input id="nameP" name="name" placeholder="Nombre del producto" type="text">
-                    <input id="precioP" name="precio" placeholder="Precio" type="text">
+                    <input type="hidden" id="idP" name="idP">
+                    <input id="nameP" name="nameP" placeholder="Nombre del producto" type="text">
+                    <input id="precioP" name="precioP" placeholder="Precio" type="text">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>

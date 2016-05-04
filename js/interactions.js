@@ -11,12 +11,16 @@ function editdiv_show() {
 document.getElementById('edit').style.display = "block";
 }
 function editdiv_showP(id,nombre,precio) {
-document.getElementById('edit').style.display = "block";
-document.getElementById('idP').value=id;
-alert(document.getElementById(idP).value);
-document.getElementById('nameP').value=nombre;
-document.getElementById('precioP').value=precio;
-
+  document.getElementById('edit').style.display = "block";
+  document.getElementById('idP').value=id;
+  document.getElementById('nameP').value=nombre;
+  document.getElementById('precioP').value=precio;
+}
+function editdiv_showA(id,nombre,abono,ap) {
+  document.getElementById('edit').style.display = "block";
+  document.getElementById('idAdeudo').value=id;
+  document.getElementById('venta').value=nombre;
+  document.getElementById('abonoT').value=ap+abono;
 }
 
 

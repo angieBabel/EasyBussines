@@ -37,7 +37,7 @@ function validarusuario($cuenta,$clave){
  }
 
  public function getventas(){
-  return $this->db->select('ventas.id_venta as idventa, productos.nombre as nombreproducto, productos.precio as precioproducto, ventas.unidades_vendidas as cantidad, ventas.modo_pago as modopago, ventas.fecha as fechaventa, ventas.total as totalventa')
+    return $this->db->select('ventas.id_venta as idventa, productos.nombre as nombreproducto, productos.precio as precioproducto, ventas.unidades_vendidas as cantidad, ventas.modo_pago as modopago, ventas.fecha as fechaventa, ventas.total as totalventa')
               ->from('ventas')
               ->join('productos','ventas.id_producto=productos.id_producto','left')
               ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
@@ -45,7 +45,7 @@ function validarusuario($cuenta,$clave){
               ->result_array();
  }
  public function getadeudos(){
-  return $this->db->select('productos.nombre as nombreproducto, adeudos.deudor as deudor, adeudos.deuda as deuda, adeudos.abono as abono, adeudos.abono_periodo,ventas.fecha as fechaventa')
+   return $this->db->select('productos.nombre as nombreproducto, adeudos.deudor as deudor, adeudos.deuda as deuda, adeudos.abono as abono, adeudos.abono_periodo,ventas.fecha as fechaventa, adeudos.id_adeudo as idAdeudo')
               ->from('adeudos')
               ->join('ventas','adeudos.id_venta=ventas.id_venta')
               ->join('productos','ventas.id_producto=productos.id_producto','left')
@@ -68,7 +68,7 @@ function validarusuario($cuenta,$clave){
    }
 
  public function getdetallegastos($id_rubro){
-  return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
+   return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
               ->from('gastos')
               ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
               ->where('catalogo_gastos.id_rubro',$id_rubro)
@@ -113,26 +113,24 @@ function validarusuario($cuenta,$clave){
   }
 
 //editar
-  public function editaproducto($idProducto,$nombre,$precio){
+  public function editaproductos($idProducto,$nombre,$precio){
     $this->db->set('nombre',$nombre)
              ->set('precio',$precio)
              ->where('id_producto',$idProducto)
              ->update('productos');
-
   }
 
-/*public function editaproducto(){
-    $idProducto=$this->input->POST('idP');
-    $nombre=$this->input->POST('nameP');
-    $precio=$this->input->POST('precioP');
-
-    $this->m_easyb->editaproducto($idProducto,$nombre,$precio);
-    redirect('welcome/productos');
-
-
+  /*public function newAbono(){
+    return
+              ->result_array();
   }*/
 
-
+  public function editaadeudo($idAdeudo,$abonoT,$abonoperiodo){
+      $this->db->set('abono',$abonoT)
+               ->set('abono_periodo',$abonoperiodo)
+               ->where('id_adeudo',$idAdeudo)
+               ->update('adeudos');
+  }
   public function actualizaumedida($clave,$descripcion,$factor){
     $estatus='1';
     $this->db->set('descripcion',$descripcion)
