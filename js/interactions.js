@@ -18,9 +18,10 @@ function editdiv_showP(id,nombre,precio) {
 }
 function editdiv_showA(id,nombre,abono,ap) {
   document.getElementById('edit').style.display = "block";
+
   document.getElementById('idAdeudo').value=id;
   document.getElementById('venta').value=nombre;
-  document.getElementById('abonoT').value=ap+abono;
+  document.getElementById('abonoT').value=abono+ap;
 }
 
 
