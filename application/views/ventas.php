@@ -26,8 +26,7 @@
                     <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Nueva venta</h2>
                     <hr>
-                    <select name="name" id="name" class="form-control" onchange="javascript:%20mostarCostos()">
-                    <!-- onchange="location.href='index.php?poblacion='+this.value;" > -->
+                    <select name="name" id="name" class="form-control">
                         <?php foreach ($productos as $rowProductos ) { ?>
                           <option value="<?php echo $rowProductos['id_producto']?>">
                             <?php echo $rowProductos['nombre']?>
@@ -57,6 +56,7 @@
                     <input id="precio" name="precio" placeholder="Precio" type="text"value="<?php echo "$fila->precio"; ?>">
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
                     <input id="modopago" name="modopago" placeholder="Modo pago" type="text">
+                    <input type="text" id="deudor" name="deudor" placeholder="Deudor">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
@@ -72,7 +72,7 @@
                     <h2 id="tituloForm">Venta de crédito</h2>
                     <hr>
                     <input type="hidden" name="idAdeudo" id="idAdeudo">
-                    <input type="hidden" name="abonoT" id="abonoP">
+                    <input type="hidden" name="abonoT" id="abonoT">
                     <input id="venta" name="venta" placeholder="Nombre de la venta" type="text">
                     <input id="abonoperiodo" name="abonoperiodo" placeholder="Abono periodo" type="text">
                     <button type="submit" class="btn btn-success form-control">Save</button>
@@ -107,11 +107,17 @@
                                  <td><?php echo $rowventas['nombreproducto']; ?></td>
                                  <td><?php echo $rowventas['precioproducto']; ?></td>
                                  <td><?php echo $rowventas['cantidad']; ?></td>
-                                 <td><?php echo $rowventas['modopago']; ?></td>
-                                 <td><?php echo $rowventas['fechaventa']; ?></td>
+
+                                 <td><?php if ($rowventas['modopago']==0) {
+                                            echo "Contado";
+                                           }else{
+                                            echo "Crédito";
+                                           }
+                                 ?></td>
+                                 <td><?php echo $nice_date = date('d/m/Y', strtotime( $rowventas['fechaventa'] ));?></td>
                                  <td><?php echo $rowventas['totalventa']; ?></td>
                                  <td><!-- <?php echo $rowventas['total']; ?> --></td>
-                                 <td><a href="index.php/uploader/eliminaventa?id=<?php echo $rowventas['totalventa'];?>"><i class="fa fa-trash-o"></i></a></td>
+                                 <td><a href="index.php/uploader/eliminaventa?id=<?php echo $rowventas['idventa'];?>"><i class="fa fa-trash-o"></i></a></td>
                              </tr>
                              <?php } ?>
                           </tbody>
@@ -140,7 +146,9 @@
                                    <td><?php echo $rowadeudos['nombreproducto']; ?></td>
                                    <td><?php echo $rowadeudos['deudor']; ?></td>
                                    <td><?php echo $rowadeudos['deuda']; ?></td>
-                                   <td><?php echo $rowventas['fechaventa']; ?></td>
+
+                                   <td><?php echo $nice_date = date('d/m/Y', strtotime( $rowventas['fechaventa'] ));?></td>
+
                                    <td><?php echo $rowadeudos['abono']; ?></td>
                                    <td><?php echo $rowadeudos['abono_periodo']; ?></td>
                                    <td><a href="javascript:%20editdiv_showA(<?php echo $rowadeudos['idAdeudo']; ?>,'<?php echo $rowadeudos['nombreproducto']; ?>',<?php echo $rowadeudos['abono']; ?>,<?php echo $rowadeudos['abono_periodo']; ?>)"><i class="fa fa-pencil-square-o"></i></a></td></i></a></td>

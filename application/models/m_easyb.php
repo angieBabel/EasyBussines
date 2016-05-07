@@ -13,31 +13,16 @@ function validarusuario($cuenta,$clave){
               ->get()
               ->result_array();
    }
-   /*public function getUTalla()
-   {
-    $this->db->order_by('clave','desc');
-    $this->db->limit(1);
-    $query=$this->db->get('tallas');
-    return $query->result_array();
-   }
-
-  public function get_tallas(){
-    return $this->db->from('tallas')
-                ->where('estatus',1)
-                ->get()
-                ->result_array();
-  }*/
 //Obtencion de datos
  public function getproductos(){
-  return $this->db->from('productos')
+   return $this->db->from('productos')
               ->where('id_usuario',$this->session->userdata('id_usuario'))
               ->get()
               ->result_array();
-
  }
 
  public function getventas(){
-    return $this->db->select('ventas.id_venta as idventa, productos.nombre as nombreproducto, productos.precio as precioproducto, ventas.unidades_vendidas as cantidad, ventas.modo_pago as modopago, ventas.fecha as fechaventa, ventas.total as totalventa')
+    return $this->db->select('ventas.id_venta as idventa, productos.nombre as nombreproducto, productos.precio as precioproducto, ventas.unidades_vendidas as cantidad, ventas.modo_pago as modopago, ventas.fecha as fechaventa, ventas.total as totalventa, productos.id_producto as idProducto')
               ->from('ventas')
               ->join('productos','ventas.id_producto=productos.id_producto','left')
               ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
@@ -76,6 +61,16 @@ function validarusuario($cuenta,$clave){
               ->get()
               ->result_array();
   }
+
+  public function getcatalogogastos($id_rubro){
+   return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo')
+              ->from('catalogo_gastos')
+              ->where('catalogo_gastos.id_rubro',$id_rubro)
+              ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+              /*->limit(2)*/
+              ->get()
+              ->result_array();
+  }
   /*public function getrazones(){
     return $thi->db->from('razones')
                   ->get()->result_array();
@@ -95,6 +90,36 @@ function validarusuario($cuenta,$clave){
       $this->db->set('id_usuario',$id_usuario)
             ->set('nombre',$name)
             ->insert('rubros');
+  }
+
+  public function altaventa($id_usuario,$nombre,$precio,$cantidad,$modopago,$deudor,$fecha){
+
+    if ($modopago=='Contado') {
+      $this->db->set('id_producto',$nombre)//$nombre trae el id del producto
+                ->set('id_usuario',$id_usuario)
+                ->set('unidades_vendidas',$cantidad)
+                ->set('fecha',$fecha)
+                ->set('modo_pago',0)
+                ->set('total',$precio*$cantidad)
+                ->insert('ventas');
+    }else{
+      $this->db->set('id_producto',$nombre)//$nombre trae el id del producto
+                ->set('id_usuario',$id_usuario)
+                ->set('unidades_vendidas',$cantidad)
+                ->set('fecha',$fecha)
+                ->set('modo_pago',1)
+                ->set('total',$precio*$cantidad)
+                ->insert('ventas');
+      $venta='SELECT count(id_venta) FROM ventas';
+      echo $venta;
+
+
+     /* $this->db->set('id_usuario',$id_usuario)
+                ->set('id_venta',$venta)
+                ->set('deudor',$deudor)
+                ->set('deuda',$precio*$cantidad)
+                ->insert('adeudos');*/
+    }
   }
 //Bajas
   public function eliminaproducto($id){
@@ -131,13 +156,4 @@ function validarusuario($cuenta,$clave){
                ->where('id_adeudo',$idAdeudo)
                ->update('adeudos');
   }
-  public function actualizaumedida($clave,$descripcion,$factor){
-    $estatus='1';
-    $this->db->set('descripcion',$descripcion)
-            ->set('factor_tbmedida',$factor)
-            ->set('estatus',$estatus)
-            ->where('clave',$clave)
-            ->update('tbmedidas');
-  }
-
 }

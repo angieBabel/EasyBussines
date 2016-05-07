@@ -21,12 +21,19 @@
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
                 <!-- Contact Us Form -->
-                  <form action="index.php/uploader/altagasto?id_rubro=<?php echo $rowgastos['rubro']; ?>" id="form" method="post" name="form">
+                  <form action="index.php/uploader/altagasto" id="form" method="post" name="form">
                     <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Agregar gasto</h2>
                     <hr>
-                    <input id="name" name="name" placeholder="Concepto" type="text">
+                    <select name="name" id="name" class="form-control">
+                        <?php foreach ($catalogogastos as $rowcatalogogastos ) { ?>
+                          <option value="<?php echo $rowcatalogogastos['idconcepto']?>">
+                            <?php echo $rowcatalogogastos['nombreconcepto']?>
+                          </option>
+                       <?php } ?>
+                    </select>
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
+                    <input type="hidden" name="costo" id="costo" value="<?php echo $rowcatalogogastos['costo']?>">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
