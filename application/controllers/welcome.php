@@ -68,11 +68,17 @@
 		$this->load->view('gastos',$data);
 	}
 	public function getdetallegastos(){
+	if ($this->session->flashdata('id_rubro')==null) {
 		$id_rubro = $_GET['id_rubro'];
+	}else{
+		$id_rubro = $this->session->flashdata('id_rubro');
+	}
+
 		$data = array(
 			'detallegastos'=>$this->m_easyb->getdetallegastos($id_rubro),
 			'catalogogastos'=>$this->m_easyb->getcatalogogastos($id_rubro)
 			);
+
 		$this->load->view('gastos_detalle',$data);
 	}
 

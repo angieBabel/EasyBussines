@@ -59,7 +59,7 @@
                       </div>
                   </div>
                   <div class="col-lg-4 collapse navbar-collapse navbar-ex1-collapse">
-                    <a href="javascript:%20div_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i> Nuevo Rubro</a>
+                    <a href="javascript:%20newdiv_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i> Nuevo Rubro</a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

@@ -48,12 +48,6 @@ class uploader extends CI_Controller {
             redirect('welcome/productos');
       }
     }
-
-
-
-   public function altaProveedor(){
-  }
-
   public function altaventa(){
 
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
@@ -88,9 +82,10 @@ class uploader extends CI_Controller {
 
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
-    /*$this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');*/
+    $this->form_validation->set_rules('name', 'Name', 'required|is_unique[rubros.nombre]');
       if ($this->form_validation->run() == FALSE)
       {
+        echo "no jalo";
          //Acción a tomar si existe un error el en la validación
         //redirect('welcome/matAltaProductos');
       }
@@ -135,14 +130,18 @@ class uploader extends CI_Controller {
       }
       else
       {
+
          //Acción a tomas si no existe ningun error
-            $id_rubro=$_GET['id_rubro'];
+            $id_rubro=$this->input->POST('rubro');
+            $this->session->set_flashdata('id_rubro',$id_rubro);//flash data para mandar id del rubro y redireccionar correctamente
+
             $id_usuario=$this->session->userdata('id_usuario');
+
             $nombre=$this->input->POST('name');
             $cantidad=$this->input->POST('cantidad');
-
-            $this->m_easyb->altagasto($id_usuario,$nombre,$precio);
-            redirect('welcome/detallegastos');
+            $costo=$this->input->POST('costo');
+            $this->m_easyb->altagasto($id_usuario,$nombre,$cantidad,$costo);
+            redirect('welcome/getdetallegastos');
       }
     }
 
@@ -160,10 +159,11 @@ class uploader extends CI_Controller {
   }
 
   public function eliminagasto(){
-    $id = $_GET['id'];
-    $id_rubro=$_GET['id_rubro'];
+    $id_rubro=$_GET['rubro'];
+    $this->session->set_flashdata('id_rubro',$id_rubro);//flash data para mandar id del rubro y redireccionar correctamente
+    $id=$_GET['id'];
     $this->m_easyb->eliminagasto($id);
-    redirect('welcome/getdetallegastos',$id_rubro);
+    redirect('welcome/getdetallegastos');
   }
 
 //Modificaciones
@@ -184,19 +184,6 @@ class uploader extends CI_Controller {
 
 
   }
-
-public function actualizaUmedida(){
-    $clave=$this->input->POST('id');
-    $descripcion=$this->input->POST('descripcion');
-    $factor=$this->input->POST('factor');
-    $fecha = date('Y-m-d');
-
-    $this->m_lyons->actualizaumedida($clave,$descripcion,$factor,$fecha);
-    redirect('welcome/matUnidadesdeMedida');
-  }
-
-
-
 }
 
 /* End of file welcome.php */

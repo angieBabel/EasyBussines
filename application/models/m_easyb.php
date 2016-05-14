@@ -63,7 +63,7 @@ function validarusuario($cuenta,$clave){
   }
 
   public function getcatalogogastos($id_rubro){
-   return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo')
+   return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo, catalogo_gastos.id_rubro as rubro')
               ->from('catalogo_gastos')
               ->where('catalogo_gastos.id_rubro',$id_rubro)
               ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
@@ -86,12 +86,6 @@ function validarusuario($cuenta,$clave){
             ->set('precio',$precio)
             ->insert('productos');
   }
-  public function altarubro($id_usuario,$name){
-      $this->db->set('id_usuario',$id_usuario)
-            ->set('nombre',$name)
-            ->insert('rubros');
-  }
-
   public function altaventa($id_usuario,$nombre,$precio,$cantidad,$modopago,$deudor,$fecha){
 
     if ($modopago=='Contado') {
@@ -121,6 +115,22 @@ function validarusuario($cuenta,$clave){
                 ->insert('adeudos');*/
     }
   }
+  public function altarubro($id_usuario,$name){
+      $this->db->set('id_usuario',$id_usuario)
+            ->set('nombre',$name)
+            ->insert('rubros');
+  }
+  public function altagasto($id_usuario,$nombre,$cantidad,$costo){
+    $this->db->set('id_concepto',$nombre)
+              ->set('id_usuario',$id_usuario)
+              ->set('cantidad',$cantidad)
+              ->set('fecha',date('Y-m-d'))
+              ->set('total',$cantidad*$costo)
+              ->insert('gastos');
+  }
+
+
+
 //Bajas
   public function eliminaproducto($id){
     $this->db->where('id_producto',$id)

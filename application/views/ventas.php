@@ -26,34 +26,32 @@
                     <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Nueva venta</h2>
                     <hr>
-                    <select name="name" id="name" class="form-control">
+                    <select name="name" id="name" class="form-control" onchange="precio();">
                         <?php foreach ($productos as $rowProductos ) { ?>
                           <option value="<?php echo $rowProductos['id_producto']?>">
                             <?php echo $rowProductos['nombre']?>
                           </option>
                        <?php } ?>
-                      </select>
-                      <?php $mivarPHP=
-                          '<script type="text/javascript">;
-                            var mivarJS="Asignado en JS";
-                            document.writeln (mivarJS);
-                          </script>';
-                          echo $mivarPHP;
-                      ?>
-
-                        <?php
-                        /*$idProducto ="<script>
-                        var variablejs = document.getElementById('name').value;
-                      </script>";
-                        echo $idProducto;*/
-                        $idProducto=1;///$rowProductos['id_producto'];//*$_POST["id-Producto"];
-                        $ssql = "SELECT precio FROM productos WHERE id_producto=$idProducto";
-                        $resultado = mysql_query($ssql);
-                        $fila=mysql_fetch_object($resultado);
+                    </select>
+                    <script>
+                    function precio(){
+                      var url="ventas.php";
+                      var idProd = document.getElementById('name').value;
+                      url=url+"?idProd="+idProd;
+                      //url=url+"&sid="+Math.random();
+                      httpxml.onreadystatechange=stateck;
+                      //alert(url);
+                      httpxml.open("GET",url,true);
+                      httpxml.send(null);
+                      var myarray = JSON.parse(httpxml.responseText);
+                    }
 
 
-                       ?>
-                    <input id="precio" name="precio" placeholder="Precio" type="text"value="<?php echo "$fila->precio"; ?>">
+                    </script>
+
+
+                            $PP = "SELECT precio FROM productos WHERE id_producto = $idProd";
+                    <input id="precio" name="precio" placeholder="Precio" type="text"value="<?php echo $PP; ?>">
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
                     <input id="modopago" name="modopago" placeholder="Modo pago" type="text">
                     <input type="text" id="deudor" name="deudor" placeholder="Deudor">

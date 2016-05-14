@@ -11,7 +11,6 @@
 
         <!-- Main content -->
         <section class="content">
-
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
@@ -20,6 +19,7 @@
               <div id="new">
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
+
                 <!-- Contact Us Form -->
                   <form action="index.php/uploader/altagasto" id="form" method="post" name="form">
                     <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
@@ -34,6 +34,7 @@
                     </select>
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
                     <input type="hidden" name="costo" id="costo" value="<?php echo $rowcatalogogastos['costo']?>">
+                    <input type="hidden" name="rubro" id="rubro" value="<?php echo $rowcatalogogastos['rubro']?>">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
@@ -62,9 +63,9 @@
                                <tr>
                                    <td><?php echo $rowgastos['nombreconcepto']; ?></td>
                                    <td><?php echo $rowgastos['cantidad']; ?></td>
-                                   <td><?php echo $rowgastos['fecha']; ?></td>
+                                   <td><?php echo $nice_date = date('d/m/Y', strtotime( $rowgastos['fecha'] ));?></td>
                                    <td><?php echo $rowgastos['totalgasto']; ?></td>
-                                   <td><a href="index.php/uploader/eliminagasto?id=<?php echo $rowgastos['idgasto']; ?>?id_rubro=<?php echo $rowgastos['rubro']; ?>"><i class="fa fa-trash-o"></i></a></td>
+                                   <td><a href="index.php/uploader/eliminagasto?id=<?php echo $rowgastos['idgasto']; ?>&rubro=<?php echo $rowgastos['rubro']; ?>"><i class="fa fa-trash-o"></i></a></td>
                                </tr>
                                <?php } ?>
                             </tbody>
