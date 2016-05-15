@@ -26,31 +26,15 @@
                     <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Nueva venta</h2>
                     <hr>
-                    <select name="name" id="name" class="form-control" onchange="precio();">
+                    <select name="name" id="name" class="form-control" onchange="">
                         <?php foreach ($productos as $rowProductos ) { ?>
                           <option value="<?php echo $rowProductos['id_producto']?>">
                             <?php echo $rowProductos['nombre']?>
                           </option>
                        <?php } ?>
                     </select>
-                    <script>
-                    function precio(){
-                      var url="ventas.php";
-                      var idProd = document.getElementById('name').value;
-                      url=url+"?idProd="+idProd;
-                      //url=url+"&sid="+Math.random();
-                      httpxml.onreadystatechange=stateck;
-                      //alert(url);
-                      httpxml.open("GET",url,true);
-                      httpxml.send(null);
-                      var myarray = JSON.parse(httpxml.responseText);
-                    }
-
-
-                    </script>
-
-
-                            $PP = "SELECT precio FROM productos WHERE id_producto = $idProd";
+                    <?php $PP=0; ?>
+                    <!--  $PP = "SELECT precio FROM productos WHERE id_producto = $idProd"; -->
                     <input id="precio" name="precio" placeholder="Precio" type="text"value="<?php echo $PP; ?>">
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
                     <input id="modopago" name="modopago" placeholder="Modo pago" type="text">
@@ -64,7 +48,7 @@
               <div id="edit">
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
-                <!-- Contact Us Form -->
+                  <!-- Contact Us Form -->
                   <form action="index.php/uploader/editaadeudo" id="form" method="post" name="form">
                     <a id="close" href="javascript:%20editdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
                     <h2 id="tituloForm">Venta de crédito</h2>

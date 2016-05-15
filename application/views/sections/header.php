@@ -47,7 +47,7 @@
       <header class="main-header">
         <!-- Logo -->
         <a href="index.php/welcome/panel" class="logo">
-          <span class="logo-lg"><img src="image/logotipo2.png"width="45" height="45"><b> Easy Business</b></span>
+          <span class="logo-lg"><img src="image/logotipo3.png"width="45" height="45"><b> Easy Business</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -89,20 +89,3 @@
           </div>
         </nav>
       </header>
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '1056405014449406',
-            xfbml      : true,
-            version    : 'v2.6'
-          });
-        };
-
-        (function(d, s, id){
-           var js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement(s); js.id = id;
-           js.src = "//connect.facebook.net/en_US/sdk.js";
-           fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-      </script>
