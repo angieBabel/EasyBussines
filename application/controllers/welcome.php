@@ -22,9 +22,14 @@
 
 
 	public function panel(){
-		$cuenta=$this->input->post('email');
-		$clave=$this->input->post('password');
+		if ($this->session->flashdata('email')==null) {
+			$cuenta=$this->input->post('email');
+			$clave=$this->input->post('password');
+	}else{
+		$cuenta=$this->session->flashdata('email');
 
+		$clave=$this->session->flashdata('password');
+	}
 		$res=$this->m_easyb->validarusuario($cuenta,$clave);
 		//print_r($res);
 		if (!empty($res)){

@@ -23,9 +23,32 @@ class uploader extends CI_Controller {
    * @see http://codeigniter.com/user_guide/general/urls.html
    */
 //altas
-  public function altausuario()
+  public function signin()
   {
-    $this->load->view('index');
+    $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
+    $this->form_validation->set_message('required','El campo %s es requerido');
+    $this->form_validation->set_rules('email', 'Email', 'required|is_unique[usuarios.correo]');
+    $this->form_validation->set_rules('password','Password','required');
+    $this->form_validation->set_rules('nombre','Nombre','required');
+    $this->form_validation->set_rules('apellido','Apellido','required');
+
+      if ($this->form_validation->run() == FALSE)
+      {
+         //Acción a tomar si existe un error el en la validación
+        //redirect('welcome/matAltaProductos');
+      }
+      else
+      {
+         //Acción a tomas si no existe ningun error
+            $email=$this->input->POST('email');
+            $nombre=$this->input->POST('nombre');
+            $apellido=$this->input->POST('apellido');
+            $password=$this->input->POST('password');
+            $this->m_easyb->signin($email,$nombre,$apellido,$password);
+            $this->session->set_flashdata('email',$email);
+            $this->session->set_flashdata('password',$password);
+            redirect('welcome/panel');
+      }
   }
 
   public function altaProducto(){

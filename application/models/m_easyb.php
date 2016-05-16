@@ -80,6 +80,13 @@ function validarusuario($cuenta,$clave){
                   ->get()->result_array();
      };*/
 //Altas
+  public function signin($email,$nombre,$apellido,$password){
+    $this->db->set('correo',$email)
+            ->set('nombre',$nombre)
+            ->set('apellido',$apellido)
+            ->set('contrasenia',$password)
+            ->insert('usuarios');
+  }
   public function altaproducto($id_usuario,$name,$precio){
       $this->db->set('id_usuario',$id_usuario)
             ->set('nombre',$name)
