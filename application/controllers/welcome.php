@@ -74,11 +74,11 @@
 		$this->load->view('gastos',$data);
 	}
 	public function getdetallegastos(){
-	if ($this->session->flashdata('id_rubro')==null) {
-		$id_rubro = $_GET['id_rubro'];
-	}else{
-		$id_rubro = $this->session->flashdata('id_rubro');
-	}
+		if ($this->session->flashdata('id_rubro')==null) {
+			$id_rubro = $_GET['id_rubro'];
+		}else{
+			$id_rubro = $this->session->flashdata('id_rubro');
+		}
 
 		$data = array(
 			'detallegastos'=>$this->m_easyb->getdetallegastos($id_rubro),
@@ -93,7 +93,11 @@
 	}
 
 	public function graficas(){
-		$this->load->view('graficas');
+		$data = array(
+			'datos_rubros'=>$this->m_easyb->getgastos(),
+			'datos_actuales'=>$this->m_easyb->getdetallegastosfull()
+			);
+		$this->load->view('graficas',$data);
 	}
 
 }

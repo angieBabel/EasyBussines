@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
     <script src="js/interactions.js"></script>
+    <script type="text/javascript" src="js/Chart.min.js"></script><!-- Archivos de javascript para los charts -->
+    <script type="text/javascript" src="js/Chart.js"></script><!-- Archivos de javascript para los charts -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
