@@ -25,9 +25,10 @@
 		if ($this->session->flashdata('email')==null) {
 			$cuenta=$this->input->post('email');
 			$clave=$this->input->post('password');
+			//echo "no flashdata";
 	}else{
+		//echo "si flashdata";
 		$cuenta=$this->session->flashdata('email');
-
 		$clave=$this->session->flashdata('password');
 	}
 		$res=$this->m_easyb->validarusuario($cuenta,$clave);
