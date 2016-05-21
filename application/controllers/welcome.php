@@ -98,7 +98,8 @@
 	public function graficas(){
 		$data = array(
 			'datos_rubros'=>$this->m_easyb->getgastos(),
-			'datos_actuales'=>$this->m_easyb->getdetallegastosfull()
+			'datos_actuales'=>$this->m_easyb->getdetallegastosfull(),
+			'productos'=>$this->m_easyb->getventascontado()
 			);
 		$this->load->view('graficas',$data);
 	}
