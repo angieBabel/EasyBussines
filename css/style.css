@@ -185,3 +185,11 @@ border-radius:5px
 #logotipo{
   /*background: #0F1937;*/
 }
+
+.razones{
+  text-align: justify;
+  line-height: 2;
+}
+.razones h3{
+  text-align: center;
+}

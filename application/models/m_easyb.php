@@ -62,12 +62,12 @@ function validarusuario($cuenta,$clave){
               ->result_array();
   }
    public function getdetallegastosfull(){
-   return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
-              ->from('gastos')
-              ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
-              ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
-              ->get()
-              ->result_array();
+     return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
+                ->from('gastos')
+                ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+                ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+                ->get()
+                ->result_array();
   }
 
   public function getcatalogogastos($id_rubro){
@@ -79,10 +79,16 @@ function validarusuario($cuenta,$clave){
               ->get()
               ->result_array();
   }
-  /*public function getrazones(){
-    return $this->db->from('razones')
-                  ->get()->result_array();
-     };*/
+  public function getrotacion(){
+    return $this->db->select('modo_pago as mp')
+                    ->from('ventas')
+                    ->where('id_usuario',$this->session->userdata('id_usuario'))
+                    ->get()
+                    ->result_array();
+
+  }
+
+     /*Ventas a crédito/Cuentas por cobrar*/
   public function getgraficas(){
     return $this->db->from('gastos')
                   ->where('id_usuario',$this->session->userdata('id_usuario'))

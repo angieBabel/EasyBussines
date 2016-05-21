@@ -89,7 +89,10 @@
 	}
 
 	public function razones(){
-		$this->load->view('razones');
+		$data = array(
+			'rotacion'=>$this->m_easyb->getrotacion()
+			);
+		$this->load->view('razones',$data);
 	}
 
 	public function graficas(){

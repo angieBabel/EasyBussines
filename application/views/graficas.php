@@ -18,7 +18,7 @@
             <section class="col-lg-12 connectedSortable">
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
-                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; width: 500px;">
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px;">
                     <div class="col-lg-12">
                       <div class="col-lg-6">
                         <canvas id="rubros" width="500" height="500"></canvas>
