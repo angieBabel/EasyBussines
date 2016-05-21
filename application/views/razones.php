@@ -37,8 +37,8 @@
                     <div class="class col-lg-2"></div>
                     <div class="class col-lg-8">
                       <h3>Rotación de cobros</h3>
-                    <p><span style="text-decoration:underline;"><?php echo $RC;?></span> veces se crean y cobran las cuentas por cobrar <br>
-    <span style="text-decoration:underline;"><?php echo $RC;?></span> veces se han cobrado las Ctas. Por cobrar y Doctos. Por cobrar promedio de clientes en el periodo a que se refieren las ventas netas a crédito. <br>
+                    <p><span style="text-decoration:underline;"><b><?php echo $RC;?></b></span> veces se crean y cobran las cuentas por cobrar <br>
+    <span style="text-decoration:underline;"><b><?php echo $RC;?></b></span> veces se han cobrado las Ctas. Por cobrar y Doctos. Por cobrar promedio de clientes en el periodo a que se refieren las ventas netas a crédito. <br>
     <b>Significado</b> : Representa el número de veces que se cumple el círculo comercial en el periodo a que se refieren las ventas netas. <br>
     <b>Aplicación</b>: proporciona el elemento básico para conocer la rapidez y la eficiencia del crédito
     </p>
@@ -48,8 +48,8 @@
                     <div class="class col-lg-2"></div>
                     <div class="class col-lg-8">
                        <h3>Periodo promedio de crédito</h3>
-                   La empresa tarda <span style="text-decoration:underline;"><?php echo $PC;?></span> días en trasformar en efectivo las ventas realizadas. <br>
-  La empresa tarda <span style="text-decoration:underline;"><?php echo $PC;?></span> días en cobrar el saldo promedio de las cuentas y documentos por cobrar. <br>
+                   La empresa tarda <span style="text-decoration:underline;"><b><?php echo $PC;?></b></span> días en trasformar en efectivo las ventas realizadas. <br>
+  La empresa tarda <span style="text-decoration:underline;"><b><?php echo $PC;?></b></span> días en cobrar el saldo promedio de las cuentas y documentos por cobrar. <br>
   <b>Significado</b>: Indica el periodo promedio de tiempo que se requiere para cobrar las cuentas pendientes <br>
   <b>Aplicación</b>: Mide la eficiencia en la rapidez del cobro.
                     </div>
