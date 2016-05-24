@@ -3,10 +3,6 @@
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-          <!-- Sidebar user panel -->
-
-          <!-- /.search form -->
-          <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="treeview">
               <a href="index.php/welcome/panel">
@@ -54,3 +50,4 @@
         </section>
         <!-- /.sidebar -->
       </aside>
+
