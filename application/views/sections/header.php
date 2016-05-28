@@ -82,7 +82,8 @@ webshims.polyfill('forms forms-ext');
                           </ul>
                         </li>
                         <li class="header">Elige tipo de grafica</li>
-                        <ul class="menu">
+                        <li>
+                          <ul class="menu">
                           <li>
                               <a href="#">Pastel</a>
                             </li>
@@ -93,6 +94,7 @@ webshims.polyfill('forms forms-ext');
                               <a href="#">Lineal</a>
                             </li>
                         </ul>
+                        </li>
                 </ul>
 
               </li>

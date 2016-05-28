@@ -38,7 +38,8 @@
 										'correo'=>$res[0]['correo'],
 										'nombre'=>$res[0]['nombre'],
 										'apellido'=>$res[0]['apellido'],
-										'clave_registro'=>$res[0]['clave_registro']);
+										'clave_registro'=>$res[0]['clave_registro'],
+										'tipografica'=>'pastel');
 			$this->session->set_userdata($datos);
 			$this->load->view('panel');
 		}
