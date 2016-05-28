@@ -53,27 +53,21 @@ webshims.polyfill('forms forms-ext');
               <!-- Notifications: style can be found in dropdown.less -->
               <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-bell-o"></i>
-                        <span class="label label-success">4</span>
+                  <i class="fa fa-cog fa-lg"></i>
+                        <span class="label label-success"></span>
                 </a>
                 <ul class="dropdown-menu">
-                        <li class="header">You have 4 messages</li>
+                        <li class="header">Elige periodo</li>
                         <li>
                           <!-- inner menu: contains the actual data -->
                           <ul class="menu">
-                            <li><!-- start message -->
-                              <a href="#">
-                                <div class="pull-left">
-                                  <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
-                                </div>
-                                <h4>
-                                  Support Team
-                                  <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                </h4>
-                                <p>Why not buy a new awesome theme?</p>
-                              </a>
-                            </li><!-- end message -->
                             <li>
+                              <a href="#">Fecha inicio</a>
+                            </li>
+                            <li>
+                              <a href="#">Fecha fin</a>
+                            </li>
+                            <!-- <li>
                               <a href="#">
                                 <div class="pull-left">
                                   <img src="img/user4-128x128.jpg" class="img-circle" alt="user image"/>
@@ -84,11 +78,22 @@ webshims.polyfill('forms forms-ext');
                                 </h4>
                                 <p>Why not buy a new awesome theme?</p>
                               </a>
-                            </li>
+                            </li> -->
                           </ul>
                         </li>
-                        <li class="footer"><a href="#">See All Messages</a></li>
-                      </ul>
+                        <li class="header">Elige tipo de grafica</li>
+                        <ul class="menu">
+                          <li>
+                              <a href="#">Pastel</a>
+                            </li>
+                            <li>
+                              <a href="#">Barras</a>
+                            </li>
+                            <li>
+                              <a href="#">Lineal</a>
+                            </li>
+                        </ul>
+                </ul>
 
               </li>
               <!-- Tasks: style can be found in dropdown.less -->
