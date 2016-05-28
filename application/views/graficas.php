@@ -17,7 +17,7 @@
             <section class="col-lg-12 connectedSortable">
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
-                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px;">
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; overflow: scroll">
                     <div class="col-lg-12">
                       <div class="col-lg-6" id="chart_div">
 

@@ -43,7 +43,7 @@
 
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
-                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px;">
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; overflow: scroll">
                   <div class="row">
                     <div class="col-lg-1"></div>
                       <div class="table-responsive col-lg-10">
