@@ -66,18 +66,20 @@
                        'height':600};
 
         // Instantiate and draw our chart, passing in some options.
-        if ($this->session->userdata('tipografica')=='pastel') {
+        <?php if ($this->session->userdata('tipografica')=='pastel') { ?>
           var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
           chart.draw(data, options);
-
-        }else if ($this->session->userdata('tipografica')=='barras') {
+        <?php }else if ($this->session->userdata('tipografica')=='barras') { ?>
           var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
           chart.draw(data, options);
-
-        }else if ($this->session->userdata('tipografica')=='lineal') {
+        <?php }else if ($this->session->userdata('tipografica')=='lineal') { ?>
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(data, options);
-        }
+        <?php } ?>
+
+
+
+
       }
     </script>
 

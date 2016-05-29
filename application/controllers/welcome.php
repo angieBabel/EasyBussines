@@ -104,6 +104,17 @@
 			);
 		$this->load->view('graficas',$data);
 	}
+	public function customgraficas(){
+		$tg = $_GET['tg'];
+		$this->session->set_userdata('tipografica', $tg);
+		$data = array(
+			'datos_rubros'=>$this->m_easyb->getgastos(),
+			'datos_actuales'=>$this->m_easyb->getdetallegastosfull(),
+			'productos'=>$this->m_easyb->getventascontado()
+			);
+		$this->load->view('graficas',$data);
+	}
+
 
 }
 

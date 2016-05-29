@@ -85,13 +85,14 @@ webshims.polyfill('forms forms-ext');
                         <li>
                           <ul class="menu">
                           <li>
-                              <a href="#">Pastel</a>
+                              <a href="index.php/welcome/customgraficas?tg=pastel">Pastel</a>
+
                             </li>
                             <li>
-                              <a href="#">Barras</a>
+                              <a href="index.php/welcome/customgraficas?tg=barras">Barras</a>
                             </li>
                             <li>
-                              <a href="#">Lineal</a>
+                              <a href="index.php/welcome/customgraficas?tg=lineal">Lineal</a>
                             </li>
                         </ul>
                         </li>

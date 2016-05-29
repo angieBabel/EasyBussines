@@ -6,6 +6,7 @@
           <h1>
             Panel Principal
             <small>Principal</small>
+            <?php echo $this->session->userdata('tipografica'); ?>
           </h1>
         </section>
 
