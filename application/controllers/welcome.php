@@ -36,13 +36,21 @@
 											'clave_registro'=>$res[0]['clave_registro'],
 											'tipografica'=>'pastel');
 				$this->session->set_userdata($datos);
-				$this->load->view('panel');
+				$data = array(
+					'ventasMes'=>$this->m_easyb->getresumenventas()//,
+					/*'productosMes'=>$this->m_easyb->getventasproductos()*/
+					);
+				$this->load->view('panel',$data);
 			}
 			else{
 				$this->load->view('login');
 			}
 		}else{
-			$this->load->view('panel');
+			$data = array(
+					'ventasMes'=>$this->m_easyb->getResumenVentas()//,
+					/*'productosMes'=>$this->m_easyb->getproductos()*/
+					);
+				$this->load->view('panel',$data);
 		}
 
 

@@ -14,6 +14,29 @@ function validarusuario($cuenta,$clave){
               ->result_array();
    }
 //Obtencion de datos
+ public function getresumenventas(){
+   return $this->db->select('productos.nombre as nombreproducto, ventas.modo_pago as modopago,
+    SUM(ventas.unidades_vendidas) as totalUV')
+              ->from('ventas')
+              ->join('productos','ventas.id_producto=productos.id_producto','left')
+              ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
+              ->where('month(ventas.fecha)',date("m"))
+              ->group_by("productos.nombre")
+              ->order_by("totalUV","DESC")
+              ->get()
+              ->result_array();
+ }
+ /*public function getventasproductos(){
+    return $this->db->select('productos.nombre as nombreproducto, ventas.modo_pago as modopago')
+              ->from('ventas')
+              ->join('productos','ventas.id_producto=productos.id_producto','left')
+              ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
+              ->where('month(ventas.fecha)',date("m"))
+              ->get()
+              ->result_array();
+ }*/
+
+
  public function getproductos(){
    return $this->db->from('productos')
               ->where('id_usuario',$this->session->userdata('id_usuario'))

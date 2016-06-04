@@ -23,7 +23,7 @@
 
                       </div>
                       <div class="col-lg-6">
-                        <canvas id="actuales" width="500" height="500"></canvas>
+                       <!--  <canvas id="actuales" width="500" height="500"></canvas> -->
                       </div>
                     </div>
                 </div>
@@ -34,22 +34,22 @@
             </section><!-- /.Left col -->
 <script type="text/javascript">
 
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
 
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
 
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
- <?php
- foreach ($productos as $datos_productos) {
-                $labelsProductos[]= $datos_productos['nombreproducto'];
-                $datosProductos[]= $datos_productos['cantidad'];
-              }
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+   <?php
+     foreach ($productos as $datos_productos) {
+      /*$labelsProductos[]= $datos_productos['nombreproducto'];
+      $datosProductos[]= $datos_productos['cantidad'];*/
+    }
 
-  ?>
+    ?>
       function drawChart() {
         // Create the data table.
         var data = new google.visualization.DataTable();
@@ -76,12 +76,8 @@
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(data, options);
         <?php } ?>
-
-
-
-
       }
-    </script>
+</script>
 
 
           </div><!-- /.row (main row) -->
