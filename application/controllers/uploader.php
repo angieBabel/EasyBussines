@@ -45,9 +45,21 @@ class uploader extends CI_Controller {
             $apellido=$this->input->POST('apellido');
             $password=$this->input->POST('password');
             $this->m_easyb->signin($email,$nombre,$apellido,$password);
-            $this->session->set_flashdata('email',$email);
-            $this->session->set_flashdata('password',$password);
-            redirect('welcome/panel');
+
+            $res=$this->m_easyb->validarusuario($email,$password);
+            //print_r($res);
+            if (!empty($res)){
+              $datos=array('id_usuario'=>$res[0]['id_usuario'],
+                            'correo'=>$res[0]['correo'],
+                            'nombre'=>$res[0]['nombre'],
+                            'apellido'=>$res[0]['apellido'],
+                            'clave_registro'=>$res[0]['clave_registro'],
+                            'tipografica'=>'pastel');
+              $this->session->set_userdata($datos);
+              /*$this->load->view('panel');*/
+              redirect('welcome/panel');
+            }
+            /*redirect('welcome/panel');*/
       }
   }
 
