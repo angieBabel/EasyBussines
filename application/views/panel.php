@@ -6,6 +6,7 @@
           <h1>
             Panel Principal
             <small>Principal</small>
+            <?php print_r($_SESSION) ?>
           </h1>
         </section>
 

@@ -34,7 +34,10 @@
 											'nombre'=>$res[0]['nombre'],
 											'apellido'=>$res[0]['apellido'],
 											'clave_registro'=>$res[0]['clave_registro'],
-											'tipografica'=>'pastel');
+											'fechaInicio'=>date('Y-m-d', strtotime('-1 month')),
+											'fechaFin'=>date('Y-m-d'),
+											'tipografica'=>'pastel'
+											);
 				$this->session->set_userdata($datos);
 				$data = array(
 					'ventasMes'=>$this->m_easyb->getresumenventas()//,
@@ -114,7 +117,7 @@
 	}
 	public function customgraficas(){
 		$tg = $_GET['tg'];
-		$this->session->set_userdata('tipografica', $tipografica);
+		$this->session->set_userdata('tipografica', $tg);
 		$data = array(
 			'datos_rubros'=>$this->m_easyb->getgastos(),
 			'datos_actuales'=>$this->m_easyb->getdetallegastosfull(),
@@ -122,8 +125,6 @@
 			);
 		$this->load->view('graficas',$data);
 	}
-
-
 }
 
 /* End of file welcome.php */
