@@ -115,15 +115,24 @@
 			);
 		$this->load->view('graficas',$data);
 	}
-	public function customgraficas(){
+	public function customFI(){
+		$fi = $_GET['fecha_inicio'];
+		$this->session->set_userdata('fechaInicio', $fi);
+		$met = $_GET['met'];
+		redirect('welcome/'.$met);
+	}
+	public function customFF(){
+		$fi = $_GET['fecha_fin'];
+		$this->session->set_userdata('fechaFin', $fi);
+		$met = $_GET['met'];
+		redirect('welcome/'.$met);
+	}
+
+	public function custom(){
 		$tg = $_GET['tg'];
 		$this->session->set_userdata('tipografica', $tg);
-		$data = array(
-			'datos_rubros'=>$this->m_easyb->getgastos(),
-			'datos_actuales'=>$this->m_easyb->getdetallegastosfull(),
-			'productos'=>$this->m_easyb->getventascontado()
-			);
-		$this->load->view('graficas',$data);
+		$met = $_GET['met'];
+		redirect('welcome/'.$met);
 	}
 }
 

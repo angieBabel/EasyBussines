@@ -25,11 +25,12 @@
      <script src="//cdn.jsdelivr.net/webshim/1.14.5/polyfiller.js"></script>
      <script>
     webshims.setOptions('forms-ext', {types: 'date'});
-webshims.polyfill('forms forms-ext');
-</script>
+    webshims.polyfill('forms forms-ext');
+    </script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
+    <?php $metodo=$this->router->fetch_method(); ?>
 
       <header class="main-header">
         <!-- Logo -->
@@ -59,13 +60,20 @@ webshims.polyfill('forms forms-ext');
                 <ul class="dropdown-menu">
                         <li class="header">Elige periodo</li>
                         <li>
-                          <!-- inner menu: contains the actual data -->
                           <ul class="menu">
                             <li>
-                              <a href="#">Fecha inicio</a>
+                              <span>Fecha inicio</span>
+                              <form action="index.php/welcome/customFI">
+                                <input value="<?php echo $this->session->userdata('fechaInicio');?>"type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" placehoder="dd/mm/aaaa" onBlur="this.form.submit();">
+                               <input type="hidden" id="met" name="met" value="<?php echo $metodo;?>">
+                              </form>
                             </li>
                             <li>
-                              <a href="#">Fecha fin</a>
+                              <span>Fecha fin</span>
+                              <form action="index.php/welcome/customFF">
+                                <input value="<?php echo $this->session->userdata('fechaFin');?>"type="date" name="fecha_fin" id="fecha_fin" class="form-control" placehoder="dd/mm/aaaa" onBlur="this.form.submit();">
+                               <input type="hidden" id="met" name="met" value="<?php echo $metodo;?>">
+                              </form>
                             </li>
                             <!-- <li>
                               <a href="#">
@@ -85,15 +93,14 @@ webshims.polyfill('forms forms-ext');
                         <li>
                           <ul class="menu">
                           <li>
-                              <a href="index.php/welcome/customgraficas?tg=pastel">Pastel</a>
-
-                            </li>
-                            <li>
-                              <a href="index.php/welcome/customgraficas?tg=barras">Barras</a>
-                            </li>
-                            <li>
-                              <a href="index.php/welcome/customgraficas?tg=lineal">Lineal</a>
-                            </li>
+                              <a href="index.php/welcome/custom?tg=pastel&met=<?php echo $metodo;?>">Pastel</a>
+                          </li>
+                          <li>
+                            <a href="index.php/welcome/custom?tg=barras&met=<?php echo $metodo;?>">Barras</a>
+                          </li>
+                          <li>
+                            <a href="index.php/welcome/custom?tg=lineal&met=<?php echo $metodo;?>">Lineal</a>
+                          </li>
                         </ul>
                         </li>
                 </ul>
