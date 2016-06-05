@@ -109,12 +109,14 @@
 
 	public function graficas(){
 		$data = array(
-			'datos_rubros'=>$this->m_easyb->getgastos(),
-			'datos_actuales'=>$this->m_easyb->getdetallegastosfull(),
-			'productos'=>$this->m_easyb->getventascontado()
+			'ventasPeriodo'=>$this->m_easyb->getventascontado(),
+			'comparativaVentas'=>$this->m_easyb->getventasFull(),
+			'gastosPeriodo'=>$this->m_easyb->getdetallegastosfull(),
+			'comparativaGastos'=>$this->m_easyb->getdetallegastoscomparativa()
 			);
 		$this->load->view('graficas',$data);
 	}
+//variables de configuracion
 	public function customFI(){
 		$fi = $_GET['fecha_inicio'];
 		$this->session->set_userdata('fechaInicio', $fi);
@@ -127,7 +129,6 @@
 		$met = $_GET['met'];
 		redirect('welcome/'.$met);
 	}
-
 	public function custom(){
 		$tg = $_GET['tg'];
 		$this->session->set_userdata('tipografica', $tg);

@@ -107,17 +107,6 @@ function validarusuario($cuenta,$clave){
                     ->result_array();
   }
   //para las graficas
-   public function getdetallegastosfull(){
-     return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
-                ->from('gastos')
-                ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
-                ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
-                ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
-                ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
-                ->get()
-                ->result_array();
-  }
-
   public function getventascontado(){
     return $this->db->select('productos.nombre as nombreproducto,ventas.unidades_vendidas as cantidad, ventas.total as totalventa')
               ->from('ventas')
@@ -126,14 +115,40 @@ function validarusuario($cuenta,$clave){
               ->where('ventas.modo_pago',1)
               ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
               ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
-              /*->where('ventas.fecha',$this->session->userdata('periodo')*/
+              ->group_by('productos.nombre')
               ->get()
               ->result_array();
-
   }
-
-
-
+  public function getventasFull(){
+   return $this->db->select('MONTH(ventas.fecha) as mes,SUM(ventas.total) as total')
+              ->from('ventas')
+              ->join('productos','ventas.id_producto=productos.id_producto','left')
+              ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
+              ->where('ventas.modo_pago',1)
+              ->group_by('month(ventas.fecha)')
+              ->get()
+              ->result_array();
+  }
+  public function getdetallegastosfull(){
+     return $this->db->select('catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.total as totalgasto')
+                ->from('gastos')
+                ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+                ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+                ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
+                ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
+                ->group_by('catalogo_gastos.nombre')
+                ->get()
+                ->result_array();
+  }
+  public function getdetallegastoscomparativa(){
+     return $this->db->select('MONTH(gastos.fecha) as mes, SUM(gastos.total) as totalgasto')
+                ->from('gastos')
+                ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+                ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+                ->group_by('month(gastos.fecha)')
+                ->get()
+                ->result_array();
+  }
 
 //Altas
   public function signin($email,$nombre,$apellido,$password){
