@@ -66,9 +66,50 @@
         data2.addColumn('string', 'Topping');
         data2.addColumn('number', 'Total');
         data2.addRows([<?php foreach ($comparativaVentas as $comparativa_Ventas) { ?>
-          ["'<?php  echo $comparativa_Ventas['mes'];?>'", <?php  echo $comparativa_Ventas['total'];?>],
+          ["'<?php
+          switch ($comparativa_Ventas['mes']) {
+                      case 1:
+                          echo 'Enero';
+                          break;
+                      case 2:
+                          echo 'Febrero';
+                          break;
+                      case 3:
+                          echo 'Marzo';
+                          break;
+                      case 4:
+                          echo 'Abril';
+                          break;
+                      case 5:
+                          echo 'Mayo';
+                          break;
+                      case 6:
+                          echo 'Junio';
+                          break;
+                      case 7:
+                          echo 'Julio';
+                          break;
+                      case 8:
+                          echo 'Agosto';
+                          break;
+                      case 9:
+                          echo 'Septiempre';
+                          break;
+                      case 10:
+                          echo 'Octubre';
+                          break;
+                      case 11:
+                          echo 'Noviembre';
+                          break;
+                      case 12:
+                          echo 'Diciembre';
+                          break;
+                      }
+          ?>'",
+          <?php  echo $comparativa_Ventas['total'];?>],
           <?php } ?>
         ]);
+
 
         // Set chart options
         var options2 = {'title':'Ventas totales por mes',
@@ -93,7 +134,48 @@
         data4.addColumn('string', 'Topping');
         data4.addColumn('number', 'Total');
         data4.addRows([<?php foreach ($comparativaGastos as $comparativa_Gastos) { ?>
-          ["'<?php  echo $comparativa_Gastos['mes'];?>'", <?php  echo $comparativa_Gastos['totalgasto'];?>],
+          ["'<?php
+          switch ($comparativa_Gastos['mes']) {
+                      case 1:
+                          echo 'Enero';
+                          break;
+                      case 2:
+                          echo 'Febrero';
+                          break;
+                      case 3:
+                          echo 'Marzo';
+                          break;
+                      case 4:
+                          echo 'Abril';
+                          break;
+                      case 5:
+                          echo 'Mayo';
+                          break;
+                      case 6:
+                          echo 'Junio';
+                          break;
+                      case 7:
+                          echo 'Julio';
+                          break;
+                      case 8:
+                          echo 'Agosto';
+                          break;
+                      case 9:
+                          echo 'Septiempre';
+                          break;
+                      case 10:
+                          echo 'Octubre';
+                          break;
+                      case 11:
+                          echo 'Noviembre';
+                          break;
+                      case 12:
+                          echo 'Diciembre';
+                          break;
+                      }
+          ?>'",
+
+          <?php  echo $comparativa_Gastos['totalgasto'];?>],
           <?php } ?>
         ]);
 
