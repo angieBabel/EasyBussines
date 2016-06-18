@@ -102,6 +102,8 @@ function validarusuario($cuenta,$clave){
     return $this->db->select('modo_pago as mp')
                     ->from('ventas')
                     ->where('id_usuario',$this->session->userdata('id_usuario'))
+                    ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
+                    ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
                     ->get()
                     ->result_array();
   }

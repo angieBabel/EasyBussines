@@ -29,13 +29,10 @@
                     <select name="name" id="name" class="form-control" onchange="">
                         <?php foreach ($productos as $rowProductos ) { ?>
                           <option value="<?php echo $rowProductos['id_producto']?>">
-                            <?php echo $rowProductos['nombre']?>
+                            <?php echo $rowProductos['nombre']?> , $<?php echo $rowProductos['precio']; ?>
                           </option>
                        <?php } ?>
                     </select>
-                    <?php $PP=0; ?>
-                    <!--  $PP = "SELECT precio FROM productos WHERE id_producto = $idProd"; -->
-                    <input id="precio" name="precio" placeholder="Precio" type="text"value="<?php echo $PP; ?>">
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
                     <input id="modopago" name="modopago" placeholder="Modo pago" type="text">
                     <input type="text" id="deudor" name="deudor" placeholder="Deudor">

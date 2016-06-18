@@ -88,11 +88,11 @@ class uploader extends CI_Controller {
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
     $this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');
-    $this->form_validation->set_rules('precio','Precio','required');
+    /*$this->form_validation->set_rules('precio','Precio','required');*/
       if ($this->form_validation->run() == FALSE)
       {
          //Acción a tomar si existe un error el en la validación
-        redirect('welcome/productos');
+        redirect('welcome/ventas');
       }
       else
       {
@@ -101,7 +101,7 @@ class uploader extends CI_Controller {
          //Acción a tomas si no existe ningun error
             $id_usuario=$this->session->userdata('id_usuario');
             $nombre=$this->input->POST('name');//trae el id del producto
-            $precio=$this->input->POST('precio');
+            /*$precio=$this->input->POST('precio');*/
             $cantidad=$this->input->POST('cantidad');
             $modopago=$this->input->POST('modopago');
             $deudor=$this->input->POST('deudor');
