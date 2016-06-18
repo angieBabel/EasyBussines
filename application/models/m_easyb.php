@@ -15,28 +15,27 @@ function validarusuario($cuenta,$clave){
    }
 //Obtencion de datos
  public function getresumenventas(){
-   return $this->db->select('productos.nombre as nombreproducto, ventas.modo_pago as modopago,
-    SUM(ventas.unidades_vendidas) as totalUV')
+   return $this->db->select('productos.nombre as nombreproducto, ventas.modo_pago as modopago, SUM(ventas.unidades_vendidas) as totalUV,SUM(ventas.total) as totalventa')
               ->from('ventas')
               ->join('productos','ventas.id_producto=productos.id_producto','left')
               ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
               ->where('month(ventas.fecha)',date("m"))
               ->group_by("productos.nombre")
               ->order_by("totalUV","DESC")
+              ->limit(5)
               ->get()
               ->result_array();
  }
- /*public function getventasproductos(){
-    return $this->db->select('productos.nombre as nombreproducto, ventas.modo_pago as modopago')
+ public function getcomparativaventas(){
+    return $this->db->select('ventas.modo_pago as modopago, Count(ventas.modo_pago) as totalmodopago')
               ->from('ventas')
               ->join('productos','ventas.id_producto=productos.id_producto','left')
               ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
               ->where('month(ventas.fecha)',date("m"))
+              ->group_by('ventas.modo_pago')
               ->get()
               ->result_array();
- }*/
-
-
+ }
  public function getproductos(){
    return $this->db->from('productos')
               ->where('id_usuario',$this->session->userdata('id_usuario'))

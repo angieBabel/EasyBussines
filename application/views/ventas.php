@@ -5,7 +5,7 @@
         <section class="content-header">
           <h1>
             Ventas
-            <small>Listado de ventas</small>
+            <small>Listado de ventas del <?php echo $nice_date = date('d/m/Y', strtotime( $this->session->userdata('fechaInicio')));?> al <?php echo $nice_date2 = date('d/m/Y', strtotime( $this->session->userdata('fechaFin')));?></small>
           </h1>
         </section>
 

@@ -40,7 +40,8 @@
 											);
 				$this->session->set_userdata($datos);
 				$data = array(
-					'ventasMes'=>$this->m_easyb->getresumenventas()//,
+					'ventasMes'=>$this->m_easyb->getresumenventas(),
+					'comparativaVentas'=>$this->m_easyb->getcomparativaventas()
 					/*'productosMes'=>$this->m_easyb->getventasproductos()*/
 					);
 				$this->load->view('panel',$data);
@@ -50,8 +51,8 @@
 			}
 		}else{
 			$data = array(
-					'ventasMes'=>$this->m_easyb->getResumenVentas()//,
-					/*'productosMes'=>$this->m_easyb->getproductos()*/
+					'ventasMes'=>$this->m_easyb->getresumenventas(),
+					'comparativaVentas'=>$this->m_easyb->getcomparativaventas()
 					);
 				$this->load->view('panel',$data);
 		}

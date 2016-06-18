@@ -50,21 +50,21 @@
         //datos para las ventas del periodo
         var data1 = new google.visualization.DataTable();
         data1.addColumn('string', 'Topping');
-        data1.addColumn('number', 'Slices');
+        data1.addColumn('number', 'Total');
         data1.addRows([<?php foreach ($ventasPeriodo as $ventas_Periodo) { ?>
           ["'<?php  echo $ventas_Periodo['nombreproducto'];?>'", <?php  echo $ventas_Periodo['cantidad'];?>],
           <?php } ?>
         ]);
 
         // Set chart options
-        var options1 = {'title':'Venta de productos en el periodo',
+        var options1 = {'title':'Venta de productos en el periodo del <?php echo $nice_date = date('d/m/Y', strtotime( $this->session->userdata('fechaInicio')));?> al <?php echo $nice_date2 = date('d/m/Y', strtotime( $this->session->userdata('fechaFin')));?> ',
                        'width':450,
                        'height':400};
 
 //datos para la comparativa de ventas
         var data2 = new google.visualization.DataTable();
         data2.addColumn('string', 'Topping');
-        data2.addColumn('number', 'Slices');
+        data2.addColumn('number', 'Total');
         data2.addRows([<?php foreach ($comparativaVentas as $comparativa_Ventas) { ?>
           ["'<?php  echo $comparativa_Ventas['mes'];?>'", <?php  echo $comparativa_Ventas['total'];?>],
           <?php } ?>
@@ -77,21 +77,21 @@
 //datos para los gastos del periodo
         var data3 = new google.visualization.DataTable();
         data3.addColumn('string', 'Topping');
-        data3.addColumn('number', 'Slices');
+        data3.addColumn('number', 'Total');
         data3.addRows([<?php foreach ($gastosPeriodo as $gastos_Periodo) { ?>
           ["'<?php  echo $gastos_Periodo['nombreconcepto'];?>'", <?php  echo $gastos_Periodo['cantidad'];?>],
           <?php } ?>
         ]);
 
         // Set chart options
-        var options3 = {'title':'Gatos del periodo',
+        var options3 = {'title':'Gatos del periodo del <?php echo $nice_date = date('d/m/Y', strtotime( $this->session->userdata('fechaInicio')));?> al <?php echo $nice_date2 = date('d/m/Y', strtotime( $this->session->userdata('fechaFin')));?>',
                        'width':450,
                        'height':400};
 
 //datos para la comparativa de gastos
         var data4 = new google.visualization.DataTable();
         data4.addColumn('string', 'Topping');
-        data4.addColumn('number', 'Slices');
+        data4.addColumn('number', 'Total');
         data4.addRows([<?php foreach ($comparativaGastos as $comparativa_Gastos) { ?>
           ["'<?php  echo $comparativa_Gastos['mes'];?>'", <?php  echo $comparativa_Gastos['totalgasto'];?>],
           <?php } ?>
