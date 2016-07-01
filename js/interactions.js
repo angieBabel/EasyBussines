@@ -30,7 +30,6 @@ function editdiv_hide(){
 document.getElementById('edit').style.display = "none";
 }
 
-//funcion para obtener el id de del producto a vender
-function mostarCostos(){
-
+function deudorF(){
+  document.getElementById('deudor').style.display="block";
 }
