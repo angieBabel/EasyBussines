@@ -23,8 +23,7 @@ class uploader extends CI_Controller {
    * @see http://codeigniter.com/user_guide/general/urls.html
    */
 //altas
-  public function signin()
-  {
+  public function signin(){
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
     $this->form_validation->set_rules('email', 'Email', 'required|is_unique[usuarios.correo]');
@@ -96,8 +95,6 @@ class uploader extends CI_Controller {
       }
       else
       {
-
-
          //Acción a tomas si no existe ningun error
             $id_usuario=$this->session->userdata('id_usuario');
             $nombre=$this->input->POST('name');//trae el id del producto
@@ -106,9 +103,7 @@ class uploader extends CI_Controller {
             $modopago=$this->input->POST('modopago');
             $deudor=$this->input->POST('deudor');
             $fecha=date('Y-m-d');
-
-
-            $this->m_easyb->altaventa($id_usuario,$nombre,$precio,$cantidad,$modopago,$deudor,$fecha);
+            $this->m_easyb->altaventa($id_usuario,$nombre,$cantidad,$modopago,$deudor,$fecha);
             redirect('welcome/ventas');
       }
   }

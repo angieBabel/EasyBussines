@@ -165,7 +165,7 @@ function validarusuario($cuenta,$clave){
             ->set('precio',$precio)
             ->insert('productos');
   }
-  public function altaventa($id_usuario,$nombre,$precio,$cantidad,$modopago,$deudor,$fecha){
+  public function altaventa($id_usuario,$nombre,$cantidad,$modopago,$deudor,$fecha){
 
     if ($modopago=='Contado') {
       $this->db->set('id_producto',$nombre)//$nombre trae el id del producto
