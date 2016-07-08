@@ -35,8 +35,8 @@
                     </select>
                     <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
                     <label for="modopago">Modo de pago</label><br>
-                    <label class="radio-inline"><input type="radio" name="modopago" id="modopago" value="0">Contado</label>
-                    <label class="radio-inline"><input type="radio" name="modopago" id="modopago" value="1" onChange="deudorF();">Crédito</label>
+                    <label class="radio-inline"><input type="radio" name="modopago" id="modopago" value="Contado">Contado</label>
+                    <label class="radio-inline"><input type="radio" name="modopago" id="modopago" value="Credito" onChange="deudorF();">Crédito</label>
                     <input type="text" id="deudor" name="deudor" placeholder="Deudor" style="display: none;">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>

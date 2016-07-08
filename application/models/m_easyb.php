@@ -53,6 +53,17 @@ function validarusuario($cuenta,$clave){
               ->get()
               ->result_array();
  }
+
+ public function getprecio($idProducto){
+   return $this->db->select('precio')
+              ->from('productos')
+              -> where('id_producto',$idProducto)
+              ->where('id_usuario',$this->session->userdata('id_usuario'))
+              ->get()
+              ->result_array();
+ }
+
+
  public function getadeudos(){
    return $this->db->select('productos.nombre as nombreproducto, adeudos.deudor as deudor, adeudos.deuda as deuda, adeudos.abono as abono, adeudos.abono_periodo,ventas.fecha as fechaventa, adeudos.id_adeudo as idAdeudo')
               ->from('adeudos')
@@ -165,7 +176,9 @@ function validarusuario($cuenta,$clave){
             ->set('precio',$precio)
             ->insert('productos');
   }
-  public function altaventa($id_usuario,$nombre,$cantidad,$modopago,$deudor,$fecha){
+  public function altaventa($id_usuario,$nombre,$precio,$cantidad,$modopago,$deudor,$fecha){
+
+    $total=intval($precio)*intval($cantidad);
 
     if ($modopago=='Contado') {
       $this->db->set('id_producto',$nombre)//$nombre trae el id del producto
@@ -173,7 +186,7 @@ function validarusuario($cuenta,$clave){
                 ->set('unidades_vendidas',$cantidad)
                 ->set('fecha',$fecha)
                 ->set('modo_pago',0)
-                ->set('total',$precio*$cantidad)
+                ->set('total',$total)
                 ->insert('ventas');
     }else{
       $this->db->set('id_producto',$nombre)//$nombre trae el id del producto
@@ -181,7 +194,7 @@ function validarusuario($cuenta,$clave){
                 ->set('unidades_vendidas',$cantidad)
                 ->set('fecha',$fecha)
                 ->set('modo_pago',1)
-                ->set('total',$precio*$cantidad)
+                ->set('total',$total)
                 ->insert('ventas');
       $venta='SELECT count(id_venta) FROM ventas';
       echo $venta;

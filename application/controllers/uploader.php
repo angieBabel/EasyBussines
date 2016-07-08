@@ -83,7 +83,6 @@ class uploader extends CI_Controller {
       }
     }
   public function altaventa(){
-
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
     $this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');
@@ -98,13 +97,14 @@ class uploader extends CI_Controller {
          //Acción a tomas si no existe ningun error
             $id_usuario=$this->session->userdata('id_usuario');
             $nombre=$this->input->POST('name');//trae el id del producto
-            /*$precio=$this->input->POST('precio');*/
+            $precio=$this->m_easyb->getprecio($nombre);
             $cantidad=$this->input->POST('cantidad');
             $modopago=$this->input->POST('modopago');
             $deudor=$this->input->POST('deudor');
             $fecha=date('Y-m-d');
-            $this->m_easyb->altaventa($id_usuario,$nombre,$cantidad,$modopago,$deudor,$fecha);
-            redirect('welcome/ventas');
+            //$this->m_easyb->altaventa($id_usuario,$nombre,$precio,$cantidad,$modopago,$deudor,$fecha);
+            //redirect('welcome/ventas');
+            print_r($precio);
       }
   }
 
