@@ -197,12 +197,13 @@ function validarusuario($cuenta,$clave){
                 ->set('total',$total)
                 ->insert('ventas');
 
-      $venta='SELECT count(id_venta) FROM ventas';
-      echo $venta;
-
-
+      $venta=$this->db->select('count(id_venta) as noventas')
+              ->from('ventas')
+              ->get()
+              ->result_array();
+      $idventa=$venta[0];
       $this->db->set('id_usuario',$id_usuario)
-                ->set('id_venta',$venta)
+                ->set('id_venta',$idventa['noventas'])
                 ->set('deudor',$deudor)
                 ->set('deuda',$precio*$cantidad)
                 ->insert('adeudos');
