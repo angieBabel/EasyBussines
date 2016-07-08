@@ -196,15 +196,16 @@ function validarusuario($cuenta,$clave){
                 ->set('modo_pago',1)
                 ->set('total',$total)
                 ->insert('ventas');
+
       $venta='SELECT count(id_venta) FROM ventas';
       echo $venta;
 
 
-     /* $this->db->set('id_usuario',$id_usuario)
+      $this->db->set('id_usuario',$id_usuario)
                 ->set('id_venta',$venta)
                 ->set('deudor',$deudor)
                 ->set('deuda',$precio*$cantidad)
-                ->insert('adeudos');*/
+                ->insert('adeudos');
     }
   }
   public function altarubro($id_usuario,$name){

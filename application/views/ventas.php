@@ -128,7 +128,7 @@
                                    <td><?php echo $rowadeudos['deudor']; ?></td>
                                    <td><?php echo $rowadeudos['deuda']; ?></td>
 
-                                   <td><?php echo $nice_date = date('d/m/Y', strtotime( $rowventas['fechaventa'] ));?></td>
+                                   <td><?php echo $nice_date = date('d/m/Y', strtotime( $rowadeudos['fechaventa'] ));?></td>
 
                                    <td><?php echo $rowadeudos['abono']; ?></td>
                                    <td><?php echo $rowadeudos['abono_periodo']; ?></td>
