@@ -125,7 +125,7 @@
         ]);
 
         // Set chart options
-        var options3 = {'title':'Gatos del periodo del <?php echo $nice_date = date('d/m/Y', strtotime( $this->session->userdata('fechaInicio')));?> al <?php echo $nice_date2 = date('d/m/Y', strtotime( $this->session->userdata('fechaFin')));?>',
+        var options3 = {'title':'Gastos del periodo del <?php echo $nice_date = date('d/m/Y', strtotime( $this->session->userdata('fechaInicio')));?> al <?php echo $nice_date2 = date('d/m/Y', strtotime( $this->session->userdata('fechaFin')));?>',
                        'width':450,
                        'height':400};
 
