@@ -76,7 +76,8 @@
 		$data = array(
 			'ventas'=>$this->m_easyb->getventas(),
 			'adeudos'=>$this->m_easyb->getadeudos(),
-			'productos'=>$this->m_easyb->getproductos()
+			'productos'=>$this->m_easyb->getproductos(),
+			'sumaventas'=>$this->m_easyb->getsumaventas()
 			);
 		$this->load->view('ventas',$data);
 	}

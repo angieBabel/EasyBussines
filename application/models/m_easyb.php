@@ -54,6 +54,18 @@ function validarusuario($cuenta,$clave){
               ->result_array();
  }
 
+public function getsumaventas(){
+   return $this->db->select('SUM(total) as sumatotal')
+              ->from('ventas')
+              ->join('productos','ventas.id_producto=productos.id_producto','left')
+              ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
+              ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
+              ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
+              ->get()
+              ->result_array();
+ }
+
+
  public function getprecio($idProducto){
    return $this->db->select('precio')
               ->from('productos')
@@ -177,7 +189,6 @@ function validarusuario($cuenta,$clave){
             ->insert('productos');
   }
   public function altaventa($id_usuario,$nombre,$precio,$cantidad,$modopago,$deudor,$fecha){
-
     $total=intval($precio)*intval($cantidad);
 
     if ($modopago=='Contado') {
@@ -222,8 +233,6 @@ function validarusuario($cuenta,$clave){
               ->set('total',$cantidad*$costo)
               ->insert('gastos');
   }
-
-
 
 //Bajas
   public function eliminaproducto($id){

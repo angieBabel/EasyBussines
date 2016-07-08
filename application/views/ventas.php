@@ -8,6 +8,11 @@
             <small>Listado de ventas del <?php echo $nice_date = date('d/m/Y', strtotime( $this->session->userdata('fechaInicio')));?> al <?php echo $nice_date2 = date('d/m/Y', strtotime( $this->session->userdata('fechaFin')));?></small>
           </h1>
         </section>
+        <!-- para obtener el total de la suma de ventas -->
+        <?php
+            $totalSum=$sumaventas[0];
+            $ts=$totalSum['sumatotal'];
+         ?>
 
         <!-- Main content -->
         <section class="content">
@@ -97,7 +102,13 @@
                                  ?></td>
                                  <td><?php echo $nice_date = date('d/m/Y', strtotime( $rowventas['fechaventa'] ));?></td>
                                  <td><?php echo $rowventas['totalventa']; ?></td>
-                                 <td><!-- <?php echo $rowventas['total']; ?> --></td>
+
+
+                                 <td><?php
+                                 echo round(($rowventas['totalventa']*100)/$ts, 2);
+                                 ?></td>
+
+
                                  <td><a href="index.php/uploader/eliminaventa?id=<?php echo $rowventas['idventa'];?>"><i class="fa fa-trash-o"></i></a></td>
                              </tr>
                              <?php } ?>
