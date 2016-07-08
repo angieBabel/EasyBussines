@@ -97,14 +97,15 @@ class uploader extends CI_Controller {
          //Acción a tomas si no existe ningun error
             $id_usuario=$this->session->userdata('id_usuario');
             $nombre=$this->input->POST('name');//trae el id del producto
-            $precio=$this->m_easyb->getprecio($nombre);
+            $precioarray=$this->m_easyb->getprecio($nombre);
+            $precio=$precioarray[0];
             $cantidad=$this->input->POST('cantidad');
             $modopago=$this->input->POST('modopago');
             $deudor=$this->input->POST('deudor');
             $fecha=date('Y-m-d');
-            //$this->m_easyb->altaventa($id_usuario,$nombre,$precio,$cantidad,$modopago,$deudor,$fecha);
-            //redirect('welcome/ventas');
-            print_r($precio);
+            $this->m_easyb->altaventa($id_usuario,$nombre,$precio['precio'],$cantidad,$modopago,$deudor,$fecha);
+            redirect('welcome/ventas');
+            //print_r($precio['precio']);
       }
   }
 
