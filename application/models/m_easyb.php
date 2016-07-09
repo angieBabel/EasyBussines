@@ -53,124 +53,132 @@ function validarusuario($cuenta,$clave){
               ->get()
               ->result_array();
  }
-
-public function getsumaventas(){
-   return $this->db->select('SUM(total) as sumatotal')
-              ->from('ventas')
-              ->join('productos','ventas.id_producto=productos.id_producto','left')
-              ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
-              ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
-              ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
-              ->get()
-              ->result_array();
-}
-
- public function getprecio($idProducto){
-   return $this->db->select('precio')
-              ->from('productos')
-              -> where('id_producto',$idProducto)
-              ->where('id_usuario',$this->session->userdata('id_usuario'))
-              ->get()
-              ->result_array();
- }
-
- public function getadeudos(){
-   return $this->db->select('productos.nombre as nombreproducto, adeudos.deudor as deudor, adeudos.deuda as deuda, adeudos.abono as abono, adeudos.abono_periodo,ventas.fecha as fechaventa, adeudos.id_adeudo as idAdeudo')
-              ->from('adeudos')
-              ->join('ventas','adeudos.id_venta=ventas.id_venta')
-              ->join('productos','ventas.id_producto=productos.id_producto','left')
-              ->where('adeudos.id_usuario',$this->session->userdata('id_usuario'))
-              ->get()
-              ->result_array();
- }
-
-  public function getgastos(){
-    return $this->db->select('rubros.nombre as nombrerubro, rubros.id_rubro as rubro')
-                ->select_sum('gastos.total','totalgasto')
-                ->from('gastos')
-                ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
-                ->join('rubros','catalogo_gastos.id_rubro=rubros.id_rubro','left')
-                ->group_by('rubros.id_rubro')
-                ->where('rubros.id_usuario',$this->session->userdata('id_usuario'))
-                ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
-                ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
-                ->or_where('rubros.id_usuario',0)
+  public function getsumaventas(){
+     return $this->db->select('SUM(total) as sumatotal')
+                ->from('ventas')
+                ->join('productos','ventas.id_producto=productos.id_producto','left')
+                ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
+                ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
+                ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
                 ->get()
                 ->result_array();
   }
 
-  public function getcatalogogastos($id_rubro){
-   return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo, catalogo_gastos.id_rubro as rubro')
-              ->from('catalogo_gastos')
-              ->where('catalogo_gastos.id_rubro',$id_rubro)
-              ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
-              /*->limit(2)*/
-              ->get()
-              ->result_array();
-  }
-  public function getdetallegastos($id_rubro){
-   return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
-              ->from('gastos')
-              ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
-              ->where('catalogo_gastos.id_rubro',$id_rubro)
-              ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
-              ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
-              ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
-              ->get()
-              ->result_array();
-  }
-  public function getrotacion(){
-    return $this->db->select('modo_pago as mp')
-                    ->from('ventas')
-                    ->where('id_usuario',$this->session->userdata('id_usuario'))
-                    ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
-                    ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
-                    ->get()
-                    ->result_array();
-  }
-  //para las graficas
-  public function getventascontado(){
-    return $this->db->select('productos.nombre as nombreproducto,ventas.unidades_vendidas as cantidad, ventas.total as totalventa')
-              ->from('ventas')
-              ->join('productos','ventas.id_producto=productos.id_producto','left')
-              ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
-              ->where('ventas.modo_pago',1)
-              ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
-              ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
-              ->group_by('productos.nombre')
-              ->get()
-              ->result_array();
-  }
-  public function getventasFull(){
-   return $this->db->select('MONTH(ventas.fecha) as mes,SUM(ventas.total) as total')
-              ->from('ventas')
-              ->join('productos','ventas.id_producto=productos.id_producto','left')
-              ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
-              ->where('ventas.modo_pago',1)
-              ->group_by('month(ventas.fecha)')
-              ->get()
-              ->result_array();
-  }
-  public function getdetallegastosfull(){
-     return $this->db->select('catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.total as totalgasto')
+   public function getprecio($idProducto){
+     return $this->db->select('precio')
+                ->from('productos')
+                -> where('id_producto',$idProducto)
+                ->where('id_usuario',$this->session->userdata('id_usuario'))
+                ->get()
+                ->result_array();
+   }
+
+   public function getadeudos(){
+     return $this->db->select('productos.nombre as nombreproducto, adeudos.deudor as deudor, adeudos.deuda as deuda, adeudos.abono as abono, adeudos.abono_periodo,ventas.fecha as fechaventa, adeudos.id_adeudo as idAdeudo')
+                ->from('adeudos')
+                ->join('ventas','adeudos.id_venta=ventas.id_venta')
+                ->join('productos','ventas.id_producto=productos.id_producto','left')
+                ->where('adeudos.id_usuario',$this->session->userdata('id_usuario'))
+                ->get()
+                ->result_array();
+   }
+
+   public function getdeuda($idAdeudo){
+     return $this->db->select('adeudos.deuda as deuda, adeudos.abono as abono, adeudos.id_adeudo as idAdeudo, ventas.id_venta as idVenta')
+                ->from('adeudos')
+                ->join('ventas','adeudos.id_venta=ventas.id_venta','left')
+                ->where('adeudos.id_usuario',$this->session->userdata('id_usuario'))
+                ->get()
+                ->result_array();
+   }
+
+    public function getgastos(){
+      return $this->db->select('rubros.nombre as nombrerubro, rubros.id_rubro as rubro')
+                  ->select_sum('gastos.total','totalgasto')
+                  ->from('gastos')
+                  ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+                  ->join('rubros','catalogo_gastos.id_rubro=rubros.id_rubro','left')
+                  ->group_by('rubros.id_rubro')
+                  ->where('rubros.id_usuario',$this->session->userdata('id_usuario'))
+                  ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
+                  ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
+                  ->or_where('rubros.id_usuario',0)
+                  ->get()
+                  ->result_array();
+    }
+
+    public function getcatalogogastos($id_rubro){
+     return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo, catalogo_gastos.id_rubro as rubro')
+                ->from('catalogo_gastos')
+                ->where('catalogo_gastos.id_rubro',$id_rubro)
+                ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+                /*->limit(2)*/
+                ->get()
+                ->result_array();
+    }
+    public function getdetallegastos($id_rubro){
+     return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
                 ->from('gastos')
                 ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+                ->where('catalogo_gastos.id_rubro',$id_rubro)
                 ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
                 ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
                 ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
-                ->group_by('catalogo_gastos.nombre')
                 ->get()
                 ->result_array();
-  }
-  public function getdetallegastoscomparativa(){
-     return $this->db->select('MONTH(gastos.fecha) as mes, SUM(gastos.total) as totalgasto')
-                ->from('gastos')
-                ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
-                ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
-                ->group_by('month(gastos.fecha)')
+    }
+    public function getrotacion(){
+      return $this->db->select('modo_pago as mp')
+                      ->from('ventas')
+                      ->where('id_usuario',$this->session->userdata('id_usuario'))
+                      ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
+                      ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
+                      ->get()
+                      ->result_array();
+    }
+    //para las graficas
+    public function getventascontado(){
+      return $this->db->select('productos.nombre as nombreproducto,ventas.unidades_vendidas as cantidad, ventas.total as totalventa')
+                ->from('ventas')
+                ->join('productos','ventas.id_producto=productos.id_producto','left')
+                ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
+                ->where('ventas.modo_pago',1)
+                ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
+                ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
+                ->group_by('productos.nombre')
                 ->get()
                 ->result_array();
-  }
+    }
+    public function getventasFull(){
+     return $this->db->select('MONTH(ventas.fecha) as mes,SUM(ventas.total) as total')
+                ->from('ventas')
+                ->join('productos','ventas.id_producto=productos.id_producto','left')
+                ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
+                ->where('ventas.modo_pago',1)
+                ->group_by('month(ventas.fecha)')
+                ->get()
+                ->result_array();
+    }
+    public function getdetallegastosfull(){
+       return $this->db->select('catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.total as totalgasto')
+                  ->from('gastos')
+                  ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+                  ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+                  ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
+                  ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
+                  ->group_by('catalogo_gastos.nombre')
+                  ->get()
+                  ->result_array();
+    }
+    public function getdetallegastoscomparativa(){
+       return $this->db->select('MONTH(gastos.fecha) as mes, SUM(gastos.total) as totalgasto')
+                  ->from('gastos')
+                  ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+                  ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+                  ->group_by('month(gastos.fecha)')
+                  ->get()
+                  ->result_array();
+    }
 
 //Altas
   public function signin($email,$nombre,$apellido,$password){
@@ -206,13 +214,16 @@ public function getsumaventas(){
                 ->set('total',$total)
                 ->insert('ventas');
 
-      $venta=$this->db->select('count(id_venta) as noventas')
+      $venta=$this->db->select('id_venta as lastventa')
               ->from('ventas')
+              ->order_by("lastventa","DESC")
+              ->limit(1)
               ->get()
               ->result_array();
       $idventa=$venta[0];
+
       $this->db->set('id_usuario',$id_usuario)
-                ->set('id_venta',$idventa['noventas'])
+                ->set('id_venta',$idventa['lastventa'])
                 ->set('deudor',$deudor)
                 ->set('deuda',$precio*$cantidad)
                 ->insert('adeudos');
@@ -248,7 +259,7 @@ public function getsumaventas(){
              ->delete('gastos ');
   }
 
-//editar
+//Ediciones
   public function editaproductos($idProducto,$nombre,$precio){
     $this->db->set('nombre',$nombre)
              ->set('precio',$precio)
@@ -261,5 +272,14 @@ public function getsumaventas(){
                ->set('abono_periodo',$abonoperiodo)
                ->where('id_adeudo',$idAdeudo)
                ->update('adeudos');
+  }
+  public function eliminaadeudo($idAdeudo,$idVenta){
+    //para cambiar de estado esa venta
+    $this->db->set('modo_pago',0)
+              ->where('id_venta',$idVenta)
+              ->update('ventas');
+    //para borrar el aduedo una vez que ya se pago
+    $this->db->delete('adeudos')
+              ->where('id_adeudo',$idAdeudo);
   }
 }

@@ -81,7 +81,8 @@ class uploader extends CI_Controller {
             $this->m_easyb->altaproducto($id_usuario,$nombre,$precio);
             redirect('welcome/productos');
       }
-    }
+  }
+
   public function altaventa(){
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
@@ -105,7 +106,6 @@ class uploader extends CI_Controller {
             $fecha=date('Y-m-d');
             $this->m_easyb->altaventa($id_usuario,$nombre,$precio['precio'],$cantidad,$modopago,$deudor,$fecha);
             redirect('welcome/ventas');
-            //print_r($precio['precio']);
       }
   }
 
@@ -211,7 +211,17 @@ class uploader extends CI_Controller {
     $abonoT=$this->input->POST('abonoT');
     $abonoPeriodo=$this->input->POST('abonoperiodo');
     $this->m_easyb->editaadeudo($idAdeudo,$abonoT+$abonoPeriodo,$abonoPeriodo);
-    redirect('welcome/ventas');
+    $abonorestantearray=$this->m_easyb->getdeuda($idAdeudo);
+    $abonorestante=$abonorestantearray[0];
+    print_r($abonorestante);
+
+    if ($abonorestante['abono']==$abonorestante['deuda']) {
+      $this->m_easyb->eliminaadeudo($abonorestante['idAdeudo'],$abonorestante['idVenta']);
+    }
+
+
+
+    //redirect('welcome/ventas');
   }
 }
 
