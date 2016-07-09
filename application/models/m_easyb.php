@@ -39,6 +39,7 @@ function validarusuario($cuenta,$clave){
  public function getproductos(){
    return $this->db->from('productos')
               ->where('id_usuario',$this->session->userdata('id_usuario'))
+              ->order_by("id_producto","ASC")
               ->get()
               ->result_array();
  }
@@ -50,19 +51,20 @@ function validarusuario($cuenta,$clave){
               ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
               ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
               ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
+              ->order_by("id_venta","ASC")
               ->get()
               ->result_array();
  }
-  public function getsumaventas(){
-     return $this->db->select('SUM(total) as sumatotal')
-                ->from('ventas')
-                ->join('productos','ventas.id_producto=productos.id_producto','left')
-                ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
-                ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
-                ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
-                ->get()
-                ->result_array();
-  }
+ public function getsumaventas(){
+   return $this->db->select('SUM(total) as sumatotal')
+              ->from('ventas')
+              ->join('productos','ventas.id_producto=productos.id_producto','left')
+              ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
+              ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
+              ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
+              ->get()
+              ->result_array();
+ }
 
    public function getprecio($idProducto){
      return $this->db->select('precio')
@@ -79,6 +81,7 @@ function validarusuario($cuenta,$clave){
                 ->join('ventas','adeudos.id_venta=ventas.id_venta')
                 ->join('productos','ventas.id_producto=productos.id_producto','left')
                 ->where('adeudos.id_usuario',$this->session->userdata('id_usuario'))
+                ->order_by("id_adeudo","ASC")
                 ->get()
                 ->result_array();
    }
@@ -89,8 +92,6 @@ function validarusuario($cuenta,$clave){
                 ->join('ventas','adeudos.id_venta=ventas.id_venta','left')
                 ->where('adeudos.id_usuario',$this->session->userdata('id_usuario'))
                 ->where('adeudos.id_adeudo',$idAdeudo)
-               /* ->order_by("lastventa","DESC")
-                ->limit(1)*/
                 ->get()
                 ->result_array();
    }
@@ -105,7 +106,8 @@ function validarusuario($cuenta,$clave){
                   ->where('rubros.id_usuario',$this->session->userdata('id_usuario'))
                   ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
                   ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
-                  ->or_where('rubros.id_usuario',0)
+                  ->or_where('id_rubro.id_usuario',0)
+                  ->order_by("nombre","ASC")
                   ->get()
                   ->result_array();
     }
@@ -115,7 +117,7 @@ function validarusuario($cuenta,$clave){
                 ->from('catalogo_gastos')
                 ->where('catalogo_gastos.id_rubro',$id_rubro)
                 ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
-                /*->limit(2)*/
+                ->order_by("id_concepto","ASC")
                 ->get()
                 ->result_array();
     }
@@ -127,6 +129,7 @@ function validarusuario($cuenta,$clave){
                 ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
                 ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
                 ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
+                ->order_by("id_gasto","ASC")
                 ->get()
                 ->result_array();
     }
