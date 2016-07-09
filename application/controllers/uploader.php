@@ -213,15 +213,10 @@ class uploader extends CI_Controller {
     $this->m_easyb->editaadeudo($idAdeudo,$abonoT+$abonoPeriodo,$abonoPeriodo);
     $abonorestantearray=$this->m_easyb->getdeuda($idAdeudo);
     $abonorestante=$abonorestantearray[0];
-    print_r($abonorestante);
-
     if ($abonorestante['abono']==$abonorestante['deuda']) {
       $this->m_easyb->eliminaadeudo($abonorestante['idAdeudo'],$abonorestante['idVenta']);
     }
-
-
-
-    //redirect('welcome/ventas');
+    redirect('welcome/ventas');
   }
 }
 

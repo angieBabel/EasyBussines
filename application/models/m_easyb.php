@@ -84,10 +84,13 @@ function validarusuario($cuenta,$clave){
    }
 
    public function getdeuda($idAdeudo){
-     return $this->db->select('adeudos.deuda as deuda, adeudos.abono as abono, adeudos.id_adeudo as idAdeudo, ventas.id_venta as idVenta')
+     return $this->db->select('adeudos.deuda as deuda, adeudos.abono as abono, adeudos.id_adeudo as idAdeudo, adeudos.id_venta as idVenta')
                 ->from('adeudos')
                 ->join('ventas','adeudos.id_venta=ventas.id_venta','left')
                 ->where('adeudos.id_usuario',$this->session->userdata('id_usuario'))
+                ->where('adeudos.id_adeudo',$idAdeudo)
+               /* ->order_by("lastventa","DESC")
+                ->limit(1)*/
                 ->get()
                 ->result_array();
    }
@@ -279,7 +282,7 @@ function validarusuario($cuenta,$clave){
               ->where('id_venta',$idVenta)
               ->update('ventas');
     //para borrar el aduedo una vez que ya se pago
-    $this->db->delete('adeudos')
-              ->where('id_adeudo',$idAdeudo);
+    $this->db->where('id_adeudo',$idAdeudo)
+            ->delete('adeudos');
   }
 }
