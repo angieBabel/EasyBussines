@@ -63,8 +63,7 @@ public function getsumaventas(){
               ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
               ->get()
               ->result_array();
- }
-
+}
 
  public function getprecio($idProducto){
    return $this->db->select('precio')
@@ -74,7 +73,6 @@ public function getsumaventas(){
               ->get()
               ->result_array();
  }
-
 
  public function getadeudos(){
    return $this->db->select('productos.nombre as nombreproducto, adeudos.deudor as deudor, adeudos.deuda as deuda, adeudos.abono as abono, adeudos.abono_periodo,ventas.fecha as fechaventa, adeudos.id_adeudo as idAdeudo')
@@ -257,11 +255,6 @@ public function getsumaventas(){
              ->where('id_producto',$idProducto)
              ->update('productos');
   }
-
-  /*public function newAbono(){
-    return
-              ->result_array();
-  }*/
 
   public function editaadeudo($idAdeudo,$abonoT,$abonoperiodo){
       $this->db->set('abono',$abonoT)

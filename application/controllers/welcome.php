@@ -20,7 +20,6 @@
 		$this->load->view('signin');
 	}
 
-
 	public function panel(){
 
 		if ($this->session->userdata('id_usuario')==null) {
@@ -56,8 +55,6 @@
 					);
 				$this->load->view('panel',$data);
 		}
-
-
 	}
 
 	function cierraSesion(){

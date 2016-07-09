@@ -93,6 +93,7 @@
                                              }
                                    ?></td>
                                    <td><?php echo $rowventas['totalUV']; ?></td>
+
                                    <td><?php echo $rowventas['totalventa']; ?></td>
                                </tr>
                                <?php } ?>

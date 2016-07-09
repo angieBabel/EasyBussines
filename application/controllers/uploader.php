@@ -210,10 +210,8 @@ class uploader extends CI_Controller {
     $idAdeudo=$this->input->POST('idAdeudo');
     $abonoT=$this->input->POST('abonoT');
     $abonoPeriodo=$this->input->POST('abonoperiodo');
-    $this->m_easyb->editaadeudo($idAdeudo,$abonoT,$abonoPeriodo);
+    $this->m_easyb->editaadeudo($idAdeudo,$abonoT+$abonoPeriodo,$abonoPeriodo);
     redirect('welcome/ventas');
-
-
   }
 }
 

@@ -21,7 +21,7 @@ function editdiv_showA(id,nombre,abono,ap) {
 
   document.getElementById('idAdeudo').value=id;
   document.getElementById('venta').value=nombre;
-  document.getElementById('abonoT').value=abono+ap;
+  document.getElementById('abonoT').value=abono;
 }
 
 
