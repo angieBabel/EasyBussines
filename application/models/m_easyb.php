@@ -106,8 +106,8 @@ function validarusuario($cuenta,$clave){
                   ->where('rubros.id_usuario',$this->session->userdata('id_usuario'))
                   ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
                   ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
-                  ->or_where('id_rubro.id_usuario',0)
-                  ->order_by("nombre","ASC")
+                  ->or_where('rubros.id_usuario',0)
+                  /*->order_by("nombre","ASC")*/
                   ->get()
                   ->result_array();
     }
@@ -142,13 +142,13 @@ function validarusuario($cuenta,$clave){
                       ->get()
                       ->result_array();
     }
-    //para las graficas
+//para las graficas
     public function getventascontado(){
-      return $this->db->select('productos.nombre as nombreproducto,ventas.unidades_vendidas as cantidad, ventas.total as totalventa')
+      return $this->db->select('productos.nombre as nombreproducto, SUM(ventas.unidades_vendidas)as cantidad, ventas.total as totalventa')
                 ->from('ventas')
                 ->join('productos','ventas.id_producto=productos.id_producto','left')
                 ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
-                ->where('ventas.modo_pago',1)
+                ->where('ventas.modo_pago',0)
                 ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
                 ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
                 ->group_by('productos.nombre')
@@ -160,13 +160,12 @@ function validarusuario($cuenta,$clave){
                 ->from('ventas')
                 ->join('productos','ventas.id_producto=productos.id_producto','left')
                 ->where('ventas.id_usuario',$this->session->userdata('id_usuario'))
-                ->where('ventas.modo_pago',1)
                 ->group_by('month(ventas.fecha)')
                 ->get()
                 ->result_array();
     }
     public function getdetallegastosfull(){
-       return $this->db->select('catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.total as totalgasto')
+       return $this->db->select('catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, SUM(gastos.total) as totalgasto')
                   ->from('gastos')
                   ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
                   ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))

@@ -47,7 +47,7 @@
     // draws it.
       function drawChart() {
         // Create the data table.
-        //datos para las ventas del periodo
+//datos para las ventas del periodo
         var data1 = new google.visualization.DataTable();
         data1.addColumn('string', 'Topping');
         data1.addColumn('number', 'Total');
