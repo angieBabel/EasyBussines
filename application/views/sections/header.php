@@ -55,53 +55,44 @@
               <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-cog fa-lg"></i>
-                        <span class="label label-success"></span>
                 </a>
                 <ul class="dropdown-menu">
-                        <li class="header">Elige periodo</li>
+                        <li class="list-group-item active">Elige periodo</li>
                         <li>
                           <ul class="menu">
-                            <li>
-                              <span>Fecha inicio</span>
-                              <form action="index.php/welcome/customFI">
-                                <input value="<?php echo $this->session->userdata('fechaInicio');?>"type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" placehoder="dd/mm/aaaa" onBlur="this.form.submit();">
-                               <input type="hidden" id="met" name="met" value="<?php echo $metodo;?>">
-                              </form>
+                            <li class="list-group-item">
+                              <div class="form-group">
+                                <form  action="index.php/welcome/customFI">
+                                  <label for="fecha_inicio" class="control-label">Fecha inicio</label>
+                                  <input value="<?php echo $this->session->userdata('fechaInicio');?>"type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" placehoder="dd/mm/aaaa" onBlur="this.form.submit();">
+                                 <input type="hidden" id="met" name="met" value="<?php echo $metodo;?>">
+                                </form>
+                              </div>
                             </li>
-                            <li>
-                              <span>Fecha fin</span>
-                              <form action="index.php/welcome/customFF">
-                                <input value="<?php echo $this->session->userdata('fechaFin');?>"type="date" name="fecha_fin" id="fecha_fin" class="form-control" placehoder="dd/mm/aaaa" onBlur="this.form.submit();">
-                               <input type="hidden" id="met" name="met" value="<?php echo $metodo;?>">
-                              </form>
+                            <li class="list-group-item">
+                             <div class="form-group">
+                                <form  action="index.php/welcome/customFF">
+                                  <label for="fecha_fin" class="control-label">Fecha fin</label>
+                                  <input value="<?php echo $this->session->userdata('fechaFin');?>"type="date" name="fecha_fin" id="fecha_fin" class="form-control" placehoder="dd/mm/aaaa" onBlur="this.form.submit();">
+                                 <input type="hidden" id="met" name="met" value="<?php echo $metodo;?>">
+                                </form>
+                             </div>
                             </li>
-                            <!-- <li>
-                              <a href="#">
-                                <div class="pull-left">
-                                  <img src="img/user4-128x128.jpg" class="img-circle" alt="user image"/>
-                                </div>
-                                <h4>
-                                  Reviewers
-                                  <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                </h4>
-                                <p>Why not buy a new awesome theme?</p>
-                              </a>
-                            </li> -->
                           </ul>
                         </li>
-                        <li class="header">Elige tipo de grafica</li>
+                        <li class="list-group-item active">Elige tipo de grafica</li>
                         <li>
                           <ul class="menu">
-                          <li>
-                              <a href="index.php/welcome/custom?tg=pastel&met=<?php echo $metodo;?>">Pastel</a>
-                          </li>
-                          <li>
-                            <a href="index.php/welcome/custom?tg=barras&met=<?php echo $metodo;?>">Barras</a>
-                          </li>
-                          <li>
-                            <a href="index.php/welcome/custom?tg=lineal&met=<?php echo $metodo;?>">Lineal</a>
-                          </li>
-                        </ul>
+                            <li>
+                                <a href="index.php/welcome/custom?tg=pastel&met=<?php echo $metodo;?>"><i class="fa fa-pie-chart" aria-hidden="true"></i> Pastel</a>
+                            </li>
+                            <li>
+                              <a href="index.php/welcome/custom?tg=barras&met=<?php echo $metodo;?>"><i class="fa fa-bar-chart" aria-hidden="true"></i> Barras</a>
+                            </li>
+                            <li>
+                              <a href="index.php/welcome/custom?tg=lineal&met=<?php echo $metodo;?>"><i class="fa fa-line-chart" aria-hidden="true"></i> Lineal</a>
+                            </li>
+                          </ul>
                         </li>
                 </ul>
 
