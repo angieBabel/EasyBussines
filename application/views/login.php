@@ -37,6 +37,10 @@
         <div class="u-form-group">
           <a href="#" class="forgot-password">Forgot password?</a>
         </div>
+        <div class="u-form-group">
+          <span>¿Aún no tienes cuenta?</span>
+          <a href="index.php/welcome/signin" class="forgot-password">¡Regístrate!</a>
+        </div>
         <div>
           <a href="#"><i class="fa fa-arrow-circle-left" aria-hidden="true">Inicio</i></a>
         </div>

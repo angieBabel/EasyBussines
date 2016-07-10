@@ -41,7 +41,8 @@
           <button type="submit">Sign in</button>
         </div>
         <div class="u-form-group">
-          <a href="#" class="forgot-password">Forgot password?</a>
+          <span>¿Ya tienes cuenta?</span>
+          <a href="index.php/welcome/login" class="forgot-password">¡Inicia sesión!</a>
         </div>
         <div>
           <a href="#"><i class="fa fa-arrow-circle-left" aria-hidden="true">Inicio</i></a>
