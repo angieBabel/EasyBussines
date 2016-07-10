@@ -26,13 +26,13 @@
       </div>
       <form class="email-login" action="index.php/uploader/signin" method="post">
         <div class="u-form-group">
-          <input type="email" for="email" name="email" placeholder="Email"/>
-        </div>
-        <div class="u-form-group">
           <input type="nombre" for="nombre" name="nombre" placeholder="Nombre"/>
         </div>
         <div class="u-form-group">
-          <input type="apellido" for="apellido" name="apellido" placeholder="Apellido"/>
+          <input type="nombre" for="apellido" name="apellido" placeholder="Apellido"/>
+        </div>
+        <div class="u-form-group">
+          <input type="email" for="email" name="email" placeholder="Email"/>
         </div>
         <div class="u-form-group">
           <input type="password" for="password" name="password" placeholder="Password"/>
