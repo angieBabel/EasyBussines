@@ -33,3 +33,6 @@ document.getElementById('edit').style.display = "none";
 function deudorF(){
   document.getElementById('deudor').style.display="block";
 }
+function deudorHide(){
+  document.getElementById('deudor').style.display="none";
+}

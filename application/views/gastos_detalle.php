@@ -22,7 +22,7 @@
 
                 <!-- Contact Us Form -->
                   <form action="index.php/uploader/altagasto" id="form" method="post" name="form">
-                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
                     <h2 id="tituloForm">Agregar gasto</h2>
                     <hr>
                     <select name="name" id="name" class="form-control">
@@ -32,9 +32,9 @@
                           </option>
                        <?php } ?>
                     </select>
-                    <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
-                    <input type="hidden" name="costo" id="costo" value="<?php echo $rowcatalogogastos['costo']?>">
-                    <input type="hidden" name="rubro" id="rubro" value="<?php echo $rowcatalogogastos['rubro']?>">
+                    <input class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
+                    <input class="form-control" type="hidden" name="costo" id="costo" value="<?php echo $rowcatalogogastos['costo']?>">
+                    <input class="form-control" type="hidden" name="rubro" id="rubro" value="<?php echo $rowcatalogogastos['rubro']?>">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
@@ -72,8 +72,8 @@
                         </table>
                       </div>
                   </div>
-                  <div class="col-lg-4 collapse navbar-collapse navbar-ex1-collapse">
-                    <a href="javascript:%20newdiv_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>Agregar Gasto</a>
+                  <div class="col-lg-2" id="add">
+                    <a href="javascript:%20newdiv_show()" data-rel="popup">Agregar Gasto <i class="fa fa-plus-square fa-lg"></i></a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

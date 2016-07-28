@@ -28,7 +28,7 @@
                 <!-- Contact Us Form -->
                   <form action="index.php/uploader/altaventa" id="form" method="post" name="form"enctype="multipart/form-data">
                   <?php form_open_multipart('uploader/altaventa'); ?>
-                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
                     <h2 id="tituloForm">Nueva venta</h2>
                     <hr>
                     <select name="name" id="name" class="form-control" onchange="">
@@ -38,11 +38,13 @@
                           </option>
                        <?php } ?>
                     </select>
-                    <input id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
+                    <input class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
+                    <br>
                     <label for="modopago">Modo de pago</label><br>
-                    <label class="radio-inline"><input type="radio" name="modopago" id="modopago" value="Contado">Contado</label>
+                    <label class="radio-inline"><input type="radio" name="modopago" id="modopago" value="Contado"
+                    onChange="deudorHide();">Contado</label>
                     <label class="radio-inline"><input type="radio" name="modopago" id="modopago" value="Credito" onChange="deudorF();">Crédito</label>
-                    <input type="text" id="deudor" name="deudor" placeholder="Deudor" style="display: none;">
+                    <input class="form-control" type="text" id="deudor" name="deudor" placeholder="Deudor" style="display: none;">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
@@ -54,13 +56,13 @@
                 <div id="popupContact">
                   <!-- Contact Us Form -->
                   <form action="index.php/uploader/editaadeudo" id="form" method="post" name="form">
-                    <a id="close" href="javascript:%20editdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                    <a id="close" href="javascript:%20editdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
                     <h2 id="tituloForm">Venta de crédito</h2>
                     <hr>
-                    <input type="hidden" name="idAdeudo" id="idAdeudo">
-                    <input type="hidden" name="abonoT" id="abonoT">
-                    <input id="venta" name="venta" placeholder="Nombre de la venta" type="text">
-                    <input id="abonoperiodo" name="abonoperiodo" placeholder="Abono periodo" type="text">
+                    <input class="form-control" type="hidden" name="idAdeudo" id="idAdeudo">
+                    <input class="form-control" type="hidden" name="abonoT" id="abonoT">
+                    <input class="form-control" id="venta" name="venta" placeholder="Nombre de la venta" type="text">
+                    <input class="form-control" id="abonoperiodo" name="abonoperiodo" placeholder="Abono periodo" type="text">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
@@ -150,8 +152,9 @@
                         </table>
                       </div>
                   </div>
-                  <div class="col-lg-10 collapse navbar-collapse navbar-ex1-collapse">
-                      <a href="javascript:%20newdiv_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>Nueva venta</a>
+                  <div class="col-lg-8"></div>
+                  <div class="col-lg-4" id="add">
+                      <a href="javascript:%20newdiv_show()" data-rel="popup">Nueva venta <i class="fa fa-plus-square fa-lg"></i></a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

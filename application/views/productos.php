@@ -21,12 +21,12 @@
                 <!-- Popup Div Starts Here -->
                 <div id="popupContact">
                 <!-- Contact Us Form -->
-                  <form action="index.php/uploader/altaproducto" id="form" method="post" name="form">
-                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                  <form  class="form-horizontal" action="index.php/uploader/altaproducto" id="form" method="post" name="form">
+                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
                     <h2 id="tituloForm">Agrega producto</h2>
                     <hr>
-                    <input id="name" name="name" placeholder="Nombre del producto" type="text">
-                    <input id="precio" name="precio" placeholder="Precio" type="text">
+                    <input class="form-control" id="name" name="name" placeholder="Nombre del producto" type="text">
+                    <input class="form-control" id="precio" name="precio" placeholder="Precio" type="text">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
@@ -38,12 +38,12 @@
                 <div id="popupContact">
                 <!-- Contact Us Form -->
                   <form action="index.php/uploader/editaproducto" id="form" method="post" name="form">
-                    <a id="close" href="javascript:%20editdiv_hide()"><i class="fa fa-plus-square fa-lg"></i></a>
+                    <a id="close" href="javascript:%20editdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
                     <h2 id="tituloForm">Edita producto</h2>
                     <hr>
                     <input type="hidden" id="idP" name="idP">
-                    <input id="nameP" name="nameP" placeholder="Nombre del producto" type="text">
-                    <input id="precioP" name="precioP" placeholder="Precio" type="text">
+                    <input class="form-control" id="nameP" name="nameP" placeholder="Nombre del producto" type="text">
+                    <input class="form-control" id="precioP" name="precioP" placeholder="Precio" type="text">
                     <button type="submit" class="btn btn-success form-control">Save</button>
                   </form>
                 </div>
@@ -79,8 +79,9 @@
                       </table>
                     </div>
                   </div>
-                  <div class="col-lg-4 collapse navbar-collapse navbar-ex1-collapse">
-                    <a href="javascript:%20newdiv_show()" data-rel="popup"><i class="fa fa-plus-square fa-lg"></i>  Agregar Producto</a>
+                  <div class="col-lg-8"></div>
+                  <div class="col-lg-4" id="add">
+                    <a href="javascript:%20newdiv_show()" data-rel="popup">Agregar Producto <i class="fa fa-plus-square fa-lg"></i></a>
                   </div>
               </div><!-- /.nav-tabs-custom -->
 

@@ -106,6 +106,7 @@ body{
   z-index:3;
   background-color:#313131;
   overflow:auto;
+
 }
 #edit {
   width:100%;
@@ -121,8 +122,8 @@ body{
 }
 #close {
   position:absolute;
-  right:-14px;
-  top:-14px;
+  right: -14px;
+  top: -14px;
   cursor:pointer
 }
 div#popupContact {
@@ -131,7 +132,14 @@ div#popupContact {
   top:17%;
   margin-left:-202px;
   font-family:'Raleway',sans-serif
+  height: auto;
+  width: auto;
 }
+div#popupContact, button {
+  margin-top: 20px;
+  /* background: #1fa76c; */
+}
+
 #form {
   max-width:300px;
   min-width:250px;
@@ -142,8 +150,14 @@ div#popupContact {
   background-color:#fff
 }
 
+#add{
+  /* margin-left: 5%; */
+  font-size: 20px;
+}
+
 #tituloForm {
-  background-color:#FEFFED;
+  background-color:#133040;
+  color:#fff;
   padding:20px 35px;
   margin:-10px -50px;
   text-align:center;
@@ -155,7 +169,7 @@ hr {
   border-top:1px solid #ccc
 }
 input[type=text] {
-  width:82%;
+  /* width:%; */
   padding:10px;
   margin-top:30px;
   border:1px solid #ccc;
