@@ -120,21 +120,19 @@ function validarusuario($cuenta,$clave){
               ->result_array();
  }
   //resumen de los gastos
-  public function getgastos(){
-  return $this->db->select('rubros.nombre as nombrerubro, rubros.id_rubro as rubro, SUM(gastos.total) as totalgasto')
+public function getgastos(){
+  return $this->db->select('rubros.nombre as nombrerubro, rubros.id_rubro as rubro, SUM(gastos.total) as totalgasto, gastos.fecha as fechaGasto')
               ->from('gastos')
               ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
               ->join('rubros','catalogo_gastos.id_rubro=rubros.id_rubro','left')
-              ->group_by('rubros.id_rubro')
-              ->where('rubros.id_usuario',$this->session->userdata('id_usuario'))
-              ->or_where('rubros.id_usuario',0)
+              ->group_by('nombrerubro')
+              ->where('gastos.id_usuario',$this->session->userdata('id_usuario'))
               ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
               ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
-
-              /*->order_by("nombre","ASC")*/
+              ->order_by("rubros.id_rubro","ASC")
               ->get()
               ->result_array();
-  }
+}
 
   public function getcatalogogastos($id_rubro){
    return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo, catalogo_gastos.id_rubro as rubro')

@@ -8,7 +8,6 @@
             <small>Listado de gastos</small>
           </h1>
         </section>
-
         <!-- Main content -->
         <section class="content">
 
