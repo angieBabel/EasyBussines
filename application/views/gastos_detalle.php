@@ -15,32 +15,6 @@
           <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
-              <!-- //Pop up para agregar -->
-              <div id="new">
-                <!-- Popup Div Starts Here -->
-                <div id="popupContact">
-
-                <!-- Contact Us Form -->
-                  <form action="index.php/uploader/altagasto" id="form" method="post" name="form">
-                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
-                    <h2 id="tituloForm">Agregar gasto</h2>
-                    <hr>
-                    <select name="name" id="name" class="form-control">
-                        <?php foreach ($catalogogastos as $rowcatalogogastos ) { ?>
-                          <option value="<?php echo $rowcatalogogastos['idconcepto']?>">
-                            <?php echo $rowcatalogogastos['nombreconcepto']?>
-                          </option>
-                       <?php } ?>
-                    </select>
-                    <input class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" type="text">
-                    <input class="form-control" type="hidden" name="costo" id="costo" value="<?php echo $rowcatalogogastos['costo']?>">
-                    <input class="form-control" type="hidden" name="rubro" id="rubro" value="<?php echo $rowcatalogogastos['rubro']?>">
-                    <button type="submit" class="btn btn-success form-control">Save</button>
-                  </form>
-                </div>
-                <!-- Popup Div Ends Here -->
-              </div>
-
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
                 <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; overflow: scroll">
@@ -71,9 +45,6 @@
                             </tbody>
                         </table>
                       </div>
-                  </div>
-                  <div class="col-lg-2" id="add">
-                    <a href="javascript:%20newdiv_show()" data-rel="popup">Agregar Gasto <i class="fa fa-plus-square fa-lg"></i></a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

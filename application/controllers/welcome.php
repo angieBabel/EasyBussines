@@ -87,7 +87,8 @@
 	}
 	public function gastos(){
 		$data = array(
-			'gastosgeneral'=>$this->m_easyb->getgastos()
+			'gastosgeneral'=>$this->m_easyb->getgastos(),
+			'catalogogastos'=>$this->m_easyb->getcatalogogastos()
 			);
 		$this->load->view('gastos',$data);
 	}
@@ -99,8 +100,7 @@
 		}
 
 		$data = array(
-			'detallegastos'=>$this->m_easyb->getdetallegastos($id_rubro),
-			'catalogogastos'=>$this->m_easyb->getcatalogogastos($id_rubro)
+			'detallegastos'=>$this->m_easyb->getdetallegastos($id_rubro)
 			);
 
 		$this->load->view('gastos_detalle',$data);

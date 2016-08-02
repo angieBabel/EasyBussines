@@ -150,10 +150,11 @@ class uploader extends CI_Controller {
   public function altagasto(){
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
-    $this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');
+    /*$this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');*/
     $this->form_validation->set_rules('cantidad','Cantidad','required');
       if ($this->form_validation->run() == FALSE)
       {
+        redirect('welcome/gastos');
          //Acción a tomar si existe un error el en la validación
         //redirect('welcome/matAltaProductos');
       }
@@ -161,16 +162,15 @@ class uploader extends CI_Controller {
       {
 
          //Acción a tomas si no existe ningun error
-            $id_rubro=$this->input->POST('rubro');
-            $this->session->set_flashdata('id_rubro',$id_rubro);//flash data para mandar id del rubro y redireccionar correctamente
-
+            //$id_rubro=$this->input->POST('rubro');
+            //$this->session->set_flashdata('id_rubro',$id_rubro);//flash data para mandar id del rubro y redireccionar correctamente
             $id_usuario=$this->session->userdata('id_usuario');
-
-            $nombre=$this->input->POST('name');
+            $idconcepto=$this->input->POST('idconcepto');
             $cantidad=$this->input->POST('cantidad');
-            $costo=$this->input->POST('costo');
-            $this->m_easyb->altagasto($id_usuario,$nombre,$cantidad,$costo);
-            redirect('welcome/getdetallegastos');
+            $costoarray=$this->m_easyb->getcosto($idconcepto);
+            $costo=$costoarray[0];
+            $this->m_easyb->altagasto($id_usuario,$idconcepto,$cantidad,$costo['costo']);
+            redirect('welcome/gastos');
       }
     }
 

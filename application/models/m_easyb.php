@@ -134,10 +134,10 @@ public function getgastos(){
               ->result_array();
 }
 
-  public function getcatalogogastos($id_rubro){
+  public function getcatalogogastos(){
    return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo, catalogo_gastos.id_rubro as rubro')
               ->from('catalogo_gastos')
-              ->where('catalogo_gastos.id_rubro',$id_rubro)
+              //->where('catalogo_gastos.id_rubro',$id_rubro)
               ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
               ->order_by("id_concepto","ASC")
               ->get()
@@ -155,6 +155,14 @@ public function getgastos(){
               ->get()
               ->result_array();
   }
+  public function getcosto($idconcepto){
+   return $this->db->select('costo')
+              ->from('catalogo_gastos')
+              ->where('id_concepto',$idconcepto)
+              ->where('id_usuario',$this->session->userdata('id_usuario'))
+              ->get()
+              ->result_array();
+ }
   //obtencion de datos para la rotacion de cobros
   public function getrotacion(){
     return $this->db->select('modo_pago as mp')
@@ -290,8 +298,8 @@ public function getgastos(){
             ->set('nombre',$name)
             ->insert('rubros');
   }
-  public function altagasto($id_usuario,$nombre,$cantidad,$costo){
-    $this->db->set('id_concepto',$nombre)
+  public function altagasto($id_usuario,$idconcepto,$cantidad,$costo){
+    $this->db->set('id_concepto',$idconcepto)
               ->set('id_usuario',$id_usuario)
               ->set('cantidad',$cantidad)
               ->set('fecha',date('Y-m-d'))
