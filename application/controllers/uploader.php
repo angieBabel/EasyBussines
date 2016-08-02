@@ -3,7 +3,8 @@
 class uploader extends CI_Controller {
   function __construct(){
     parent::__construct();
-    $this->load->library('form_validation');
+   // $this->load->library('form_validation');
+    $this->load->library('session');
     $this->load->model('m_easyb');
   }
 
@@ -26,19 +27,22 @@ class uploader extends CI_Controller {
   public function signin(){
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
-    $this->form_validation->set_rules('email', 'Email', 'required|is_unique[usuarios.correo]');
+    $this->form_validation->set_message('valid_email','El campo %s debe ser un correo valido');
+    $this->form_validation->set_rules('email', 'Email', 'required|is_unique[usuarios.correo]|valid_email');
     $this->form_validation->set_rules('password','Password','required');
     $this->form_validation->set_rules('nombre','Nombre','required');
     $this->form_validation->set_rules('apellido','Apellido','required');
 
       if ($this->form_validation->run() == FALSE)
       {
+        redirect('welcome/signin');
          //Acción a tomar si existe un error el en la validación
         //redirect('welcome/matAltaProductos');
       }
       else
       {
          //Acción a tomas si no existe ningun error
+        echo "mmmm";
             $email=$this->input->POST('email');
             $nombre=$this->input->POST('nombre');
             $apellido=$this->input->POST('apellido');
@@ -49,11 +53,14 @@ class uploader extends CI_Controller {
             //print_r($res);
             if (!empty($res)){
               $datos=array('id_usuario'=>$res[0]['id_usuario'],
-                            'correo'=>$res[0]['correo'],
-                            'nombre'=>$res[0]['nombre'],
-                            'apellido'=>$res[0]['apellido'],
-                            'clave_registro'=>$res[0]['clave_registro'],
-                            'tipografica'=>'pastel');
+                      'correo'=>$res[0]['correo'],
+                      'nombre'=>$res[0]['nombre'],
+                      'apellido'=>$res[0]['apellido'],
+                      'clave_registro'=>$res[0]['clave_registro'],
+                      'fechaInicio'=>date('Y-m-d', strtotime('-1 month')),
+                      'fechaFin'=>date('Y-m-d'),
+                      'tipografica'=>'pastel'
+                      );
               $this->session->set_userdata($datos);
               /*$this->load->view('panel');*/
               redirect('welcome/panel');
@@ -71,6 +78,7 @@ class uploader extends CI_Controller {
       {
          //Acción a tomar si existe un error el en la validación
         //redirect('welcome/matAltaProductos');
+        redirect('welcome/productos');
       }
       else
       {
@@ -109,11 +117,11 @@ class uploader extends CI_Controller {
       }
   }
 
-  public function altarubro(){
+  public function altacatgasto(){
 
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
     $this->form_validation->set_message('required','El campo %s es requerido');
-    $this->form_validation->set_rules('name', 'Name', 'required|is_unique[rubros.nombre]');
+    $this->form_validation->set_rules('name', 'Name', 'required|is_unique[catalogo_gastos.nombre]');
       if ($this->form_validation->run() == FALSE)
       {
         echo "no jalo";
@@ -123,31 +131,21 @@ class uploader extends CI_Controller {
       else
       {
          //Acción a tomas si no existe ningun error
-            $id_usuario=$this->session->userdata('id_usuario');
+            $idUsuario=$this->session->userdata('id_usuario');
             $nombre=$this->input->POST('name');
-            $this->m_easyb->altarubro($id_usuario,$nombre);
-            redirect('welcome/gastos');
+            $precio=$this->input->POST('precio');
+            $tiporubro=$this->input->POST('tiporubro');
+            $rubroExistente=$this->input->POST('rubroExistente');
+            $rubroNuevo=$this->input->POST('rubroNuevo');
+            if ($tiporubro=="Existe") {
+              $this->m_easyb->altacatgasto($idUsuario,$nombre,$precio,$rubroExistente,$tiporubro);
+            }else{
+              $this->m_easyb->altarubro($idUsuario,$rubroNuevo);
+              $this->m_easyb->altacatgasto($idUsuario,$nombre,$precio,$rubroExistente,$tiporubro);
+            }
+            redirect('welcome/catalogogastos');
       }
   }
-
-  public function altaconcepto(){
-    $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
-    $this->form_validation->set_message('required','El campo %s es requerido');
-    /*$this->form_validation->set_rules('name', 'Name', 'required|is_unique[productos.nombre]');*/
-      if ($this->form_validation->run() == FALSE)
-      {
-         //Acción a tomar si existe un error el en la validación
-        //redirect('welcome/matAltaProductos');
-      }
-      else
-      {
-         //Acción a tomas si no existe ningun error
-            $id_usuario=$this->session->userdata('id_usuario');
-            $nombre=$this->input->POST('name');
-            $this->m_easyb->altarubro($id_usuario,$nombre);
-            redirect('welcome/gastos');
-      }
-    }
 
   public function altagasto(){
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
@@ -189,6 +187,12 @@ class uploader extends CI_Controller {
     redirect('welcome/ventas');
   }
 
+  public function eliminaconcepto(){
+    $id = $_GET['id'];
+    $this->m_easyb->eliminaconcepto($id);
+    redirect('welcome/catalogogastos');
+  }
+
   public function eliminagasto(){
     $id_rubro=$_GET['rubro'];
     $this->session->set_flashdata('id_rubro',$id_rubro);//flash data para mandar id del rubro y redireccionar correctamente
@@ -204,6 +208,15 @@ class uploader extends CI_Controller {
     $precio=$this->input->POST('precioP');
     $this->m_easyb->editaproductos($id_producto,$nombre,$precio);
     redirect('welcome/productos');
+  }
+
+  public function editacatgastos(){
+    $idConcepto=$this->input->POST('idG');
+    $idRubro=$this->input->POST('idRG');
+    $nombre=$this->input->POST('nameG');
+    $costo=$this->input->POST('precioG');
+    $this->m_easyb->editacatgastos($idConcepto,$idRubro,$nombre,$costo);
+    redirect('welcome/catalogogastos');
   }
 
   public function editaadeudo(){

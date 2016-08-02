@@ -16,22 +16,6 @@
           <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
-              <!-- //Pop up para agregar -->
-              <div id="new">
-                <!-- Popup Div Starts Here -->
-                <div id="popupContact">
-                <!-- Contact Us Form -->
-                  <form action="index.php/uploader/altarubro" id="form" method="post" name="form">
-                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
-                    <h2 id="tituloForm">Nuevo Rubro</h2>
-                    <hr>
-                    <input class="form-control" id="name" name="name" placeholder="Nombre del producto" type="text">
-                     <button type="submit" class="btn btn-success form-control">Save</button>
-                  </form>
-                </div>
-                <!-- Popup Div Ends Here -->
-              </div>
-
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
                 <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; overflow: scroll">
@@ -57,9 +41,6 @@
                             </tbody>
                         </table>
                       </div>
-                  </div>
-                  <div class="col-lg-2" id="add">
-                    <a href="javascript:%20newdiv_show()" data-rel="popup">Nuevo Rubro <i class="fa fa-plus-square fa-lg"></i></a>
                   </div>
                 </div>
               </div><!-- /.nav-tabs-custom -->

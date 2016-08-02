@@ -57,7 +57,7 @@
 		}
 	}
 
-	function cierraSesion(){
+	public function cierraSesion(){
 		$this->session->sess_destroy();
 		redirect('welcome/login');
 	}
@@ -77,6 +77,13 @@
 			'sumaventas'=>$this->m_easyb->getsumaventas()
 			);
 		$this->load->view('ventas',$data);
+	}
+	public function catalogogastos(){
+		$data = array(
+			'catgastos'=>$this->m_easyb->getcatgastos(),
+			'rubros'=>$this->m_easyb->getrubros()
+			);
+		$this->load->view('catalogogastos',$data);
 	}
 	public function gastos(){
 		$data = array(

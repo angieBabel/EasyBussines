@@ -26,6 +26,13 @@
               </a>
             </li>
             <li class="treeview">
+              <a href="index.php/welcome/catalogogastos">
+                <i class="fa fa-book fa-3x"></i>
+                <br>
+                Catalogo de gastos
+              </a>
+            </li>
+            <li class="treeview">
               <a href="index.php/welcome/gastos">
                 <i class="fa fa-dollar fa-3x"></i>
                 <br>

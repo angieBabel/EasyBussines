@@ -26,16 +26,19 @@
       </div>
       <form class="email-login" action="index.php/uploader/signin" method="post">
         <div class="u-form-group">
-          <input type="nombre" for="nombre" name="nombre" placeholder="Nombre"/>
+          <input type="nombre" for="nombre" name="nombre" placeholder="Nombre" value="<?php echo set_value('nombre'); ?>"/>
         </div>
         <div class="u-form-group">
-          <input type="nombre" for="apellido" name="apellido" placeholder="Apellido"/>
+          <input type="nombre" for="apellido" name="apellido" placeholder="Apellido" value="<?php echo set_value('apellido'); ?>"/>
         </div>
         <div class="u-form-group">
-          <input type="email" for="email" name="email" placeholder="Email"/>
+          <input type="email" for="email" name="email" placeholder="Email" value="<?php echo set_value('email'); ?>"/>
+          <!-- <div class="error">
+            <?php //echo form_error('email'); ?>
+          </div> -->
         </div>
         <div class="u-form-group">
-          <input type="password" for="password" name="password" placeholder="Password"/>
+          <input type="password" for="password" name="password" placeholder="Password" value="<?php echo set_value('password'); ?>"/>
         </div>
         <div class="u-form-group">
           <button type="submit">Sign in</button>
