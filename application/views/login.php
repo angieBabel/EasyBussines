@@ -18,7 +18,7 @@
           <i class="fa fa-facebook fa-lg"></i>
           Login in with facebook
         </a>
-        <a href="#">
+        <a href="<?php echo $login_url2;?>">
           <i class="fa fa-google-plus fa-lg"></i>
           log in with Google
         </a>

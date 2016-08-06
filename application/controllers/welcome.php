@@ -31,15 +31,30 @@
     }
 
     if ($user) {
-        $data['logout_url']=site_url('Mi_facebook/logout');
+        $data['logout_url']=site_url('welcome/cierraSesion');
     }else{
         $data['login_url'] = $this->facebook->getLoginUrl(array(
             'redirect_uri' => site_url('welcome/panel'),
                 'scope' => array("email") ));
     }
-    /*print_r($data);*/
-    /*redirect('')*/
+
+    if($this->session->userdata('login') == true){
+			redirect('welcome/panel');
+		}
+
+		if (isset($_GET['code'])) {
+
+			$this->googleplus->getAuthenticate();
+			$this->session->set_userdata('login',true);
+			$this->session->set_userdata('user_profile',$this->googleplus->getUserInfo());
+			redirect('welcome/panel');
+
+		}
+
+    $data['login_url2'] = $this->googleplus->loginURL();
+
     $this->load->view('login',$data);
+
   }
 
 	public function signin(){
@@ -89,6 +104,7 @@
 		$this->session->sess_destroy();
 		$this->load->library('facebook');
     $this->facebook->destroySession();
+    $this->googleplus->revokeToken();
 		redirect('welcome/login');
 	}
 
