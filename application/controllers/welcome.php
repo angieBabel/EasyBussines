@@ -12,13 +12,12 @@
 		$this->load->view('index');
 	}
 
-	/*public function login(){
+	public function login(){
 		$this->load->view('login');
 	}
-*/
-	public function login(){
-    $this->load->library('facebook');
 
+	/*public function login(){
+    $this->load->library('facebook');
     $user = $this->facebook->getUser();
     if ($user) {
             try {
@@ -29,33 +28,46 @@
     }else {
         $this->facebook->destroySession();
     }
-
     if ($user) {
         $data['logout_url']=site_url('welcome/cierraSesion');
     }else{
         $data['login_url'] = $this->facebook->getLoginUrl(array(
-            'redirect_uri' => site_url('welcome/panel'),
-                'scope' => array("email") ));
+            'redirect_uri' => site_url('welcome/login'),
+                'scope' => array("email")));
     }
-
-    if($this->session->userdata('login') == true){
-			redirect('welcome/panel');
-		}
-
-		if (isset($_GET['code'])) {
+    if (isset($_GET['code'])) {
+			//echo $_GET['code'];
 
 			$this->googleplus->getAuthenticate();
 			$this->session->set_userdata('login',true);
-			$this->session->set_userdata('user_profile',$this->googleplus->getUserInfo());
+			$this->session->set_userdata('user_profile3',$this->facebook->api('/me'));
+			redirect('welcome/panel');
+		}
+		$data['login_url'] = $this->facebook->getLoginUrl(array(
+            'redirect_uri' => site_url('welcome/login'),
+                'scope' => array("email")));
+    $this->load->view('login',$data);
+  }*/
+//gmail login
+ /*public function login(){
+
+		if($this->session->userdata('login') == true){
+			//redirect('welcome/profile');
+		}
+
+		if (isset($_GET['code'])) {
+			//echo $_GET['code'];
+
+			$this->googleplus->getAuthenticate();
+			$this->session->set_userdata('login',true);
+			$this->session->set_userdata('user_profile',$this->facebook->api('/me'));
 			redirect('welcome/panel');
 
 		}
+		$contents['login_url'] = $this->googleplus->loginURL();
 
-    $data['login_url2'] = $this->googleplus->loginURL();
-
-    $this->load->view('login',$data);
-
-  }
+		$this->load->view('login',$contents);
+	}*/
 
 	public function signin(){
 		$this->load->view('signin');
@@ -64,13 +76,20 @@
 		$this->load->view('loginFB');
 	}
 	public function panel(){
-
+		$this->facebook->destroySession();
+		$contents['user_profile'] = $this->session->userdata('user_profile3');
+		print_r($contents);
+		redirect('welcome/cierraSesion');
+		/*print_r($data);*/
+		/*echo $this->session->userdata('user_profile');*/
+/*
 		if ($this->session->userdata('id_usuario')==null) {
 			$cuenta=$this->input->post('email');
 			$clave=$this->input->post('password');
 			$res=$this->m_easyb->validarusuario($cuenta,$clave);
-			//print_r($res);
+			echo "entro al null";
 			if (!empty($res)){
+				print_r($res);
 				$datos=array('id_usuario'=>$res[0]['id_usuario'],
 											'correo'=>$res[0]['correo'],
 											'nombre'=>$res[0]['nombre'],
@@ -84,7 +103,7 @@
 				$data = array(
 					'ventasMes'=>$this->m_easyb->getresumenventas(),
 					'comparativaVentas'=>$this->m_easyb->getcomparativaventas()
-					/*'productosMes'=>$this->m_easyb->getventasproductos()*/
+
 					);
 				$this->load->view('panel',$data);
 			}
@@ -92,20 +111,21 @@
 				$this->load->view('login');
 			}
 		}else{
+			echo "ya tiene dato";
 			$data = array(
 					'ventasMes'=>$this->m_easyb->getresumenventas(),
 					'comparativaVentas'=>$this->m_easyb->getcomparativaventas()
 					);
 				$this->load->view('panel',$data);
-		}
+		}*/
 	}
 
 	public function cierraSesion(){
-		$this->session->sess_destroy();
 		$this->load->library('facebook');
+		$this->session->sess_destroy();
     $this->facebook->destroySession();
     $this->googleplus->revokeToken();
-		redirect('welcome/login');
+		//redirect('welcome/login');
 	}
 
 	public function productos(){
