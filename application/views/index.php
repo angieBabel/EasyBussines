@@ -17,6 +17,23 @@
   <script src="js/bootstrap.min.js"></script>
 </head>
 <body >
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1056405014449406',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 <header>
     <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -24,7 +41,6 @@
       <!-- Brand and toggle get grouped for better mobile display-->
         <div class="col-lg-3" id="logotipo">
           <h2 class="logo left"><img src="image/logotipo3.png"width="50" height="50">   Easy Business</h2>
-
         </div>
         <div class="col-lg-9">
           <div class="col-lg-1"></div>
@@ -39,8 +55,6 @@
             <li><a href="index.php/welcome/signin" >Registrarse</a></li>
           </ul>
         </div>
-
-
     </div><!-- /.container-fluid-->
   </nav>
 
@@ -84,7 +98,6 @@
           </div>
         </div>
         <div class="col-lg-1"></div>
-
       </div>
       <div class="col-lg-12 seccion3 "><a name="seccion3"></a>
         <div class="col-lg-7">
@@ -112,11 +125,14 @@
 
       </div>
       <div class="col-lg-12 seccion5">
+      <div
+        class="fb-like"
+        data-share="true">
+      </div>
 
       </div>
-      <div class="col-lg-12">
-
-      </div>
+      <!-- <div class="col-lg-12">
+      </div> -->
     </div>
   </div>
 </body>

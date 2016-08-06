@@ -12,14 +12,42 @@
 		$this->load->view('index');
 	}
 
-	public function login(){
+	/*public function login(){
 		$this->load->view('login');
 	}
+*/
+	public function login(){
+    $this->load->library('facebook');
+
+    $user = $this->facebook->getUser();
+    if ($user) {
+            try {
+                $data['user_profile'] = $this->facebook->api('/me');
+            } catch (FacebookApiException $e) {
+                $user = null;
+            }
+    }else {
+        $this->facebook->destroySession();
+    }
+
+    if ($user) {
+        $data['logout_url']=site_url('Mi_facebook/logout');
+    }else{
+        $data['login_url'] = $this->facebook->getLoginUrl(array(
+            'redirect_uri' => site_url('welcome/panel'),
+                'scope' => array("email") ));
+    }
+    /*print_r($data);*/
+    /*redirect('')*/
+    $this->load->view('login',$data);
+  }
 
 	public function signin(){
 		$this->load->view('signin');
 	}
-
+	public function loginFB(){
+		$this->load->view('loginFB');
+	}
 	public function panel(){
 
 		if ($this->session->userdata('id_usuario')==null) {
@@ -59,6 +87,8 @@
 
 	public function cierraSesion(){
 		$this->session->sess_destroy();
+		$this->load->library('facebook');
+    $this->facebook->destroySession();
 		redirect('welcome/login');
 	}
 

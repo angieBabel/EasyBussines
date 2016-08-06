@@ -13,6 +13,30 @@ function validarusuario($cuenta,$clave){
               ->get()
               ->result_array();
    }
+//funcion de facebook
+public function datos_usuario()
+    {
+        $appId = '1056405014449406';
+        $secret = '99d0c2e16a5cb9ab3fa4aacb1a8444f9';
+        $fb_config = array(
+            'appId' => $appId,
+            'secret' => $secret
+        );
+        $this->load->library('facebook', $fb_config);
+        //obtenemos el uid del usuario para mostrar los datos de él con getUser()
+        $user = $this->facebook->getUser();
+        if($user)
+        {
+            $fql  = 'SELECT uid,name,pic_square,email from user where uid="'.$user.'";';
+            $datos  =   array(
+                'method'    => 'fql.query',
+                'query'     => $fql,
+                'callback'  => ''
+            );
+            $resultado = $this->facebook->api($datos);
+            return $resultado;
+        }
+    }
 //Obtencion de datos
   //funcion para tener el resumen de las ventas en home
  public function getresumenventas(){
