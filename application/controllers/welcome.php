@@ -80,7 +80,7 @@
 
 		if ($this->session->userdata('id_usuario')==null) {
 			if ($this->session->userdata('loginGmail')==true) {
-				//echo "entro al loginGMAIL";
+				echo "entro al loginGMAIL";
 				$cuentas=$contents['user_profile'];
 				$cuenta=$cuentas['email'];
 				$clave=$cuentas['id'];
@@ -90,7 +90,7 @@
 				$cuenta=$this->input->post('email');
 			  $clave=$this->input->post('password');
 			}
-			//$res=$this->m_easyb->validarusuario($cuenta,$clave);
+			$res=$this->m_easyb->validarusuario($cuenta,$clave);
 			if (!empty($res)){
 				$datos=array('id_usuario'=>$res[0]['id_usuario'],
 											'correo'=>$res[0]['correo'],
