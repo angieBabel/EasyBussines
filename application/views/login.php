@@ -9,16 +9,19 @@
   </head>
 
 <body>
+<?php if (@$user_profile):  ?>
+<h2><?=$user_profile['name']?></h2>
+<?php endif; ?>
   <div class="login-box">
       <div class="lb-header">
         <h1 id="login-box-link">Log in</h1>
       </div>
       <div class="social-login">
-        <a href="#"><!-- <?=@$login_url?> -->
+        <a href="<?php echo $login_FBurl;?>">
           <i class="fa fa-facebook fa-lg"></i>
           Login in with facebook
         </a>
-        <a href="<?php echo $login_url;?>"><!-- <?php echo $login_url;?> -->
+        <a href=""><!-- <?php// echo $login_Gmailurl;?> -->
           <i class="fa fa-google-plus fa-lg"></i>
           log in with Google
         </a>

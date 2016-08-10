@@ -19,7 +19,7 @@
           <i class="fa fa-facebook fa-lg"></i>
           Sign in with facebook
         </a>
-        <a href="#">
+        <a href="<?php echo $signin_Gmailurl;?>">
           <i class="fa fa-google-plus fa-lg"></i>
           Sign in with Google
         </a>

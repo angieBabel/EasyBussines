@@ -16,81 +16,75 @@
 		$this->load->view('login');
 	}*/
 
-	/*public function login(){
+	public function login(){
     $this->load->library('facebook');
     $user = $this->facebook->getUser();
     if ($user) {
             try {
                 $data['user_profile'] = $this->facebook->api('/me');
+                echo "obtuvo el usuario";
             } catch (FacebookApiException $e) {
                 $user = null;
             }
     }else {
+    	 echo "no obtuvo el usuario";
         $this->facebook->destroySession();
     }
     if ($user) {
         $data['logout_url']=site_url('welcome/cierraSesion');
     }else{
-        $data['login_url'] = $this->facebook->getLoginUrl(array(
-            'redirect_uri' => site_url('welcome/login'),
-                'scope' => array("email")));
+        $data['login_FBurl'] = $this->facebook->getLoginUrl(array(
+            'redirect_uri' => site_url('welcome/panel'),
+                'scope' => array("email")
+         ));
     }
-    if (isset($_GET['code'])) {
-			//echo $_GET['code'];
-
-			$this->googleplus->getAuthenticate();
-			$this->session->set_userdata('login',true);
-			$this->session->set_userdata('user_profile3',$this->facebook->api('/me'));
-			redirect('welcome/panel');
-		}
 		$data['login_url'] = $this->facebook->getLoginUrl(array(
             'redirect_uri' => site_url('welcome/login'),
                 'scope' => array("email")));
     $this->load->view('login',$data);
-  }*/
+  }
 	//gmail login
-	 public function login(){
-
-		if($this->session->userdata('login') == true){
-			//redirect('welcome/profile');
-		}
-
+	/*public function login(){
 		if (isset($_GET['code'])) {
 			$this->googleplus->getAuthenticate();
 			$this->session->set_userdata('loginGmail',true);
 			$this->session->set_userdata('user_profile',$this->googleplus->getUserInfo());
-			redirect('welcome/panel');
+			if ($this->session->userdata('visitSign')==true) {
+				$this->session->set_userdata('signinGmail',true);
+				redirect('uploader/signin');
+			}else{
+				redirect('welcome/panel');
+			}
 		}
-		$contents['login_url'] = $this->googleplus->loginURL();
+		$contents['login_Gmailurl'] = $this->googleplus->loginURL();
 
 		$this->load->view('login',$contents);
-	}
+	}*/
 
 	public function signin(){
-		$this->load->view('signin');
+		$this->session->set_userdata('visitSign',true);
+		$contents['signin_Gmailurl'] = $this->googleplus->loginURL();
+		$this->load->view('signin',$contents);
 	}
+
 	public function loginFB(){
 		$this->load->view('loginFB');
 	}
 	public function panel(){
-		/*$this->facebook->destroySession();*/
 		$contents['user_profile'] = $this->session->userdata('user_profile');
-		//print_r($contents);
-		//print_r($this->session->userdata('loginGmail'));
-
 		if ($this->session->userdata('id_usuario')==null) {
 			if ($this->session->userdata('loginGmail')==true) {
-				echo "entro al loginGMAIL";
+				//echo "entro al loginGMAIL";
 				$cuentas=$contents['user_profile'];
 				$cuenta=$cuentas['email'];
 				$clave=$cuentas['id'];
 			}elseif ($this->session->userdata('loginFB')) {
-				# code...
+
 			}else{
 				$cuenta=$this->input->post('email');
 			  $clave=$this->input->post('password');
 			}
-			$res=$this->m_easyb->validarusuario($cuenta,$clave);
+			//$res=$this->m_easyb->validarusuario($cuenta,$clave);
 			if (!empty($res)){
 				$datos=array('id_usuario'=>$res[0]['id_usuario'],
 											'correo'=>$res[0]['correo'],
@@ -110,10 +104,8 @@
 				$this->load->view('panel',$data);
 			}
 			else{
-				//$this->load->view('login');
 				$this->session->set_userdata('loginGmail',false);
 				redirect('welcome/login');
-				/*echo "no valido";*/
 			}
 		}else{
 			$data = array(

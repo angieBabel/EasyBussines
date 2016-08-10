@@ -158,45 +158,45 @@ public function getgastos(){
               ->result_array();
 }
 
-  public function getcatalogogastos(){
-   return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo, catalogo_gastos.id_rubro as rubro')
-              ->from('catalogo_gastos')
-              //->where('catalogo_gastos.id_rubro',$id_rubro)
-              ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
-              ->order_by("id_concepto","ASC")
-              ->get()
-              ->result_array();
-  }
-  public function getdetallegastos($id_rubro){
-   return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
-              ->from('gastos')
-              ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
-              ->where('catalogo_gastos.id_rubro',$id_rubro)
-              ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
-              ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
-              ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
-              ->order_by("id_gasto","ASC")
-              ->get()
-              ->result_array();
-  }
-  public function getcosto($idconcepto){
-   return $this->db->select('costo')
-              ->from('catalogo_gastos')
-              ->where('id_concepto',$idconcepto)
-              ->where('id_usuario',$this->session->userdata('id_usuario'))
-              ->get()
-              ->result_array();
- }
-  //obtencion de datos para la rotacion de cobros
-  public function getrotacion(){
-    return $this->db->select('modo_pago as mp')
-                    ->from('ventas')
-                    ->where('id_usuario',$this->session->userdata('id_usuario'))
-                    ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
-                    ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
-                    ->get()
-                    ->result_array();
-  }
+public function getcatalogogastos(){
+ return $this->db->select('catalogo_gastos.id_concepto as idconcepto, catalogo_gastos.nombre as nombreconcepto, catalogo_gastos.costo as costo, catalogo_gastos.id_rubro as rubro')
+            ->from('catalogo_gastos')
+            //->where('catalogo_gastos.id_rubro',$id_rubro)
+            ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+            ->order_by("id_concepto","ASC")
+            ->get()
+            ->result_array();
+}
+public function getdetallegastos($id_rubro){
+ return $this->db->select('gastos.id_gasto as idgasto, catalogo_gastos.nombre as nombreconcepto, gastos.cantidad as cantidad, gastos.fecha as fecha, gastos.total as totalgasto, catalogo_gastos.id_rubro as rubro')
+            ->from('gastos')
+            ->join('catalogo_gastos','gastos.id_concepto=catalogo_gastos.id_concepto','left')
+            ->where('catalogo_gastos.id_rubro',$id_rubro)
+            ->where('catalogo_gastos.id_usuario',$this->session->userdata('id_usuario'))
+            ->where('gastos.fecha >=',$this->session->userdata('fechaInicio'))
+            ->where('gastos.fecha <=',$this->session->userdata('fechaFin'))
+            ->order_by("id_gasto","ASC")
+            ->get()
+            ->result_array();
+}
+public function getcosto($idconcepto){
+ return $this->db->select('costo')
+            ->from('catalogo_gastos')
+            ->where('id_concepto',$idconcepto)
+            ->where('id_usuario',$this->session->userdata('id_usuario'))
+            ->get()
+            ->result_array();
+}
+//obtencion de datos para la rotacion de cobros
+public function getrotacion(){
+  return $this->db->select('modo_pago as mp')
+                  ->from('ventas')
+                  ->where('id_usuario',$this->session->userdata('id_usuario'))
+                  ->where('ventas.fecha >=',$this->session->userdata('fechaInicio'))
+                  ->where('ventas.fecha <=',$this->session->userdata('fechaFin'))
+                  ->get()
+                  ->result_array();
+}
 //para las graficas
   //saber las ventas de contado
     public function getventascontado(){

@@ -33,24 +33,63 @@ class uploader extends CI_Controller {
     $this->form_validation->set_rules('nombre','Nombre','required');
     $this->form_validation->set_rules('apellido','Apellido','required');
 
-      if ($this->form_validation->run() == FALSE)
-      {
-        redirect('welcome/signin');
-         //Acción a tomar si existe un error el en la validación
-        //redirect('welcome/matAltaProductos');
-      }
-      else
-      {
-         //Acción a tomas si no existe ningun error
-        echo "mmmm";
+      if ($this->form_validation->run() == FALSE){
+        if ($this->session->userdata('signinGmail')==true) {
+          $contents['user_profile'] = $this->session->userdata('user_profile');
+          $datoss=$contents['user_profile'];
+          $email=$datoss['email'];
+          $nombre=$datoss['given_name'];
+          $apellido=$datoss['family_name'];
+          $password=$datoss['id'];
+          //print_r($datoss);
+        }elseif ($this->session->userdata('loginFB')==true) {
+          # code...
+        }else{
+          echo "si entro al else de la validacion false";
+         //redirect('welcome/signin');
+        }
+            if ($email!=null) {
+              //$this->m_easyb->signin($email,$nombre,$apellido,$password);
+              $res=$this->m_easyb->validarusuario($email,$password);
+
+              if (!empty($res)){
+                $datos=array('id_usuario'=>$res[0]['id_usuario'],
+                        'correo'=>$res[0]['correo'],
+                        'nombre'=>$res[0]['nombre'],
+                        'apellido'=>$res[0]['apellido'],
+                        'clave_registro'=>$res[0]['clave_registro'],
+                        'fechaInicio'=>date('Y-m-d', strtotime('-1 month')),
+                        'fechaFin'=>date('Y-m-d'),
+                        'tipografica'=>'pastel'
+                        );
+                $this->session->set_userdata($datos);
+                //$this->load->view('panel');
+                redirect('welcome/panel');
+              }
+            }
+            //echo "si inicio sesion";
+
+            /*redirect('welcome/panel');*/
+      }else{
+        if ($this->session->userdata('signinGmail')==true) {
+          echo "entro al loginGMAIL";
+          $datoss=$contents['user_profile'];
+          $email=$datoss['email'];
+          $nombre=$datoss['given_name'];
+          $apellido=$datoss['family_name'];
+          $password=$datoss['id'];
+        }elseif ($this->session->userdata('loginFB')==true) {
+          # code...
+        }else{
+          //Acción a tomas si no existe ningun error
             $email=$this->input->POST('email');
             $nombre=$this->input->POST('nombre');
             $apellido=$this->input->POST('apellido');
             $password=$this->input->POST('password');
+        }
             $this->m_easyb->signin($email,$nombre,$apellido,$password);
-
             $res=$this->m_easyb->validarusuario($email,$password);
-            //print_r($res);
+            print_r($res);
             if (!empty($res)){
               $datos=array('id_usuario'=>$res[0]['id_usuario'],
                       'correo'=>$res[0]['correo'],
@@ -63,11 +102,14 @@ class uploader extends CI_Controller {
                       );
               $this->session->set_userdata($datos);
               /*$this->load->view('panel');*/
-              redirect('welcome/panel');
+
+              //redirect('welcome/panel');
             }
+            echo "si inicio sesion";
+
             /*redirect('welcome/panel');*/
+        }
       }
-  }
 
   public function altaProducto(){
     $this->form_validation->set_message('is_unique', 'El campo %s ya esta registrado');
