@@ -11,40 +11,8 @@
 	public function index(){
 		$this->load->view('index');
 	}
-
-	/*public function login(){
-		$this->load->view('login');
-	}*/
-
-	public function login(){
-    $this->load->library('facebook');
-    $user = $this->facebook->getUser();
-    if ($user) {
-            try {
-                $data['user_profile'] = $this->facebook->api('/me');
-                echo "obtuvo el usuario";
-            } catch (FacebookApiException $e) {
-                $user = null;
-            }
-    }else {
-    	 echo "no obtuvo el usuario";
-        $this->facebook->destroySession();
-    }
-    if ($user) {
-        $data['logout_url']=site_url('welcome/cierraSesion');
-    }else{
-        $data['login_FBurl'] = $this->facebook->getLoginUrl(array(
-            'redirect_uri' => site_url('welcome/panel'),
-                'scope' => array("email")
-         ));
-    }
-		$data['login_url'] = $this->facebook->getLoginUrl(array(
-            'redirect_uri' => site_url('welcome/login'),
-                'scope' => array("email")));
-    $this->load->view('login',$data);
-  }
 	//gmail login
-	/*public function login(){
+	public function login(){
 		if (isset($_GET['code'])) {
 			$this->googleplus->getAuthenticate();
 			$this->session->set_userdata('loginGmail',true);
@@ -53,13 +21,13 @@
 				$this->session->set_userdata('signinGmail',true);
 				redirect('uploader/signin');
 			}else{
+				//echo "encontro codigo";
 				redirect('welcome/panel');
 			}
 		}
 		$contents['login_Gmailurl'] = $this->googleplus->loginURL();
-
 		$this->load->view('login',$contents);
-	}*/
+	}
 
 	public function signin(){
 		$this->session->set_userdata('visitSign',true);
@@ -67,9 +35,6 @@
 		$this->load->view('signin',$contents);
 	}
 
-	public function loginFB(){
-		$this->load->view('loginFB');
-	}
 	public function panel(){
 		$contents['user_profile'] = $this->session->userdata('user_profile');
 		if ($this->session->userdata('id_usuario')==null) {
@@ -84,7 +49,7 @@
 				$cuenta=$this->input->post('email');
 			  $clave=$this->input->post('password');
 			}
-			//$res=$this->m_easyb->validarusuario($cuenta,$clave);
+			$res=$this->m_easyb->validarusuario($cuenta,$clave);
 			if (!empty($res)){
 				$datos=array('id_usuario'=>$res[0]['id_usuario'],
 											'correo'=>$res[0]['correo'],
@@ -117,6 +82,7 @@
 	}
 
 	public function cierraSesion(){
+		$this->session->set_userdata('visitSign',false);
 		$this->load->library('facebook');
 		$this->session->sess_destroy();
     $this->facebook->destroySession();

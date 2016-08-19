@@ -9,19 +9,16 @@
   </head>
 
 <body>
-<?php if (@$user_profile):  ?>
-<h2><?=$user_profile['name']?></h2>
-<?php endif; ?>
   <div class="login-box">
       <div class="lb-header">
         <h1 id="login-box-link">Log in</h1>
       </div>
       <div class="social-login">
-        <a href="<?php echo $login_FBurl;?>">
+        <a href="<?php //echo $login_FBurl;?>">
           <i class="fa fa-facebook fa-lg"></i>
           Login in with facebook
         </a>
-        <a href=""><!-- <?php// echo $login_Gmailurl;?> -->
+        <a href="<?php echo $login_Gmailurl;?>"><!-- <?php// echo $login_Gmailurl;?> -->
           <i class="fa fa-google-plus fa-lg"></i>
           log in with Google
         </a>
@@ -36,9 +33,9 @@
         <div class="u-form-group">
           <button type="submit">Log in</button>
         </div>
-        <div class="u-form-group">
+        <!-- <div class="u-form-group">
           <a href="#" class="forgot-password">Forgot password?</a>
-        </div>
+        </div> -->
         <div class="u-form-group">
           <span>¿Aún no tienes cuenta?</span>
           <a href="index.php/welcome/signin" class="forgot-password">¡Regístrate!</a>

@@ -49,8 +49,9 @@ class uploader extends CI_Controller {
          //redirect('welcome/signin');
         }
             if ($email!=null) {
-              //$this->m_easyb->signin($email,$nombre,$apellido,$password);
+              $this->m_easyb->signin($email,$nombre,$apellido,$password);
               $res=$this->m_easyb->validarusuario($email,$password);
+              //print_r($res);
 
               if (!empty($res)){
                 $datos=array('id_usuario'=>$res[0]['id_usuario'],
