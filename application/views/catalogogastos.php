@@ -25,7 +25,7 @@
                     <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
                     <h2 id="tituloForm">Agrega concepto</h2>
                     <hr>
-                    <input class="form-control" id="name" name="name" placeholder="Nombre del producto" type="text">
+                    <input class="form-control" id="name" name="name" placeholder="Nombre del concepto" type="text">
                     <input class="form-control" id="precio" name="precio" placeholder="Precio" type="text">
                     <label><input type="radio" name="tiporubro" id="tiporubro" value="Existe"
                     onChange="rubroE();">Rubro Existente</label>
