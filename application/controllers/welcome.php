@@ -50,6 +50,11 @@
 			  $clave=$this->input->post('password');
 			}
 			$res=$this->m_easyb->validarusuario($cuenta,$clave);
+			if ($this->session->userdata('loginGmail')==true && empty($res)) {
+				$this->session->set_userdata('signinGmail',true);
+				redirect('uploader/signin');
+			}
+
 			if (!empty($res)){
 				$datos=array('id_usuario'=>$res[0]['id_usuario'],
 											'correo'=>$res[0]['correo'],

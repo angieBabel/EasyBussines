@@ -3,9 +3,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['googleplus']['application_name'] = 'easybusiness';
-$config['googleplus']['client_id']        = '140640138726-gptvtbhc5f4ohc00pbcf5sk2n8tqavcu.apps.googleusercontent.com';
-$config['googleplus']['client_secret']    = '1MuB1UKdXRKVnSlGEZEufs3u';
-$config['googleplus']['redirect_uri']     = 'http://localhost:8080/EasyBussines/index.php/welcome/login';/*
+$config['googleplus']['client_id']        = '563218103211-te3sktujpj8g5pv81ggn42ssjkpkjqbb.apps.googleusercontent.com';
+$config['googleplus']['client_secret']    = 'yLmNaifxPAsdnG4nWNMpTJbA';
+$config['googleplus']['redirect_uri']     = 'http://webcolima.com/easybusiness/index.php/welcome/login';/*
 $config['googleplus']['api_key']          = '';
 $config['googleplus']['scopes']           = array();*/
 ?>
