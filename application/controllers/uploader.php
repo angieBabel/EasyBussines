@@ -35,6 +35,7 @@ class uploader extends CI_Controller {
 
       if ($this->form_validation->run() == FALSE){
         if ($this->session->userdata('signinGmail')==true) {
+          echo "entra a gmail";
           $contents['user_profile'] = $this->session->userdata('user_profile');
           $datoss=$contents['user_profile'];
           $email=$datoss['email'];
@@ -42,11 +43,16 @@ class uploader extends CI_Controller {
           $apellido=$datoss['family_name'];
           $password=$datoss['id'];
           //print_r($datoss);
-        }elseif ($this->session->userdata('loginFB')==true) {
-          # code...
+        }elseif ($this->session->userdata('signinFB')==true) {
+          echo "entra a FB";
+            $contents['user_profile'] = $this->session->userdata('user_profile');
+            $datoss=$contents['user_profile'];
+            $email=$datoss['email'];
+            $nombre=$datoss['first_name'];
+            $apellido=$datoss['last_name'];
+            $password=$datoss['id'];
         }else{
-          echo "si entro al else de la validacion false";
-         //redirect('welcome/signin');
+
         }
             if ($email!=null) {
               $this->m_easyb->signin($email,$nombre,$apellido,$password);
@@ -68,26 +74,27 @@ class uploader extends CI_Controller {
                 redirect('welcome/panel');
               }
             }
-            //echo "si inicio sesion";
-
-            /*redirect('welcome/panel');*/
       }else{
-        if ($this->session->userdata('signinGmail')==true) {
-          echo "entro al loginGMAIL";
+        /*if ($this->session->userdata('signinGmail')==true) {
           $datoss=$contents['user_profile'];
           $email=$datoss['email'];
           $nombre=$datoss['given_name'];
           $apellido=$datoss['family_name'];
           $password=$datoss['id'];
         }elseif ($this->session->userdata('loginFB')==true) {
-          # code...
-        }else{
+          $contents['user_profile'] = $this->session->userdata('user_profile');
+          $datoss=$contents['user_profile'];
+          $email=$datoss['email'];
+          $nombre=$datoss['first_name'];
+          $apellido=$datoss['last_name'];
+          $password=$datoss['id'];
+        }else{*/
           //Acción a tomas si no existe ningun error
             $email=$this->input->POST('email');
             $nombre=$this->input->POST('nombre');
             $apellido=$this->input->POST('apellido');
             $password=$this->input->POST('password');
-        }
+        //}
             $this->m_easyb->signin($email,$nombre,$apellido,$password);
             $res=$this->m_easyb->validarusuario($email,$password);
             print_r($res);

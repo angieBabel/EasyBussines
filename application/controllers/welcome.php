@@ -1,11 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class Welcome extends CI_Controller {
+		private $fb;
 	function __construct(){
 		parent::__construct();
 
 		$this->load->model('m_easyb');
 		$this->load->library('session');
+		$this->fb =$this->facebooksdk;
 	}
 
 	public function index(){
@@ -13,6 +15,7 @@
 	}
 	//gmail login
 	public function login(){
+		$cb= "http://localhost:8080/EasyBussines/index.php/welcome/fillFB";
 		if (isset($_GET['code'])) {
 			$this->googleplus->getAuthenticate();
 			$this->session->set_userdata('loginGmail',true);
@@ -26,13 +29,22 @@
 			}
 		}
 		$contents['login_Gmailurl'] = $this->googleplus->loginURL();
+		$contents['login_FBurl'] = $this->fb->getLoginUrl($cb);
 		$this->load->view('login',$contents);
 	}
 
 	public function signin(){
 		$this->session->set_userdata('visitSign',true);
 		$contents['signin_Gmailurl'] = $this->googleplus->loginURL();
+		$cb= "http://localhost:8080/EasyBussines/index.php/welcome/fillFB";
+		$contents['signin_FBlurl'] = $this->fb->getLoginUrl($cb);
 		$this->load->view('signin',$contents);
+	}
+	public function fillFB(){//funcion para llenar los datos con la info de FB
+		$this->session->set_userdata('loginFB',true);
+		$act = $this->fb->getAccessToken();
+    $this->session->set_userdata('user_profile',$this->fb->getUserData($act));
+    redirect('welcome/panel');
 	}
 
 	public function panel(){
@@ -43,8 +55,11 @@
 				$cuentas=$contents['user_profile'];
 				$cuenta=$cuentas['email'];
 				$clave=$cuentas['id'];
-			}elseif ($this->session->userdata('loginFB')) {
 
+			}elseif ($this->session->userdata('loginFB')==true) {
+				$cuentas=$contents['user_profile'];
+				$cuenta=$cuentas['email'];
+				$clave=$cuentas['id'];
 			}else{
 				$cuenta=$this->input->post('email');
 			  $clave=$this->input->post('password');
@@ -52,6 +67,12 @@
 			$res=$this->m_easyb->validarusuario($cuenta,$clave);
 			if ($this->session->userdata('loginGmail')==true && empty($res)) {
 				$this->session->set_userdata('signinGmail',true);
+				$this->session->set_userdata('signinFB',false);
+				redirect('uploader/signin');
+			}
+			if ($this->session->userdata('loginFB')==true && empty($res)) {
+				$this->session->set_userdata('signinFB',true);
+				$this->session->set_userdata('signinGmail',false);
 				redirect('uploader/signin');
 			}
 

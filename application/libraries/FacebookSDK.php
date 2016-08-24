@@ -50,9 +50,13 @@
 			$this->fb->setDefaultAccessToken($access_token);
 
 			try {
-			  $response = $this->fb->get('/me');
-			  $userNode = $response->getGraphUser();
-			  return $userNode;
+			  $response = $this->fb->get('/me?fields=name,first_name,last_name,email');
+			  $plainOldArray = $response->getDecodedBody();
+
+			  //print_r($plainOldArray);
+			  //$userNode = $response->getGraphUser();
+			  //echo $userNode->;
+			  return $plainOldArray;
 			} catch(Facebook\Exceptions\FacebookResponseException $e) {
 			  // When Graph returns an error
 			  echo 'Graph returned an error: ' . $e->getMessage();

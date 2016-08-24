@@ -15,7 +15,7 @@
         <h1 id="login-box-link">Sign In</h1>
       </div>
       <div class="social-login">
-        <a href="#">
+        <a href="<?php echo $signin_FBlurl;?>">
           <i class="fa fa-facebook fa-lg"></i>
           Sign in with facebook
         </a>
