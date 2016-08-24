@@ -35,7 +35,7 @@ class uploader extends CI_Controller {
 
       if ($this->form_validation->run() == FALSE){
         if ($this->session->userdata('signinGmail')==true) {
-          echo "entra a gmail";
+         // echo "entra a gmail";
           $contents['user_profile'] = $this->session->userdata('user_profile');
           $datoss=$contents['user_profile'];
           $email=$datoss['email'];
@@ -44,7 +44,7 @@ class uploader extends CI_Controller {
           $password=$datoss['id'];
           //print_r($datoss);
         }elseif ($this->session->userdata('signinFB')==true) {
-          echo "entra a FB";
+          //echo "entra a FB";
             $contents['user_profile'] = $this->session->userdata('user_profile');
             $datoss=$contents['user_profile'];
             $email=$datoss['email'];

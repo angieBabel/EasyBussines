@@ -15,7 +15,7 @@
 	}
 	//gmail login
 	public function login(){
-		$cb= "http://localhost:8080/EasyBussines/index.php/welcome/fillFB";
+		$cb= "http://webcolima.com/easybusiness/index.php/welcome/fillFB";
 		if (isset($_GET['code'])) {
 			$this->googleplus->getAuthenticate();
 			$this->session->set_userdata('loginGmail',true);
