@@ -4,8 +4,8 @@ body{
 .login-box{
   /*position:relative;*/
   /*margin: 10px auto;*/
-  width: 500px;
-  height: 380px;
+  width: auto;
+  height: auto;
   background-color: #fff;
   padding: 10px;
   border-radius: 10px;
@@ -14,8 +14,8 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
--moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
 }
 .lb-header{
   position:relative;
@@ -26,17 +26,17 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
   text-align:center;
   height:28px;
 }
-/*.lb-header a{
-  /*margin: 0 25px;
+.lb-header a{
+  margin: 0 25px;
   padding: 0 20px;
   text-decoration: none;
   color: #0F1937;
   font-weight: bold;
-  /*font-size: 15px;
+  font-size: 15px;
   -webkit-transition: all 0.1s linear;
   -moz-transition: all 0.1s linear;
   transition: all 0.1s linear;
-}*/
+}
 
 .social-login{
   position:relative;
@@ -84,6 +84,8 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
   width:100%;
   margin-bottom: 10px;
 }
+.u-form-group input[type="nombre"],
+.u-form-group input[type="apellido"],
 .u-form-group input[type="email"],
 .u-form-group input[type="password"]{
   width: calc(50% - 22px);

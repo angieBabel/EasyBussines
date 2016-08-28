@@ -2,6 +2,7 @@ body{
   background: #F7F7EF;
   font-family: 'Montserrat', sans-serif;
   color: #0F1937;
+  /* overflow:hidden; */
 }
 
 .menucentro{
@@ -17,7 +18,6 @@ body{
   height: 500px;
   background-position: top center;
   background-repeat: no-repeat;
-
 }
 
 .informacion {
@@ -27,8 +27,6 @@ body{
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-
-
 }
 #estiloText{
   text-align: left;
@@ -55,10 +53,14 @@ body{
 }
 .quienson{
   color: #ffffff;
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 10%;
   text-align: justify;
 
+}
+.imageSc3{
+  margin-top: 10%;
+  text-align: center;
 }
 
 .seccion4{
@@ -87,5 +89,116 @@ body{
 }
 
 
+/* @import "http://fonts.googleapis.com/css?family=Raleway"; */
 
+.header{
 
+}
+
+#new {
+  width:100%;
+  height:100%;
+  opacity:.95;
+  top:0;
+  left:0;
+  display:none;
+  position:absolute;
+  z-index:3;
+  background-color:#313131;
+  overflow:auto;
+
+}
+#edit {
+  width:100%;
+  height:100%;
+  opacity:.95;
+  top:0;
+  left:0;
+  display:none;
+  position:absolute;
+  z-index:3;
+  background-color:#313131;
+  overflow:auto;
+}
+#close {
+  position:absolute;
+  right: -14px;
+  top: -14px;
+  cursor:pointer
+}
+div#popupContact {
+  position:absolute;
+  left:50%;
+  top:17%;
+  margin-left:-202px;
+  font-family:'Raleway',sans-serif
+  height: auto;
+  width: auto;
+}
+div#popupContact, button {
+  margin-top: 20px;
+  /* background: #1fa76c; */
+}
+
+#form {
+  max-width:300px;
+  min-width:250px;
+  padding:10px 50px;
+  border:2px solid gray;
+  border-radius:10px;
+  font-family:raleway;
+  background-color:#fff
+}
+
+#add{
+  /* margin-left: 5%; */
+  font-size: 20px;
+}
+
+#tituloForm {
+  background-color:#133040;
+  color:#fff;
+  padding:20px 35px;
+  margin:-10px -50px;
+  text-align:center;
+  border-radius:10px 10px 0 0
+}
+hr {
+  margin:10px -50px;
+  border:0;
+  border-top:1px solid #ccc
+}
+input[type=text] {
+  /* width:%; */
+  padding:10px;
+  margin-top:30px;
+  border:1px solid #ccc;
+  padding-left:40px;
+  font-size:16px;
+  font-family:raleway
+}
+#name {
+  background-image:url(../images/name.jpg);
+  background-repeat:no-repeat;
+  background-position:5px 7px
+}
+#submit {
+  text-decoration:none;
+  width:100%;
+  text-align:center;
+  display:block;
+  background-color:#FFBC00;
+  color:#fff;
+  border:1px solid #FFCB00;
+  padding:10px 0;
+  font-size:20px;
+  cursor:pointer;
+  border-radius:5px
+}
+.razones{
+  text-align: justify;
+  line-height: 2;
+}
+.razones h3{
+  text-align: center;
+}

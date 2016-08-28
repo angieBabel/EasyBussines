@@ -15,17 +15,49 @@
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
-
+            <section class="col-lg-12 connectedSortable">
+              <!-- //Pop up para agregar -->
+              <div id="new">
+                <!-- Popup Div Starts Here -->
+                <div id="popupContact">
+                <!-- Contact Us Form -->
+                  <form  class="form-horizontal" action="index.php/uploader/altaproducto" id="form" method="post" name="form">
+                    <a id="close" href="javascript:%20newdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
+                    <h2 id="tituloForm">Agrega producto</h2>
+                    <hr>
+                    <input class="form-control" id="name" name="name" placeholder="Nombre del producto" type="text">
+                    <input class="form-control" id="precio" name="precio" placeholder="Precio" type="text">
+                    <button type="submit" class="btn btn-success form-control">Save</button>
+                  </form>
+                </div>
+                <!-- Popup Div Ends Here -->
+              </div>
+              <!-- //Pop up para editar -->
+              <div id="edit">
+                <!-- Popup Div Starts Here -->
+                <div id="popupContact">
+                <!-- Contact Us Form -->
+                  <form action="index.php/uploader/editaproducto" id="form" method="post" name="form">
+                    <a id="close" href="javascript:%20editdiv_hide()"><i class="fa fa-times-circle fa-lg"></i></a>
+                    <h2 id="tituloForm">Edita producto</h2>
+                    <hr>
+                    <input type="hidden" id="idP" name="idP">
+                    <input class="form-control" id="nameP" name="nameP" placeholder="Nombre del producto" type="text">
+                    <input class="form-control" id="precioP" name="precioP" placeholder="Precio" type="text">
+                    <button type="submit" class="btn btn-success form-control">Save</button>
+                  </form>
+                </div>
+                <!-- Popup Div Ends Here -->
+              </div>
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
-                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; width:500px;">
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 500px; overflow: scroll">
                   <div class="row">
+                    <div class="col-lg-1"></div>
                     <div class="table-responsive col-lg-10">
                       <table class="table table-hover table-striped">
                           <thead>
                               <tr><!--Renglones-->
-                                  <th>Id Producto</th><!--Colunas-->
                                   <th>Nombre</th>
                                   <th>Precio $</th>
                                   <th></th>
@@ -35,21 +67,21 @@
                           <tbody>
                             <?php foreach($productos as $rowproductos){ ?>
                              <tr>
-                                 <td><?php echo $rowproductos['id_producto']; ?></td>
                                  <td><?php echo $rowproductos['nombre']; ?></td>
                                  <td><?php echo $rowproductos['precio']; ?></td>
-                                 <td><i class="fa fa-pencil-square-o"></i></td>
-                                 <td><!-- <a href="index.php/uploader/desactivaAlmacen?id=<?php echo $rowAlmacen['clave'];?>"> --><i class="fa fa-trash-o"></i></a></td>
+                                 <td><a href="javascript:%20editdiv_showP(<?php echo $rowproductos['id_producto']; ?>,'<?php echo $rowproductos['nombre']; ?>',<?php echo $rowproductos['precio']; ?>)"><i class="fa fa-pencil-square-o"></i></a></td>
+                                 <td><a href="index.php/uploader/eliminaproducto?id=<?php echo $rowproductos['id_producto']; ?>"><i class="fa fa-trash-o"></i></a></td>
                              </tr>
                              <?php } ?>
+
+                             <!-- id='<?php //echo $rowproductos['id_producto']; ?>',nombre='<?php// echo $rowproductos['nombre']; ?>',precio='<?php //echo $rowproductos['precio']; ?>' -->
                           </tbody>
                       </table>
                     </div>
                   </div>
-                  <div class="col-lg-10 collapse navbar-collapse navbar-ex1-collapse">
-                      <ul class="nav navbar-nav navbar-right ">
-                          <li id="lista3"><a href=""><i class="fa fa-plus-square fa-lg"></i>  Agregar Producto</a></li>
-                      </ul>
+                  <div class="col-lg-8"></div>
+                  <div class="col-lg-4" id="add">
+                    <a href="javascript:%20newdiv_show()" data-rel="popup">Agregar Producto <i class="fa fa-plus-square fa-lg"></i></a>
                   </div>
               </div><!-- /.nav-tabs-custom -->
 

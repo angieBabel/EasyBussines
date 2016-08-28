@@ -3,10 +3,6 @@
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-          <!-- Sidebar user panel -->
-
-          <!-- /.search form -->
-          <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="treeview">
               <a href="index.php/welcome/panel">
@@ -27,6 +23,13 @@
                 <i class="fa fa-shopping-cart fa-3x"></i>
                 <br>
                 Ventas
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="index.php/welcome/catalogogastos">
+                <i class="fa fa-book fa-3x"></i>
+                <br>
+                Catalogo de gastos
               </a>
             </li>
             <li class="treeview">
@@ -54,3 +57,4 @@
         </section>
         <!-- /.sidebar -->
       </aside>
+
