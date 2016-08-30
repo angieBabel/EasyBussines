@@ -25,9 +25,15 @@
                   }
                   $TV=$TV+1;
                 }
-              $RC= round($TV/$CP, 2);
+              if ($CP!=0) {
+                $RC= round($TV/$CP, 2);
+                $PC= round(365/$RC, 2);
+              }else{
+                echo "No tienes ninguna cuenta por cobrar";
+                $RC= 0;
+                $PC= 0;
+              }
 
-              $PC=round(365/$RC, 2);
             ?>
 
               <!-- Custom tabs (Charts with tabs)-->
